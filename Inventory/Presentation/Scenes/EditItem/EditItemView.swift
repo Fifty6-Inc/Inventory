@@ -17,17 +17,41 @@ extension EditItem {
         
         var body: some View {
             NavigationView {
-                ScrollView {
-                    VStack(spacing: 16) {
-                        Field(info: viewModel.itemNameTextFieldInfo, update: interactor.updateName)
-                        Field(info: viewModel.itemCountTextFieldInfo, update: interactor.updateCount)
+                VStack(spacing: 16) {
+                    Field(info: viewModel.itemNameTextFieldInfo, update: interactor.updateName)
+                    Field(info: viewModel.itemCountTextFieldInfo, update: interactor.updateCount)
+                    
+                    Spacer()
+                    
+                    HStack(spacing: 36) {
+                        CountButton(imageName: "minus", onTap: interactor.subtractFromCount)
+                        CountButton(imageName: "plus", onTap: interactor.addToCount)
                     }
                 }
+                .padding(.top)
+                .navigationBarTitleDisplayMode(.large)
                 .navigationTitle(Theme.sceneTitle)
                 .navigationBarItems(leading: cancelButton, trailing: saveButton)
                 .navigationBarBackButtonHidden(true)
                 .accentColor(Theme.tintColor)
                 .errorSheet($viewModel.error)
+            }
+        }
+        
+        private struct CountButton: View {
+            let imageName: String
+            let onTap: () -> Void
+            
+            var body: some View {
+                Button(action: onTap) {
+                    Circle()
+                        .fill(Color.appTintColor)
+                        .frame(width: 64, height: 64)
+                        .inverseMask {
+                            Image(systemName: imageName)
+                                .font(.system(size: 36, weight: .heavy, design: .rounded))
+                        }
+                }
             }
         }
         
@@ -71,8 +95,6 @@ extension EditItem {
 
 struct EditItem_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
-            EditItem.Scene().view(preview: true, isPresented: .constant(true))
-        }
+        EditItem.Scene().view(preview: true, isPresented: .constant(true))
     }
 }

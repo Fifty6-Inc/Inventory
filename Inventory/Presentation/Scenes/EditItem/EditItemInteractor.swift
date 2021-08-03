@@ -13,6 +13,8 @@ protocol EditItemInteracting {
     func save()
     func updateName(_ value: String)
     func updateCount(_ value: String)
+    func subtractFromCount()
+    func addToCount()
 }
 
 extension EditItem {
@@ -51,6 +53,27 @@ extension EditItem {
                 presenter.present(updateCount: value, error: error as? ValidationError)
             }
             checkCanSave()
+        }
+        
+        func subtractFromCount() {
+            service.subtractFromCount()
+            updateCount()
+            checkCanSave()
+        }
+        
+        func addToCount() {
+            service.addToCount()
+            updateCount()
+            checkCanSave()
+        }
+        
+        private func updateCount() {
+            let count = service.fetchCount()
+            if let count = count {
+                presenter.present(updateCount: String(count), error: nil)
+            } else {
+                presenter.present(updateCount: "", error: nil)
+            }
         }
         
         private func checkCanSave() {

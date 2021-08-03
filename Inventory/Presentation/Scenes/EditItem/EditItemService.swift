@@ -11,6 +11,9 @@ import Foundation
 protocol EditItemService {
     func validateName(_ value: String) throws
     func validateCount(_ value: String) throws
+    func subtractFromCount()
+    func addToCount()
+    func fetchCount() -> Int?
     func canSave() -> Bool
     func save() throws
 }
@@ -41,6 +44,24 @@ extension EditItem {
             if count == nil { throw ValidationError.invalid }
         }
         
+        func subtractFromCount() {
+            count? -= 1
+            if count == nil {
+                count = 1
+            }
+        }
+        
+        func addToCount() {
+            count? += 1
+            if count == nil {
+                count = 1
+            }
+        }
+        
+        func fetchCount() -> Int? {
+            count
+        }
+        
         func canSave() -> Bool {
             !name.isEmpty && count != nil
         }
@@ -63,6 +84,24 @@ extension EditItem {
             count = Int(value)
             if value.isEmpty { throw ValidationError.empty }
             if count == nil { throw ValidationError.invalid }
+        }
+        
+        func subtractFromCount() {
+            count? -= 1
+            if count == nil {
+                count = 1
+            }
+        }
+        
+        func addToCount() {
+            count? += 1
+            if count == nil {
+                count = 1
+            }
+        }
+        
+        func fetchCount() -> Int? {
+            count
         }
         
         func canSave() -> Bool {
