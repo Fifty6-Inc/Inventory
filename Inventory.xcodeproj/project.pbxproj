@@ -14,18 +14,10 @@
 		A5D9102C26B98E7A00AAF35E /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D9102B26B98E7A00AAF35E /* Persistence.swift */; };
 		A5D9102F26B98E7A00AAF35E /* Inventory.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A5D9102D26B98E7A00AAF35E /* Inventory.xcdatamodeld */; };
 		A5D9103926B98E7A00AAF35E /* InventoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D9103826B98E7A00AAF35E /* InventoryTests.swift */; };
-		A5D9104326B98E7B00AAF35E /* InventoryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D9104226B98E7B00AAF35E /* InventoryUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		A5D9103526B98E7A00AAF35E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A5D9101726B98E7900AAF35E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A5D9101E26B98E7900AAF35E;
-			remoteInfo = Inventory;
-		};
-		A5D9103F26B98E7A00AAF35E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A5D9101726B98E7900AAF35E /* Project object */;
 			proxyType = 1;
@@ -44,8 +36,6 @@
 		A5D9102E26B98E7A00AAF35E /* Inventory.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Inventory.xcdatamodel; sourceTree = "<group>"; };
 		A5D9103426B98E7A00AAF35E /* InventoryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InventoryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5D9103826B98E7A00AAF35E /* InventoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryTests.swift; sourceTree = "<group>"; };
-		A5D9103E26B98E7A00AAF35E /* InventoryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InventoryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A5D9104226B98E7B00AAF35E /* InventoryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryUITests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,13 +53,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A5D9103B26B98E7A00AAF35E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -78,7 +61,6 @@
 			children = (
 				A5D9102126B98E7900AAF35E /* Inventory */,
 				A5D9103726B98E7A00AAF35E /* InventoryTests */,
-				A5D9104126B98E7A00AAF35E /* InventoryUITests */,
 				A5D9102026B98E7900AAF35E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -88,7 +70,6 @@
 			children = (
 				A5D9101F26B98E7900AAF35E /* Inventory.app */,
 				A5D9103426B98E7A00AAF35E /* InventoryTests.xctest */,
-				A5D9103E26B98E7A00AAF35E /* InventoryUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -96,12 +77,9 @@
 		A5D9102126B98E7900AAF35E /* Inventory */ = {
 			isa = PBXGroup;
 			children = (
-				A5D9102226B98E7900AAF35E /* InventoryApp.swift */,
-				A5D9102426B98E7900AAF35E /* ContentView.swift */,
-				A5D9102626B98E7A00AAF35E /* Assets.xcassets */,
-				A5D9102B26B98E7A00AAF35E /* Persistence.swift */,
-				A5D9102D26B98E7A00AAF35E /* Inventory.xcdatamodeld */,
-				A5D9102826B98E7A00AAF35E /* Preview Content */,
+				A5D9105126B98F1400AAF35E /* Presentation */,
+				A5D9105226B98F1A00AAF35E /* Application */,
+				A5D9105326B98F1E00AAF35E /* Domain */,
 			);
 			path = Inventory;
 			sourceTree = "<group>";
@@ -122,12 +100,47 @@
 			path = InventoryTests;
 			sourceTree = "<group>";
 		};
-		A5D9104126B98E7A00AAF35E /* InventoryUITests */ = {
+		A5D9105026B98F0800AAF35E /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				A5D9104226B98E7B00AAF35E /* InventoryUITests.swift */,
+				A5D9102226B98E7900AAF35E /* InventoryApp.swift */,
+				A5D9102626B98E7A00AAF35E /* Assets.xcassets */,
+				A5D9102826B98E7A00AAF35E /* Preview Content */,
 			);
-			path = InventoryUITests;
+			path = Main;
+			sourceTree = "<group>";
+		};
+		A5D9105126B98F1400AAF35E /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				A5D9102426B98E7900AAF35E /* ContentView.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		A5D9105226B98F1A00AAF35E /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				A5D9105426B98F4300AAF35E /* Persistence */,
+				A5D9105026B98F0800AAF35E /* Main */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		A5D9105326B98F1E00AAF35E /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		A5D9105426B98F4300AAF35E /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				A5D9102B26B98E7A00AAF35E /* Persistence.swift */,
+				A5D9102D26B98E7A00AAF35E /* Inventory.xcdatamodeld */,
+			);
+			path = Persistence;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,24 +181,6 @@
 			productReference = A5D9103426B98E7A00AAF35E /* InventoryTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		A5D9103D26B98E7A00AAF35E /* InventoryUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A5D9104C26B98E7B00AAF35E /* Build configuration list for PBXNativeTarget "InventoryUITests" */;
-			buildPhases = (
-				A5D9103A26B98E7A00AAF35E /* Sources */,
-				A5D9103B26B98E7A00AAF35E /* Frameworks */,
-				A5D9103C26B98E7A00AAF35E /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A5D9104026B98E7A00AAF35E /* PBXTargetDependency */,
-			);
-			name = InventoryUITests;
-			productName = InventoryUITests;
-			productReference = A5D9103E26B98E7A00AAF35E /* InventoryUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -200,10 +195,6 @@
 						CreatedOnToolsVersion = 13.0;
 					};
 					A5D9103326B98E7A00AAF35E = {
-						CreatedOnToolsVersion = 13.0;
-						TestTargetID = A5D9101E26B98E7900AAF35E;
-					};
-					A5D9103D26B98E7A00AAF35E = {
 						CreatedOnToolsVersion = 13.0;
 						TestTargetID = A5D9101E26B98E7900AAF35E;
 					};
@@ -224,7 +215,6 @@
 			targets = (
 				A5D9101E26B98E7900AAF35E /* Inventory */,
 				A5D9103326B98E7A00AAF35E /* InventoryTests */,
-				A5D9103D26B98E7A00AAF35E /* InventoryUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -240,13 +230,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A5D9103226B98E7A00AAF35E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A5D9103C26B98E7A00AAF35E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -275,14 +258,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A5D9103A26B98E7A00AAF35E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A5D9104326B98E7B00AAF35E /* InventoryUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -290,11 +265,6 @@
 			isa = PBXTargetDependency;
 			target = A5D9101E26B98E7900AAF35E /* Inventory */;
 			targetProxy = A5D9103526B98E7A00AAF35E /* PBXContainerItemProxy */;
-		};
-		A5D9104026B98E7A00AAF35E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A5D9101E26B98E7900AAF35E /* Inventory */;
-			targetProxy = A5D9103F26B98E7A00AAF35E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -422,7 +392,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Inventory/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Inventory/Application/Main/Preview Content\"";
 				DEVELOPMENT_TEAM = X7WM6K9T24;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -452,7 +422,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Inventory/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Inventory/Application/Main/Preview Content\"";
 				DEVELOPMENT_TEAM = X7WM6K9T24;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -525,52 +495,6 @@
 			};
 			name = Release;
 		};
-		A5D9104D26B98E7B00AAF35E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = X7WM6K9T24;
-				GENERATE_INFOPLIST_FILE = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.fifty6.InventoryUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Inventory;
-			};
-			name = Debug;
-		};
-		A5D9104E26B98E7B00AAF35E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = X7WM6K9T24;
-				GENERATE_INFOPLIST_FILE = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.fifty6.InventoryUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Inventory;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -597,15 +521,6 @@
 			buildConfigurations = (
 				A5D9104A26B98E7B00AAF35E /* Debug */,
 				A5D9104B26B98E7B00AAF35E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A5D9104C26B98E7B00AAF35E /* Build configuration list for PBXNativeTarget "InventoryUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A5D9104D26B98E7B00AAF35E /* Debug */,
-				A5D9104E26B98E7B00AAF35E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
