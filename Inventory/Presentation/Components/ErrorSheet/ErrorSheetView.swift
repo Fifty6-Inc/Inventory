@@ -1,6 +1,6 @@
 //
 //  ErrorSheetView.swift
-//  Raindrop
+//  Inventory
 //
 //  Created by Mikael Weiss on 5/3/21.
 //

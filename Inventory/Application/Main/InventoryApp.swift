@@ -9,6 +9,8 @@ import SwiftUI
 
 @main
 struct InventoryApp: App {
+    static let storage = CoreDataStorage.shared
+    
     var body: some Scene {
         WindowGroup {
             ViewItemsOverview.Scene().view()

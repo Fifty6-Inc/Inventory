@@ -23,9 +23,9 @@ enum EditItem {
         }
         
         private func buildService() -> Service {
-//            guard let input = EditDataPoint.input
+//            guard let input = EditItem.input
 //            else { fatalError("Required input is missing (\(#file))") }
-//            EditDataPoint.input = nil
+//            EditItem.input = nil
             
             return Service()
         }

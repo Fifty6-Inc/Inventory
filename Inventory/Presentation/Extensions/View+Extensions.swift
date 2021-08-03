@@ -1,6 +1,6 @@
 //
 //  View+Extensions.swift
-//  Raindrop
+//  Inventory
 //
 //  Created by Mikael Weiss on 5/8/21.
 //
