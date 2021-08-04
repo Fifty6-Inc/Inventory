@@ -19,6 +19,7 @@ enum EditProject {
             let interactor = Interactor(service: service, presenter: presenter)
             let view = ContentView(viewModel: presenter.viewModel, interactor: interactor)
             interactor.fetchProject()
+            interactor.fetchAllItems()
             return view
         }
         
@@ -26,8 +27,12 @@ enum EditProject {
             guard let input = EditProject.input
             else { fatalError("Required input is missing (\(#file))") }
             let projectFetcher = RepositoryRoot.shared.projectRepository
+            let itemsFetcher = RepositoryRoot.shared.itemRepository
             
-            return Service(projectFetcher: projectFetcher, projectID: input.projectID)
+            return Service(
+                projectFetcher: projectFetcher,
+                itemsFetcher: itemsFetcher,
+                projectID: input.projectID)
         }
     }
     

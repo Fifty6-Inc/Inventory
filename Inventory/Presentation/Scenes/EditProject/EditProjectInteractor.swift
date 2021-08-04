@@ -14,6 +14,8 @@ protocol EditProjectInteracting {
     func save()
     func delete()
     func updateName(_ value: String)
+    func removeItem(with id: UUID)
+    func addItem(with id: UUID)
 }
 
 extension EditProject {
@@ -23,11 +25,16 @@ extension EditProject {
         let presenter: EditProjectPresenting
         
         func fetchProject() {
-            do {
+            attempt {
                 let project = try service.fetchProject()
                 presenter.presentFetch(project)
-            } catch {
-                presenter.present(error: error as? ServiceError)
+            }
+        }
+        
+        func fetchAllItems() {
+            attempt {
+                let items = try service.fetchAllItems()
+                presenter.present(allItems: items)
             }
         }
         
@@ -36,20 +43,16 @@ extension EditProject {
         }
         
         func save() {
-            do {
+            attempt {
                 try service.save()
                 presenter.presentDismiss()
-            } catch {
-                presenter.present(error: error as? ServiceError)
             }
         }
         
         func delete() {
-            do {
+            attempt {
                 try service.delete()
                 presenter.presentDismiss()
-            } catch {
-                presenter.present(error: error as? ServiceError)
             }
         }
         
@@ -65,6 +68,36 @@ extension EditProject {
         
         private func checkCanSave() {
             presenter.present(canSave: service.canSave())
+        }
+        
+        func removeItem(with id: UUID) {
+            service.removeItem(with: id)
+            refreshItems()
+        }
+        
+        func addItem(with id: UUID) {
+            attempt {
+                try service.addItem(with: id)
+                refreshItems()
+            }
+        }
+        
+        private func refreshItems() {
+            let items = service.projectItems()
+            presenter.present(projectItems: items)
+            
+            let allItems = service.filteredItems()
+            presenter.present(allItems: allItems)
+            
+            checkCanSave()
+        }
+        
+        private func attempt(_ attempt: () throws -> Void) {
+            do {
+                try attempt()
+            } catch {
+                presenter.present(error: error as? ServiceError)
+            }
         }
     }
 }

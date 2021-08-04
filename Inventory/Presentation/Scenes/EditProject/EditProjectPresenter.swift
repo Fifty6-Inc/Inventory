@@ -10,7 +10,9 @@ import Foundation
 
 protocol EditProjectPresenting {
     func presentFetch(_ project: EditProject.ProjectInfo?)
+    func present(allItems: [Item])
     func present(updateName: String, error: EditProject.ValidationError?)
+    func present(projectItems: [Item])
     func present(error: EditProject.ServiceError?)
     func present(canSave: Bool)
     func presentDismiss()
@@ -27,15 +29,25 @@ extension EditProject {
                 if let name = project.name {
                     present(updateName: name, error: nil)
                 }
+                
+                viewModel.projectItems = mapItemToItemsGridItem(project.items)
                 viewModel.showRemoveProjectButton = true
                 viewModel.sceneTitle = Strings.sceneEditTitle
             }
+        }
+        
+        func present(allItems: [Item]) {
+            viewModel.allItems = mapItemToItemsGridItem(allItems)
         }
         
         func present(updateName: String, error: ValidationError?) {
             viewModel.projectNameTextFieldInfo.value = updateName
             let errorIsNil = error == nil
             viewModel.projectNameTextFieldInfo.borderColor = errorIsNil ? Theme.tintColor : Theme.errorColor
+        }
+        
+        func present(projectItems: [Item]) {
+            viewModel.projectItems = mapItemToItemsGridItem(projectItems)
         }
         
         func present(error: ServiceError?) {
@@ -52,6 +64,15 @@ extension EditProject {
         
         func presentDismiss() {
             viewModel.isPresented.wrappedValue = false
+        }
+        
+        private func mapItemToItemsGridItem(_ items: [Item]) -> [ItemsGrid.Item] {
+            items.map {
+                ItemsGrid.Item(
+                    id: $0.id,
+                    name: $0.name,
+                    count: "\($0.count)")
+            }
         }
     }
 }

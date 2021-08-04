@@ -11,25 +11,52 @@ import SwiftUI
 extension EditProject {
     
     struct ContentView: View {
+        @State private var showConfirmRemoveItem = false
+        @State private var selectedID: UUID? = nil
+        @State private var showAddItemSheet = false
         typealias Theme = EditProject.Theme
         @ObservedObject var viewModel: ViewModel
         let interactor: EditProjectInteracting
         
         var body: some View {
             NavigationView {
-                VStack(spacing: 16) {
-                    Field(info: viewModel.projectNameTextFieldInfo, update: interactor.updateName)
-                    DeleteButton(title: Theme.deleteButtonTitle, onTap: interactor.delete)
-                        .opacity(viewModel.showRemoveProjectButton ? 1 : 0)
-                    
+                ScrollView {
+                    VStack(spacing: 16) {
+                        Field(info: viewModel.projectNameTextFieldInfo, update: interactor.updateName)
+                        
+                        ItemsGrid(
+                            items: viewModel.projectItems,
+                            didTapItem: didTapProjectItem,
+                            didTapAdd: didTapAdd)
+                            .padding(.horizontal)
+                        
+                        Spacer().frame(height: 50)
+                        
+                        DeleteButton(title: Theme.deleteButtonTitle, onTap: interactor.delete)
+                            .opacity(viewModel.showRemoveProjectButton ? 1 : 0)
+                    }
                 }
-                .padding(.top)
                 .navigationBarTitleDisplayMode(.large)
                 .navigationTitle(viewModel.sceneTitle)
                 .navigationBarItems(leading: cancelButton, trailing: saveButton)
                 .navigationBarBackButtonHidden(true)
                 .accentColor(Theme.tintColor)
                 .errorSheet($viewModel.error)
+                .actionSheet(isPresented: $showConfirmRemoveItem) {
+                    var buttons = [ActionSheet.Button]()
+                    
+                    buttons.append(.destructive(
+                        Text(Theme.deleteItemButtonTitle),
+                        action: { didTapRemoveItem(with: selectedID) } ))
+                    buttons.append(.cancel(Text(Theme.cancelButtonTitle)))
+                    
+                    return ActionSheet(title: Text(""), message: nil, buttons: buttons)
+                }
+                .sheet(isPresented: $showAddItemSheet) {
+                    ItemsGrid(
+                        items: viewModel.allItems,
+                        didTapItem: didTapNewItem)
+                }
             }
         }
         
@@ -72,7 +99,7 @@ extension EditProject {
         
         var cancelButton: some View {
             Button(action: interactor.dismiss) {
-                Text(Theme.backButtonTitle)
+                Text(Theme.cancelButtonTitle)
                     .accentColor(Theme.tintColor)
             }
         }
@@ -83,6 +110,30 @@ extension EditProject {
                     .accentColor(Theme.tintColor)
             }.disabled(!viewModel.canSave)
         }
+    }
+}
+
+// MARK: - Interacting
+
+extension EditProject.ContentView {
+    func didTapProjectItem(_ id: UUID) {
+        showConfirmRemoveItem = true
+        selectedID = id
+    }
+    
+    func didTapRemoveItem(with id: UUID?) {
+        if let id = id {
+            interactor.removeItem(with: id)
+        }
+    }
+
+    func didTapAdd() {
+        showAddItemSheet = true
+    }
+    
+    func didTapNewItem(with id: UUID) {
+        interactor.addItem(with: id)
+        showAddItemSheet = false
     }
 }
 
