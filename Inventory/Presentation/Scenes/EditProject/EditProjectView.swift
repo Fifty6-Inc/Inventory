@@ -11,6 +11,7 @@ import SwiftUI
 extension EditProject {
     
     struct ContentView: View {
+        @State private var showActionSheet = false
         @State private var showConfirmRemoveItem = false
         @State private var selectedID: UUID? = nil
         @State private var showAddItemSheet = false
@@ -24,15 +25,21 @@ extension EditProject {
                     VStack(spacing: 16) {
                         Field(info: viewModel.projectNameTextFieldInfo, update: interactor.updateName)
                         
+                        Text(Theme.itemsTitle)
+                            .font(.system(.title, design: .rounded))
+                            .fontWeight(.bold)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.leading)
+                        
                         ItemsGrid(
                             items: viewModel.projectItems,
                             didTapItem: didTapProjectItem,
-                            didTapAdd: didTapAdd)
+                            didTapAdd: didTapAddItem)
                             .padding(.horizontal)
                         
                         Spacer().frame(height: 50)
                         
-                        DeleteButton(title: Theme.deleteButtonTitle, onTap: interactor.delete)
+                        DeleteButton(title: Theme.deleteButtonTitle, onTap: didTapDelete)
                             .opacity(viewModel.showRemoveProjectButton ? 1 : 0)
                     }
                 }
@@ -42,21 +49,12 @@ extension EditProject {
                 .navigationBarBackButtonHidden(true)
                 .accentColor(Theme.tintColor)
                 .errorSheet($viewModel.error)
-                .actionSheet(isPresented: $showConfirmRemoveItem) {
-                    var buttons = [ActionSheet.Button]()
-                    
-                    buttons.append(.destructive(
-                        Text(Theme.confirmRemoveItemButtonTitle),
-                        action: { didTapRemoveItem(with: selectedID) } ))
-                    buttons.append(.cancel(
-                        Text(Theme.cancelButtonTitle),
-                        action: cancelRemoveItem
-                    ))
-                    
-                    return ActionSheet(
-                        title: Text(Theme.confirmRemoveItemTitle),
-                        message: Text(Theme.confirmRemoveItemMessage),
-                        buttons: buttons)
+                .actionSheet(isPresented: $showActionSheet) {
+                    if showConfirmRemoveItem {
+                        return confirmRemoveItemActionSheet
+                    } else {
+                        return confirmDeleteProjectActionSheet
+                    }
                 }
                 .sheet(isPresented: $showAddItemSheet) {
                     AllItemsGrid(
@@ -99,6 +97,37 @@ extension EditProject {
                     .accentColor(Theme.tintColor)
             }.disabled(!viewModel.canSave)
         }
+        
+        var confirmRemoveItemActionSheet: ActionSheet {
+            var buttons = [ActionSheet.Button]()
+            
+            buttons.append(.destructive(
+                Text(Theme.confirmRemoveItemButtonTitle),
+                action: { didTapRemoveItem(with: selectedID) } ))
+            buttons.append(.cancel(
+                Text(Theme.cancelButtonTitle),
+                action: cancelRemoveItem
+            ))
+            
+            return ActionSheet(
+                title: Text(Theme.confirmRemoveItemTitle),
+                message: Text(Theme.confirmRemoveItemMessage),
+                buttons: buttons)
+        }
+        
+        var confirmDeleteProjectActionSheet: ActionSheet {
+            var buttons = [ActionSheet.Button]()
+            
+            buttons.append(.destructive(
+                Text(Theme.confirmDeleteProjectButtonTitle),
+                action: interactor.delete))
+            buttons.append(.cancel(Text(Theme.cancelButtonTitle)))
+            
+            return ActionSheet(
+                title: Text(Theme.confirmDeleteProjectTitle),
+                message: Text(Theme.confirmDeleteProjectMessage),
+                buttons: buttons)
+        }
     }
 }
 
@@ -107,6 +136,7 @@ extension EditProject {
 extension EditProject.ContentView {
     func didTapProjectItem(_ id: UUID) {
         showConfirmRemoveItem = true
+        showActionSheet = true
         selectedID = id
     }
     
@@ -120,8 +150,13 @@ extension EditProject.ContentView {
         }
     }
 
-    func didTapAdd() {
+    func didTapAddItem() {
         showAddItemSheet = true
+    }
+    
+    func didTapDelete() {
+        showConfirmRemoveItem = false
+        showActionSheet = true
     }
     
     func didTapNewItem(with id: UUID) {

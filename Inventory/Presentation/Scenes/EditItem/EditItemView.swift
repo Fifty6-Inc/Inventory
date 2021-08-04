@@ -9,8 +9,8 @@
 import SwiftUI
 
 extension EditItem {
-    
     struct ContentView: View {
+        @State private var showConfirmDeleteActionSheet = false
         typealias Theme = EditItem.Theme
         @ObservedObject var viewModel: ViewModel
         let interactor: EditItemInteracting
@@ -20,7 +20,10 @@ extension EditItem {
                 VStack(spacing: 16) {
                     Field(info: viewModel.itemNameTextFieldInfo, update: interactor.updateName)
                     Field(info: viewModel.itemCountTextFieldInfo, update: interactor.updateCount)
-                    DeleteButton(title: Theme.deleteButtonTitle, onTap: interactor.delete)
+                    
+                    Spacer().frame(height: 50)
+                    
+                    DeleteButton(title: Theme.deleteButtonTitle, onTap: didTapDelete)
                         .opacity(viewModel.showRemoveItemButton ? 1 : 0)
                     
                     Spacer()
@@ -37,6 +40,9 @@ extension EditItem {
                 .navigationBarBackButtonHidden(true)
                 .accentColor(Theme.tintColor)
                 .errorSheet($viewModel.error)
+                .actionSheet(isPresented: $showConfirmDeleteActionSheet) {
+                    confirmDeleteItemActionSheet
+                }
             }
         }
         
@@ -90,6 +96,28 @@ extension EditItem {
                     .accentColor(Theme.tintColor)
             }.disabled(!viewModel.canSave)
         }
+        
+        var confirmDeleteItemActionSheet: ActionSheet {
+            var buttons = [ActionSheet.Button]()
+            
+            buttons.append(.destructive(
+                Text(Theme.confirmDeleteItemButtonTitle),
+                action: interactor.delete))
+            buttons.append(.cancel(Text(Theme.cancelButtonTitle)))
+            
+            return ActionSheet(
+                title: Text(Theme.confirmDeleteItemTitle),
+                message: Text(Theme.confirmDeleteItemMessage),
+                buttons: buttons)
+        }
+    }
+}
+
+// MARK: - Interacting
+
+extension EditItem.ContentView {
+    func didTapDelete() {
+        showConfirmDeleteActionSheet = true
     }
 }
 
