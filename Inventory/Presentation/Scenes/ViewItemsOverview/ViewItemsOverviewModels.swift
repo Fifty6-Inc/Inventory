@@ -18,7 +18,7 @@ extension ViewItemsOverview {
     
     class ViewModel: ObservableObject {
         @Published var items = [ViewItemsOverview.ItemViewModel]()
-        @Published var showAddItem = false
+        @Published var showEditItem = false
         @Published var error: ErrorSheet.ViewModel?
     }
     

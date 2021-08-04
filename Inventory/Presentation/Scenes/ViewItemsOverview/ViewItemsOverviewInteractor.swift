@@ -47,11 +47,12 @@ extension ViewItemsOverview {
         
         func didTapItem(with id: UUID) {
             service.prepareRouteToEditItem(with: id)
+            presenter.presentShowEditItem()
         }
         
         func add() {
             service.prepareRouteToEditItem(with: nil)
-            presenter.presentAdd()
+            presenter.presentShowEditItem()
         }
     }
 }

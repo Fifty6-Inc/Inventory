@@ -54,8 +54,8 @@ extension ViewItemsOverview {
                 .navigationBarBackButtonHidden(true)
                 .accentColor(Theme.tintColor)
                 .errorSheet($viewModel.error)
-                .sheet(isPresented: $viewModel.showAddItem) {
-                    EditItem.Scene().view(isPresented: $viewModel.showAddItem)
+                .sheet(isPresented: $viewModel.showEditItem) {
+                    EditItem.Scene().view(isPresented: $viewModel.showEditItem)
                 }
             }
         }

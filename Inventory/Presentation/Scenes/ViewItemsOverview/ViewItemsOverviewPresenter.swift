@@ -10,7 +10,7 @@ import Foundation
 
 protocol ViewItemsOverviewPresenting {
     func presentFetch(_ items: [ViewItemsOverview.ItemDetails])
-    func presentAdd()
+    func presentShowEditItem()
     func present(error: ViewItemsOverview.ServiceError?)
 }
 
@@ -29,8 +29,8 @@ extension ViewItemsOverview {
             }
         }
         
-        func presentAdd() {
-            viewModel.showAddItem = true
+        func presentShowEditItem() {
+            viewModel.showEditItem = true
         }
         
         func present(error: ServiceError?) {
