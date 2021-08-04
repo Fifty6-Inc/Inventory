@@ -87,6 +87,7 @@
 		A5DC0B8526BB1AE100D82987 /* EditProjectInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DC0B7726BB1A3800D82987 /* EditProjectInteractorTests.swift */; };
 		A5DC0B8626BB1AE100D82987 /* EditProjectPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DC0B7926BB1A3800D82987 /* EditProjectPresenterTests.swift */; };
 		A5DC0B8826BB230D00D82987 /* ItemsGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DC0B8726BB230D00D82987 /* ItemsGrid.swift */; };
+		A5DC0B8B26BB448700D82987 /* AllItemsGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DC0B8A26BB448700D82987 /* AllItemsGrid.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -216,6 +217,7 @@
 		A5DC0B7C26BB1A3800D82987 /* EditProjectPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectPresenter.swift; sourceTree = "<group>"; };
 		A5DC0B7D26BB1A3800D82987 /* EditProjectModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectModels.swift; sourceTree = "<group>"; };
 		A5DC0B8726BB230D00D82987 /* ItemsGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsGrid.swift; sourceTree = "<group>"; };
+		A5DC0B8A26BB448700D82987 /* AllItemsGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllItemsGrid.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -280,6 +282,7 @@
 				A5DC0B7626BB1A3800D82987 /* EditProjectService.swift */,
 				A5DC0B7A26BB1A3800D82987 /* EditProjectServiceTests.swift */,
 				A5DC0B7B26BB1A3800D82987 /* EditProjectView.swift */,
+				A5DC0B8926BB447200D82987 /* Components */,
 			);
 			path = EditProject;
 			sourceTree = "<group>";
@@ -547,6 +550,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		A5DC0B8926BB447200D82987 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				A5DC0B8A26BB448700D82987 /* AllItemsGrid.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -722,6 +733,7 @@
 			files = (
 				A53F2D4126BAF5C200F261EA /* ViewProjectsOverviewInteractor.swift in Sources */,
 				A5D910D726B9CCF900AAF35E /* CoreDataStorage.swift in Sources */,
+				A5DC0B8B26BB448700D82987 /* AllItemsGrid.swift in Sources */,
 				A5D9108626B9B40000AAF35E /* EditItemService.swift in Sources */,
 				A5D9106C26B9966500AAF35E /* ErrorSheetModels.swift in Sources */,
 				A53F2D4A26BAF64800F261EA /* DeleteButton.swift in Sources */,

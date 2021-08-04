@@ -59,26 +59,9 @@ extension EditProject {
                         buttons: buttons)
                 }
                 .sheet(isPresented: $showAddItemSheet) {
-                    ItemsGrid(
+                    AllItemsGrid(
                         items: viewModel.allItems,
-                        didTapItem: didTapNewItem)
-                }
-            }
-        }
-        
-        private struct CountButton: View {
-            let imageName: String
-            let onTap: () -> Void
-            
-            var body: some View {
-                Button(action: onTap) {
-                    Circle()
-                        .fill(Color.appTintColor)
-                        .frame(width: 64, height: 64)
-                        .inverseMask {
-                            Image(systemName: imageName)
-                                .font(.system(size: 36, weight: .heavy, design: .rounded))
-                        }
+                        didTapItem: didTapNewItem(with:))
                 }
             }
         }
