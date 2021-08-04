@@ -3,7 +3,7 @@
 //  Elements
 //
 //  Created by Mikael Weiss on 5/12/21.
-//  Copyright © 2021 Elements Advisors, LLC. All rights reserved.
+//  Copyright © 2021 Fifty6 Incorporated. All rights reserved.
 //
 
 import Foundation

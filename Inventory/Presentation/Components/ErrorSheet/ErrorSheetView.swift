@@ -3,6 +3,7 @@
 //  Inventory
 //
 //  Created by Mikael Weiss on 5/3/21.
+//  Copyright © 2021 Fifty6 Incorporated. All rights reserved.
 //
 
 import SwiftUI
