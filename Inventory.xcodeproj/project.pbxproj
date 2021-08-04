@@ -86,6 +86,7 @@
 		A5DC0B8426BB1AE100D82987 /* EditProjectServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DC0B7A26BB1A3800D82987 /* EditProjectServiceTests.swift */; };
 		A5DC0B8526BB1AE100D82987 /* EditProjectInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DC0B7726BB1A3800D82987 /* EditProjectInteractorTests.swift */; };
 		A5DC0B8626BB1AE100D82987 /* EditProjectPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DC0B7926BB1A3800D82987 /* EditProjectPresenterTests.swift */; };
+		A5DC0B8826BB230D00D82987 /* ItemsGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DC0B8726BB230D00D82987 /* ItemsGrid.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -214,6 +215,7 @@
 		A5DC0B7B26BB1A3800D82987 /* EditProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectView.swift; sourceTree = "<group>"; };
 		A5DC0B7C26BB1A3800D82987 /* EditProjectPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectPresenter.swift; sourceTree = "<group>"; };
 		A5DC0B7D26BB1A3800D82987 /* EditProjectModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectModels.swift; sourceTree = "<group>"; };
+		A5DC0B8726BB230D00D82987 /* ItemsGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsGrid.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -389,6 +391,7 @@
 			isa = PBXGroup;
 			children = (
 				A53F2D4926BAF64800F261EA /* DeleteButton.swift */,
+				A5DC0B8726BB230D00D82987 /* ItemsGrid.swift */,
 				A5D9107426B99A3500AAF35E /* Logo.swift */,
 				A5D9106E26B9968500AAF35E /* StandardButton.swift */,
 				A5D9106926B9960300AAF35E /* ErrorSheet */,
@@ -746,6 +749,7 @@
 				A5D9105D26B9955C00AAF35E /* ViewItemsOverviewModels.swift in Sources */,
 				A5D910DA26B9CCF900AAF35E /* CoreDataStorage+Write.swift in Sources */,
 				A5D9105C26B9955C00AAF35E /* ViewItemsOverviewPresenter.swift in Sources */,
+				A5DC0B8826BB230D00D82987 /* ItemsGrid.swift in Sources */,
 				A5D9107526B99A3500AAF35E /* Logo.swift in Sources */,
 				A5D910DE26B9CCF900AAF35E /* Storage.swift in Sources */,
 				A5D9108326B9B40000AAF35E /* EditItemScene.swift in Sources */,

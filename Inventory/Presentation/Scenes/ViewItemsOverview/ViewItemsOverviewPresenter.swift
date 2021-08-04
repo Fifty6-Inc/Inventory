@@ -22,7 +22,7 @@ extension ViewItemsOverview {
         
         func presentFetch(_ items: [ViewItemsOverview.ItemDetails]) {
             viewModel.items = items.map {
-                ViewItemsOverview.ItemViewModel(
+                ItemsGrid.Item(
                     id: $0.id,
                     name: $0.name,
                     count: String($0.count))

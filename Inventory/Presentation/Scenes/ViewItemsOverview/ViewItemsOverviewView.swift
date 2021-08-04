@@ -14,10 +14,6 @@ extension ViewItemsOverview {
         @ObservedObject var viewModel: ViewModel
         let interactor: ViewItemsOverviewInteracting
         
-        let layout = [
-            GridItem(.adaptive(minimum: 150))
-        ]
-        
         var body: some View {
             NavigationView {
                 ScrollView {
@@ -25,22 +21,9 @@ extension ViewItemsOverview {
                         Text(Theme.itemsTitle)
                             .font(.system(size: 56, weight: .heavy, design: .rounded))
                             .frame(maxWidth: .infinity, alignment: .center)
-                        LazyVGrid(columns: layout) {
-                            ForEach(viewModel.items) { item in
-                                RoundedRectangle(cornerRadius: 16, style: .continuous)
-                                    .fill(Color.blue)
-                                    .inverseMask {
-                                        VStack {
-                                            Text(item.name)
-                                            Text(item.count)
-                                        }
-                                    }
-                                    .frame(height: 150)
-                                    .onTapGesture {
-                                        didTapItem(with: item.id)
-                                    }
-                            }
-                        }
+                        ItemsGrid(
+                            items: viewModel.items,
+                            didTapItem: didTapItem(with:))
                     }
                 }
                 .padding(.horizontal)

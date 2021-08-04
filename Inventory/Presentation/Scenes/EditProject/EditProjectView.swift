@@ -21,6 +21,7 @@ extension EditProject {
                     Field(info: viewModel.projectNameTextFieldInfo, update: interactor.updateName)
                     DeleteButton(title: Theme.deleteButtonTitle, onTap: interactor.delete)
                         .opacity(viewModel.showRemoveProjectButton ? 1 : 0)
+                    
                 }
                 .padding(.top)
                 .navigationBarTitleDisplayMode(.large)

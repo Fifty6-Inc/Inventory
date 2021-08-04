@@ -10,14 +10,8 @@ import SwiftUI
 
 extension ViewItemsOverview {
     
-    struct ItemViewModel: Identifiable {
-        let id: UUID
-        let name: String
-        let count: String
-    }
-    
     class ViewModel: ObservableObject {
-        @Published var items = [ViewItemsOverview.ItemViewModel]()
+        @Published var items = [ItemsGrid.Item]()
         @Published var showEditItem = false
         @Published var error: ErrorSheet.ViewModel?
     }
