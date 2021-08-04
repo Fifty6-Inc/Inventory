@@ -43,6 +43,7 @@ extension EditItem {
         func save() {
             do {
                 try service.save()
+                presenter.presentDismiss()
             } catch {
                 presenter.present(error: error as? ServiceError)
             }
