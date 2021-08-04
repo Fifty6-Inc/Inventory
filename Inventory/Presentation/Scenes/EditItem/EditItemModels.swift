@@ -34,7 +34,7 @@ extension EditItem {
     struct Theme {
         static let tintColor = Color.appTintColor
         static let errorColor = Color.appErrorColor
-        static let backButtonTitle = Strings.cancelButtonTitle
+        static let cancelButtonTitle = Strings.cancelButtonTitle
         static let saveButtonTitle = Strings.saveButtonTitle
         static let deleteButtonTitle = Strings.deleteButtonTitle
     }

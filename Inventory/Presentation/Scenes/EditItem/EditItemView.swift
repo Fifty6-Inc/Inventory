@@ -79,7 +79,7 @@ extension EditItem {
         
         var cancelButton: some View {
             Button(action: interactor.dismiss) {
-                Text(Theme.backButtonTitle)
+                Text(Theme.cancelButtonTitle)
                     .accentColor(Theme.tintColor)
             }
         }
