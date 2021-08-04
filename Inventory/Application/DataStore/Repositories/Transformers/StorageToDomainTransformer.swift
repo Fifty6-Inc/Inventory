@@ -15,6 +15,7 @@ enum ReconstitutionError: Error {
 
 protocol StorageToDomainTransformer {
     func item(from storageItem: Storage.Item) throws -> Item
+    func project(from storageProject: Storage.Project) throws -> Project
 }
 
 class StorageToDomainFactory: StorageToDomainTransformer {
@@ -30,5 +31,18 @@ class StorageToDomainFactory: StorageToDomainTransformer {
             count: Int(count))
         
         return try Item(with: itemInfo)
+    }
+    func project(from storageProject: Storage.Project) throws -> Project {
+        guard let id = storageProject.id,
+              let name = storageProject.name,
+              let itemIDs = storageProject.itemIDs
+        else { throw ReconstitutionError.missingRequiredFields }
+        
+        let projectInfo = Project.ReconstitutionInfo(
+            id: id,
+            name: name,
+            itemIDs: itemIDs)
+        
+        return try Project(with: projectInfo)
     }
 }

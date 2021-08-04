@@ -14,10 +14,10 @@ class StorageToDomainTransformerTests: XCTestCase {
     var factory = StorageToDomainFactory()
     
     // MARK: - Item
+    
     func testItem() throws {
         // Given
         let id = UUID()
-        let givenDate = Date()
         let storageItem = Storage.Item(
             id: id,
             name: "Some name",
@@ -30,5 +30,26 @@ class StorageToDomainTransformerTests: XCTestCase {
         XCTAssertEqual(item.id, id)
         XCTAssertEqual(item.name, "Some name")
         XCTAssertEqual(item.count, 55)
+    }
+    
+    // MARK: - Project
+    
+    func testProject() throws {
+        // Given
+        let id = UUID()
+        let randomID = UUID()
+        let storageProject = Storage.Project(
+            id: id,
+            name: "Some name",
+            itemIDs: [UUID(), UUID(), randomID, UUID()])
+        
+        // When
+        let project = try factory.project(from: storageProject)
+        
+        // Then
+        XCTAssertEqual(project.id, id)
+        XCTAssertEqual(project.name, "Some name")
+        XCTAssertEqual(project.itemIDs.count, 4)
+        XCTAssertEqual(project.itemIDs[2], randomID)
     }
 }

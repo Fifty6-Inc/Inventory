@@ -8,8 +8,8 @@
 
 import Foundation
 
-typealias StorageReadable = ItemRepositoryReadable
-typealias StorageWritable = ItemRepositoryWritable
+typealias StorageReadable = ItemRepositoryReadable & ProjectRepositoryReadable
+typealias StorageWritable = ItemRepositoryWritable & ProjectRepositoryWritable
 
 class RepositoryRoot {
     static private var storage: CoreDataStorage {
@@ -22,6 +22,9 @@ class RepositoryRoot {
     private init() {}
     
     var itemRepository = MainItemRepository(
+        storageRead: storageRead,
+        storageWrite: storageWrite)
+    var projectRepository = MainProjectRepository(
         storageRead: storageRead,
         storageWrite: storageWrite)
 }

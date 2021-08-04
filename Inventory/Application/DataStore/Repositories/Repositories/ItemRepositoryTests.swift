@@ -67,7 +67,7 @@ class ItemRepositoryTests: XCTestCase {
         try repository.addItem(item)
         
         // Then
-        let storageItem = storageWrite.addItemItem
+        let storageItem = storageWrite.addItem
         XCTAssertEqual(storageItem?.id, id)
     }
     
@@ -98,14 +98,14 @@ class ItemRepositoryTests: XCTestCase {
     func testUpdateItem() throws {
         // Given
         let id = UUID()
-        storageWrite.updateItemItem = makeStorageItem(id: id, description: "Some old description")
+        storageWrite.updateItem = makeStorageItem(id: id, description: "Some old description")
         let item = makeItem(id: id, description: "Some new description")
         
         // When
         try repository.updateItem(item)
         
         // Then
-        let storageItem = storageWrite.updateItemItem
+        let storageItem = storageWrite.updateItem
         XCTAssertEqual(storageItem?.id, id)
         XCTAssertEqual(storageItem?.description, "Some new description")
     }
@@ -231,16 +231,16 @@ class ItemRepositoryTests: XCTestCase {
     }
     
     class ItemRepositoryWritableDouble: ItemRepositoryWritable {
-        var addItemItem: Storage.Item?
-        var updateItemItem: Storage.Item?
+        var addItem: Storage.Item?
+        var updateItem: Storage.Item?
         var deleteItemID: UUID?
         
         func addItem(_ storageItem: Storage.Item) throws {
-            addItemItem = storageItem
+            addItem = storageItem
         }
         
         func updateItem(_ storageItem: Storage.Item) throws {
-            updateItemItem = storageItem
+            updateItem = storageItem
         }
         
         func deleteItem(with id: UUID) throws {

@@ -162,4 +162,52 @@ public class CoreDataStore {
         
         return Items
     }
+    
+    // MARK: - Project
+    
+    public func newProject() -> Persistence.Project {
+        NSEntityDescription.insertNewObject(
+            forEntityName: "Project",
+            into: container.viewContext) as! Project
+    }
+    
+    public func getProject(with id: UUID) throws -> Persistence.Project? {
+        let Projects: [Project]
+        let request = NSFetchRequest<Project>(entityName: "Project")
+        request.predicate = NSPredicate(format: "%K == %@", (\Project.id)._kvcKeyPathString!, id as CVarArg)
+        
+        do {
+            Projects = try container.viewContext.fetch(request)
+        } catch {
+            os_log(.error, log: .persistence, "Failed to get Project. Error: %@", error as NSError)
+            throw error
+        }
+        
+        return Projects.first
+    }
+    
+    public func deleteProject(with id: UUID) throws {
+        do {
+            if let Project = try getProject(with: id) {
+                container.viewContext.delete(Project)
+            }
+        } catch {
+            os_log(.error, log: .persistence, "Failed to delete Project. Error: %@", error as NSError)
+            throw error
+        }
+    }
+    
+    public func getAllProjects() throws -> [Project] {
+        let Projects: [Project]
+        let request = NSFetchRequest<Project>(entityName: "Project")
+        
+        do {
+            Projects = try container.viewContext.fetch(request)
+        } catch {
+            os_log(.error, log: .persistence, "Failed to get Project. Error: %@", error as NSError)
+            throw error
+        }
+        
+        return Projects
+    }
 }

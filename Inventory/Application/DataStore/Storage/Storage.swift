@@ -14,4 +14,9 @@ enum Storage {
         let name: String?
         let count: Int64?
     }
+    struct Project: Codable {
+        let id: UUID?
+        let name: String?
+        let itemIDs: [UUID]?
+    }
 }
