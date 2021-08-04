@@ -3,7 +3,7 @@
 //  Inventory
 //
 //  Created by Mikael Weiss on 8/3/21.
-//  Copyright © 2021 ___ORGANIZATIONNAME___. All rights reserved.
+//  Copyright © 2021 Fifty6 Incorporated. All rights reserved.
 //
 
 import SwiftUI
@@ -46,9 +46,14 @@ extension EditItem {
         
         static func displayError(for error: ServiceError) -> ErrorSheet.ViewModel {
             switch error {
-            case .saveFailed:
-                return .saveFailed
+            case .saveFailed: return .saveFailed
+            case .fetchFailed: return .fetchFailed
+            case .invalidInput:
+                let message = "Some value is either missing or incorrect. Please make sure all values are entered correctly"
+                return .default(with: message)
             }
         }
+        
+        static let defaultError = ErrorSheet.ViewModel.default
     }
 }

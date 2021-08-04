@@ -57,11 +57,12 @@
 		A5D910DD26B9CCF900AAF35E /* CoreDataStorage+Read.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D910D326B9CCC500AAF35E /* CoreDataStorage+Read.swift */; };
 		A5D910DE26B9CCF900AAF35E /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D910CC26B9CCC500AAF35E /* Storage.swift */; };
 		A5D910DF26B9CD0400AAF35E /* StorageToDomainTransformerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D910C926B9CCC500AAF35E /* StorageToDomainTransformerTests.swift */; };
-		A5D910E026B9CD0400AAF35E /* DataPointRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D910C526B9CCC500AAF35E /* DataPointRepositoryTests.swift */; };
+		A5D910E026B9CD0400AAF35E /* ItemRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D910C526B9CCC500AAF35E /* ItemRepositoryTests.swift */; };
 		A5D910E126B9CD0400AAF35E /* DomainToStorageTransformerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D910C826B9CCC500AAF35E /* DomainToStorageTransformerTests.swift */; };
 		A5D910E226B9CD0400AAF35E /* CoreDataStorage+ReadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D910CE26B9CCC500AAF35E /* CoreDataStorage+ReadTests.swift */; };
 		A5D910E326B9CD0400AAF35E /* CoreDataStoreStorageFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D910D126B9CCC500AAF35E /* CoreDataStoreStorageFactoryTests.swift */; };
 		A5D910E426B9CD0400AAF35E /* CoreDataStorage+WriteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D910D426B9CCC500AAF35E /* CoreDataStorage+WriteTests.swift */; };
+		A5D910E726B9D68B00AAF35E /* Optional+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D910E626B9D68B00AAF35E /* Optional+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -153,7 +154,7 @@
 		A5D910C026B9CCC500AAF35E /* RepositoryRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryRoot.swift; sourceTree = "<group>"; };
 		A5D910C226B9CCC500AAF35E /* RepositoryAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryAction.swift; sourceTree = "<group>"; };
 		A5D910C426B9CCC500AAF35E /* ItemRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRepository.swift; sourceTree = "<group>"; };
-		A5D910C526B9CCC500AAF35E /* DataPointRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPointRepositoryTests.swift; sourceTree = "<group>"; };
+		A5D910C526B9CCC500AAF35E /* ItemRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRepositoryTests.swift; sourceTree = "<group>"; };
 		A5D910C726B9CCC500AAF35E /* StorageToDomainTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageToDomainTransformer.swift; sourceTree = "<group>"; };
 		A5D910C826B9CCC500AAF35E /* DomainToStorageTransformerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainToStorageTransformerTests.swift; sourceTree = "<group>"; };
 		A5D910C926B9CCC500AAF35E /* StorageToDomainTransformerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageToDomainTransformerTests.swift; sourceTree = "<group>"; };
@@ -166,6 +167,7 @@
 		A5D910D226B9CCC500AAF35E /* CoreDataStoreStorageFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStoreStorageFactory.swift; sourceTree = "<group>"; };
 		A5D910D326B9CCC500AAF35E /* CoreDataStorage+Read.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataStorage+Read.swift"; sourceTree = "<group>"; };
 		A5D910D426B9CCC500AAF35E /* CoreDataStorage+WriteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataStorage+WriteTests.swift"; sourceTree = "<group>"; };
+		A5D910E626B9D68B00AAF35E /* Optional+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -282,6 +284,7 @@
 		A5D9105326B98F1E00AAF35E /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				A5D910E526B9D67900AAF35E /* Extensions */,
 				A5D9108D26B9C7A200AAF35E /* Item.swift */,
 			);
 			path = Domain;
@@ -409,7 +412,7 @@
 			isa = PBXGroup;
 			children = (
 				A5D910C426B9CCC500AAF35E /* ItemRepository.swift */,
-				A5D910C526B9CCC500AAF35E /* DataPointRepositoryTests.swift */,
+				A5D910C526B9CCC500AAF35E /* ItemRepositoryTests.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -446,6 +449,14 @@
 				A5D910D126B9CCC500AAF35E /* CoreDataStoreStorageFactoryTests.swift */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		A5D910E526B9D67900AAF35E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A5D910E626B9D68B00AAF35E /* Optional+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -642,6 +653,7 @@
 				A5D9107526B99A3500AAF35E /* Logo.swift in Sources */,
 				A5D910DE26B9CCF900AAF35E /* Storage.swift in Sources */,
 				A5D9108326B9B40000AAF35E /* EditItemScene.swift in Sources */,
+				A5D910E726B9D68B00AAF35E /* Optional+Extensions.swift in Sources */,
 				A5D9106D26B9966500AAF35E /* ErrorSheetView.swift in Sources */,
 				A5D9108226B9B40000AAF35E /* EditItemModels.swift in Sources */,
 				A5D9106026B9955C00AAF35E /* ViewItemsOverviewView.swift in Sources */,
@@ -666,7 +678,7 @@
 				A5D910E126B9CD0400AAF35E /* DomainToStorageTransformerTests.swift in Sources */,
 				A5D9106526B9956900AAF35E /* ViewItemsOverviewInteractorTests.swift in Sources */,
 				A5D9108B26B9B40D00AAF35E /* EditItemPresenterTests.swift in Sources */,
-				A5D910E026B9CD0400AAF35E /* DataPointRepositoryTests.swift in Sources */,
+				A5D910E026B9CD0400AAF35E /* ItemRepositoryTests.swift in Sources */,
 				A5D9106726B9956900AAF35E /* ViewItemsOverviewServiceTests.swift in Sources */,
 				A5D910E226B9CD0400AAF35E /* CoreDataStorage+ReadTests.swift in Sources */,
 				A5D9106626B9956900AAF35E /* ViewItemsOverviewPresenterTests.swift in Sources */,

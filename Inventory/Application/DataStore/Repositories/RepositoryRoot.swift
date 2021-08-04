@@ -18,8 +18,9 @@ class RepositoryRoot {
     static private let storageWrite = storage
     
     static var shared = RepositoryRoot()
+    private init() {}
     
-    var ItemRepository = MainItemRepository(
+    var itemRepository = MainItemRepository(
         storageRead: storageRead,
         storageWrite: storageWrite)
 }

@@ -3,12 +3,13 @@
 //  Inventory
 //
 //  Created by Mikael Weiss on 8/3/21.
-//  Copyright © 2021 ___ORGANIZATIONNAME___. All rights reserved.
+//  Copyright © 2021 Fifty6 Incorporated. All rights reserved.
 //
 
 import Foundation
 
 protocol EditItemService {
+    func fetchItem() throws -> EditItem.ItemInfo
     func validateName(_ value: String) throws
     func validateCount(_ value: String) throws
     func subtractFromCount()
@@ -18,10 +19,20 @@ protocol EditItemService {
     func save() throws
 }
 
+protocol EditItemItemFetching {
+    func item(withID: UUID) throws -> Item?
+    func addItem(_ item: Item) throws
+    func updateItem(_ item: Item) throws
+    func deleteItem(_ id: UUID) throws
+}
+extension MainItemRepository: EditItemItemFetching {}
+
 extension EditItem {
     
     enum ServiceError: Swift.Error {
+        case fetchFailed
         case saveFailed
+        case invalidInput
     }
     
     enum ValidationError: Swift.Error {
@@ -29,9 +40,37 @@ extension EditItem {
         case invalid
     }
     
+    struct ItemInfo {
+        var name: String?
+        var count: Int?
+    }
+    
     class Service: EditItemService {
-        private var name = ""
+        private let itemFetcher: EditItemItemFetching
+        private let itemID: UUID?
+        
+        init(itemFetcher: EditItemItemFetching, itemID: UUID?) {
+            self.itemFetcher = itemFetcher
+            self.itemID = itemID
+        }
+        
+        private var item: Item?
+        private var name: String?
         private var count: Int?
+        
+        func fetchItem() throws -> ItemInfo {
+            if let itemID = itemID {
+                do {
+                    let item = try itemFetcher.item(withID: itemID)
+                    self.item = item
+                } catch {
+                    throw ServiceError.fetchFailed
+                }
+            }
+            name = item?.name
+            count = item?.count
+            return ItemInfo(name: name, count: count)
+        }
         
         func validateName(_ value: String) throws {
             name = value
@@ -63,17 +102,37 @@ extension EditItem {
         }
         
         func canSave() -> Bool {
-            !name.isEmpty && count != nil
+            !name.isNilOrEmpty && count != nil
         }
         
         func save() throws {
-            throw ServiceError.saveFailed
+            if let count = count, let name = name {
+                do {
+                    if let item = item {
+                        try item.set(name: name)
+                        try item.set(count: count)
+                        try itemFetcher.updateItem(item)
+                    } else {
+                        let item = Item(name: name, count: count)
+                        try itemFetcher.addItem(item)
+                        self.item = item
+                    }
+                } catch {
+                    throw ServiceError.saveFailed
+                }
+            } else {
+                throw ServiceError.invalidInput
+            }
         }
     }
     
     class PreviewService: EditItemService {
         private var name = ""
         private var count: Int?
+        
+        func fetchItem() throws -> ItemInfo {
+            ItemInfo(name: name, count: count)
+        }
         
         func validateName(_ value: String) throws {
             name = value

@@ -3,7 +3,7 @@
 //  Inventory
 //
 //  Created by Mikael Weiss on 8/3/21.
-//  Copyright © 2021 ___ORGANIZATIONNAME___. All rights reserved.
+//  Copyright © 2021 Fifty6 Incorporated. All rights reserved.
 //
 
 import Foundation
@@ -12,7 +12,7 @@ protocol EditItemPresenting {
     func present(canSave: Bool)
     func present(updateName: String, error: EditItem.ValidationError?)
     func present(updateCount: String, error: EditItem.ValidationError?)
-    func present(error: EditItem.ServiceError)
+    func present(error: EditItem.ServiceError?)
     func presentDismiss()
 }
 
@@ -38,8 +38,12 @@ extension EditItem {
             viewModel.itemCountTextFieldInfo.borderColor = errorIsNil ? Theme.tintColor : Theme.errorColor
         }
         
-        func present(error: ServiceError) {
-            viewModel.error = Strings.displayError(for: error)
+        func present(error: ServiceError?) {
+            if let error = error {
+                viewModel.error = Strings.displayError(for: error)
+            } else {
+                viewModel.error = Strings.defaultError
+            }
         }
         
         func presentDismiss() {

@@ -3,12 +3,13 @@
 //  Inventory
 //
 //  Created by Mikael Weiss on 8/3/21.
-//  Copyright © 2021 ___ORGANIZATIONNAME___. All rights reserved.
+//  Copyright © 2021 Fifty6 Incorporated. All rights reserved.
 //
 
 import Foundation
 
 protocol EditItemInteracting {
+    func fetchItem()
     func dismiss()
     func save()
     func updateName(_ value: String)
@@ -23,6 +24,18 @@ extension EditItem {
         let service: EditItemService
         let presenter: EditItemPresenting
         
+        func fetchItem() {
+            do {
+                let item = try service.fetchItem()
+                if let name = item.name, let count = item.count {
+                    presenter.present(updateName: name, error: nil)
+                    presenter.present(updateCount: String(count), error: nil)
+                }
+            } catch {
+                presenter.present(error: error as? ServiceError)
+            }
+        }
+        
         func dismiss() {
             presenter.presentDismiss()
         }
@@ -31,7 +44,7 @@ extension EditItem {
             do {
                 try service.save()
             } catch {
-                presenter.present(error: .saveFailed)
+                presenter.present(error: error as? ServiceError)
             }
         }
         
