@@ -33,7 +33,7 @@ class CoreDataStoreStorageFactory: CoreDataStoreStorage {
     func project(from storeProject: Persistence.Project) -> Storage.Project {
         let stringIDs = storeProject.itemIDs
         let arrayOfStrings = stringIDs?.components(separatedBy: ",")
-        let itemIDs = arrayOfStrings?.map { UUID(uuidString: $0)! }
+        let itemIDs = arrayOfStrings?.compactMap { UUID(uuidString: $0) }
         return Storage.Project(
             id: storeProject.id,
             name: storeProject.name,

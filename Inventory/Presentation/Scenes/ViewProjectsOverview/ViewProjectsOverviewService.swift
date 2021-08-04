@@ -58,7 +58,7 @@ extension ViewProjectsOverview {
         }
         
         func prepareRouteToEditProject(with id: UUID?) {
-//            EditProject.prepareIncomingRoute(with: id)
+            EditProject.prepareIncomingRoute(with: id)
         }
     }
     
@@ -87,7 +87,7 @@ extension ViewProjectsOverview {
         }
         
         func prepareRouteToEditProject(with id: UUID?) {
-//            EditProject.prepareIncomingRoute(with: id)
+            EditProject.prepareIncomingRoute(with: id)
         }
     }
 }

@@ -54,7 +54,7 @@ extension ViewProjectsOverview {
                 .accentColor(Theme.tintColor)
                 .errorSheet($viewModel.error)
                 .sheet(isPresented: $viewModel.showEditProject) {
-//                    EditProject.Scene().view(isPresented: $viewModel.showEditProject)
+                    EditProject.Scene().view(isPresented: $viewModel.showEditProject)
                 }
             }
         }

@@ -77,6 +77,15 @@
 		A5D910E326B9CD0400AAF35E /* CoreDataStoreStorageFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D910D126B9CCC500AAF35E /* CoreDataStoreStorageFactoryTests.swift */; };
 		A5D910E426B9CD0400AAF35E /* CoreDataStorage+WriteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D910D426B9CCC500AAF35E /* CoreDataStorage+WriteTests.swift */; };
 		A5D910E726B9D68B00AAF35E /* Optional+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D910E626B9D68B00AAF35E /* Optional+Extensions.swift */; };
+		A5DC0B7E26BB1ADD00D82987 /* EditProjectScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DC0B7526BB1A3700D82987 /* EditProjectScene.swift */; };
+		A5DC0B7F26BB1ADD00D82987 /* EditProjectService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DC0B7626BB1A3800D82987 /* EditProjectService.swift */; };
+		A5DC0B8026BB1ADD00D82987 /* EditProjectInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DC0B7826BB1A3800D82987 /* EditProjectInteractor.swift */; };
+		A5DC0B8126BB1ADD00D82987 /* EditProjectModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DC0B7D26BB1A3800D82987 /* EditProjectModels.swift */; };
+		A5DC0B8226BB1ADD00D82987 /* EditProjectPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DC0B7C26BB1A3800D82987 /* EditProjectPresenter.swift */; };
+		A5DC0B8326BB1ADD00D82987 /* EditProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DC0B7B26BB1A3800D82987 /* EditProjectView.swift */; };
+		A5DC0B8426BB1AE100D82987 /* EditProjectServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DC0B7A26BB1A3800D82987 /* EditProjectServiceTests.swift */; };
+		A5DC0B8526BB1AE100D82987 /* EditProjectInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DC0B7726BB1A3800D82987 /* EditProjectInteractorTests.swift */; };
+		A5DC0B8626BB1AE100D82987 /* EditProjectPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DC0B7926BB1A3800D82987 /* EditProjectPresenterTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -196,6 +205,15 @@
 		A5D910D326B9CCC500AAF35E /* CoreDataStorage+Read.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataStorage+Read.swift"; sourceTree = "<group>"; };
 		A5D910D426B9CCC500AAF35E /* CoreDataStorage+WriteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataStorage+WriteTests.swift"; sourceTree = "<group>"; };
 		A5D910E626B9D68B00AAF35E /* Optional+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Extensions.swift"; sourceTree = "<group>"; };
+		A5DC0B7526BB1A3700D82987 /* EditProjectScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectScene.swift; sourceTree = "<group>"; };
+		A5DC0B7626BB1A3800D82987 /* EditProjectService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectService.swift; sourceTree = "<group>"; };
+		A5DC0B7726BB1A3800D82987 /* EditProjectInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectInteractorTests.swift; sourceTree = "<group>"; };
+		A5DC0B7826BB1A3800D82987 /* EditProjectInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectInteractor.swift; sourceTree = "<group>"; };
+		A5DC0B7926BB1A3800D82987 /* EditProjectPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectPresenterTests.swift; sourceTree = "<group>"; };
+		A5DC0B7A26BB1A3800D82987 /* EditProjectServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectServiceTests.swift; sourceTree = "<group>"; };
+		A5DC0B7B26BB1A3800D82987 /* EditProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectView.swift; sourceTree = "<group>"; };
+		A5DC0B7C26BB1A3800D82987 /* EditProjectPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectPresenter.swift; sourceTree = "<group>"; };
+		A5DC0B7D26BB1A3800D82987 /* EditProjectModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectModels.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -251,6 +269,15 @@
 		A53F2D3626BAF51600F261EA /* EditProject */ = {
 			isa = PBXGroup;
 			children = (
+				A5DC0B7826BB1A3800D82987 /* EditProjectInteractor.swift */,
+				A5DC0B7726BB1A3800D82987 /* EditProjectInteractorTests.swift */,
+				A5DC0B7D26BB1A3800D82987 /* EditProjectModels.swift */,
+				A5DC0B7C26BB1A3800D82987 /* EditProjectPresenter.swift */,
+				A5DC0B7926BB1A3800D82987 /* EditProjectPresenterTests.swift */,
+				A5DC0B7526BB1A3700D82987 /* EditProjectScene.swift */,
+				A5DC0B7626BB1A3800D82987 /* EditProjectService.swift */,
+				A5DC0B7A26BB1A3800D82987 /* EditProjectServiceTests.swift */,
+				A5DC0B7B26BB1A3800D82987 /* EditProjectView.swift */,
 			);
 			path = EditProject;
 			sourceTree = "<group>";
@@ -695,9 +722,12 @@
 				A5D9108626B9B40000AAF35E /* EditItemService.swift in Sources */,
 				A5D9106C26B9966500AAF35E /* ErrorSheetModels.swift in Sources */,
 				A53F2D4A26BAF64800F261EA /* DeleteButton.swift in Sources */,
+				A5DC0B8026BB1ADD00D82987 /* EditProjectInteractor.swift in Sources */,
 				A53F2D5026BAFCE800F261EA /* Project.swift in Sources */,
 				A5D9107926B99D8D00AAF35E /* Font+Extensions.swift in Sources */,
+				A5DC0B8326BB1ADD00D82987 /* EditProjectView.swift in Sources */,
 				A5D910DB26B9CCF900AAF35E /* DomainToStorageTransformer.swift in Sources */,
+				A5DC0B7E26BB1ADD00D82987 /* EditProjectScene.swift in Sources */,
 				A53F2D3426BAF2B300F261EA /* MainTabView.swift in Sources */,
 				A5D9106126B9955C00AAF35E /* ViewItemsOverviewService.swift in Sources */,
 				A5D910D926B9CCF900AAF35E /* RepositoryRoot.swift in Sources */,
@@ -710,6 +740,8 @@
 				A53F2D4026BAF5C200F261EA /* ViewProjectsOverviewService.swift in Sources */,
 				A5D9108426B9B40000AAF35E /* EditItemInteractor.swift in Sources */,
 				A5D9108126B9B40000AAF35E /* EditItemPresenter.swift in Sources */,
+				A5DC0B7F26BB1ADD00D82987 /* EditProjectService.swift in Sources */,
+				A5DC0B8226BB1ADD00D82987 /* EditProjectPresenter.swift in Sources */,
 				A5D910DC26B9CCF900AAF35E /* ItemRepository.swift in Sources */,
 				A5D9105D26B9955C00AAF35E /* ViewItemsOverviewModels.swift in Sources */,
 				A5D910DA26B9CCF900AAF35E /* CoreDataStorage+Write.swift in Sources */,
@@ -720,6 +752,7 @@
 				A5D910E726B9D68B00AAF35E /* Optional+Extensions.swift in Sources */,
 				A53F2D4426BAF5C200F261EA /* ViewProjectsOverviewView.swift in Sources */,
 				A5D9106D26B9966500AAF35E /* ErrorSheetView.swift in Sources */,
+				A5DC0B8126BB1ADD00D82987 /* EditProjectModels.swift in Sources */,
 				A5D9108226B9B40000AAF35E /* EditItemModels.swift in Sources */,
 				A53F2D4326BAF5C200F261EA /* ViewProjectsOverviewModels.swift in Sources */,
 				A5D9106026B9955C00AAF35E /* ViewItemsOverviewView.swift in Sources */,
@@ -739,6 +772,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5DC0B8526BB1AE100D82987 /* EditProjectInteractorTests.swift in Sources */,
 				A5D9108A26B9B40D00AAF35E /* EditItemInteractorTests.swift in Sources */,
 				A53F2D4826BAF5CA00F261EA /* ViewProjectsOverviewServiceTests.swift in Sources */,
 				A5D910E326B9CD0400AAF35E /* CoreDataStoreStorageFactoryTests.swift in Sources */,
@@ -748,12 +782,14 @@
 				A5D9106526B9956900AAF35E /* ViewItemsOverviewInteractorTests.swift in Sources */,
 				A5D9108B26B9B40D00AAF35E /* EditItemPresenterTests.swift in Sources */,
 				A5D910E026B9CD0400AAF35E /* ItemRepositoryTests.swift in Sources */,
+				A5DC0B8626BB1AE100D82987 /* EditProjectPresenterTests.swift in Sources */,
 				A5D9106726B9956900AAF35E /* ViewItemsOverviewServiceTests.swift in Sources */,
 				A53F2D4726BAF5CA00F261EA /* ViewProjectsOverviewPresenterTests.swift in Sources */,
 				A5D910E226B9CD0400AAF35E /* CoreDataStorage+ReadTests.swift in Sources */,
 				A5D9106626B9956900AAF35E /* ViewItemsOverviewPresenterTests.swift in Sources */,
 				A53F2D4E26BAFCBB00F261EA /* ProjectRepositoryTests.swift in Sources */,
 				A5D910DF26B9CD0400AAF35E /* StorageToDomainTransformerTests.swift in Sources */,
+				A5DC0B8426BB1AE100D82987 /* EditProjectServiceTests.swift in Sources */,
 				A53F2D4626BAF5CA00F261EA /* ViewProjectsOverviewInteractorTests.swift in Sources */,
 				A5D9108C26B9B40D00AAF35E /* EditItemServiceTests.swift in Sources */,
 			);
