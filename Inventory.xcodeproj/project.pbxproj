@@ -8,6 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		A53F2D3426BAF2B300F261EA /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53F2D3326BAF2B300F261EA /* MainTabView.swift */; };
+		A53F2D4026BAF5C200F261EA /* ViewProjectsOverviewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53F2D3A26BAF53900F261EA /* ViewProjectsOverviewService.swift */; };
+		A53F2D4126BAF5C200F261EA /* ViewProjectsOverviewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53F2D3826BAF53900F261EA /* ViewProjectsOverviewInteractor.swift */; };
+		A53F2D4226BAF5C200F261EA /* ViewProjectsOverviewScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53F2D3926BAF53900F261EA /* ViewProjectsOverviewScene.swift */; };
+		A53F2D4326BAF5C200F261EA /* ViewProjectsOverviewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53F2D3C26BAF53900F261EA /* ViewProjectsOverviewModels.swift */; };
+		A53F2D4426BAF5C200F261EA /* ViewProjectsOverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53F2D3B26BAF53900F261EA /* ViewProjectsOverviewView.swift */; };
+		A53F2D4526BAF5C200F261EA /* ViewProjectsOverviewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53F2D3726BAF53900F261EA /* ViewProjectsOverviewPresenter.swift */; };
+		A53F2D4626BAF5CA00F261EA /* ViewProjectsOverviewInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53F2D3D26BAF53900F261EA /* ViewProjectsOverviewInteractorTests.swift */; };
+		A53F2D4726BAF5CA00F261EA /* ViewProjectsOverviewPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53F2D3E26BAF53900F261EA /* ViewProjectsOverviewPresenterTests.swift */; };
+		A53F2D4826BAF5CA00F261EA /* ViewProjectsOverviewServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53F2D3F26BAF53900F261EA /* ViewProjectsOverviewServiceTests.swift */; };
 		A5D9102326B98E7900AAF35E /* InventoryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D9102226B98E7900AAF35E /* InventoryApp.swift */; };
 		A5D9102726B98E7A00AAF35E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5D9102626B98E7A00AAF35E /* Assets.xcassets */; };
 		A5D9102A26B98E7A00AAF35E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5D9102926B98E7A00AAF35E /* Preview Assets.xcassets */; };
@@ -113,6 +122,15 @@
 
 /* Begin PBXFileReference section */
 		A53F2D3326BAF2B300F261EA /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		A53F2D3726BAF53900F261EA /* ViewProjectsOverviewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProjectsOverviewPresenter.swift; sourceTree = "<group>"; };
+		A53F2D3826BAF53900F261EA /* ViewProjectsOverviewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProjectsOverviewInteractor.swift; sourceTree = "<group>"; };
+		A53F2D3926BAF53900F261EA /* ViewProjectsOverviewScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProjectsOverviewScene.swift; sourceTree = "<group>"; };
+		A53F2D3A26BAF53900F261EA /* ViewProjectsOverviewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProjectsOverviewService.swift; sourceTree = "<group>"; };
+		A53F2D3B26BAF53900F261EA /* ViewProjectsOverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProjectsOverviewView.swift; sourceTree = "<group>"; };
+		A53F2D3C26BAF53900F261EA /* ViewProjectsOverviewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProjectsOverviewModels.swift; sourceTree = "<group>"; };
+		A53F2D3D26BAF53900F261EA /* ViewProjectsOverviewInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProjectsOverviewInteractorTests.swift; sourceTree = "<group>"; };
+		A53F2D3E26BAF53900F261EA /* ViewProjectsOverviewPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProjectsOverviewPresenterTests.swift; sourceTree = "<group>"; };
+		A53F2D3F26BAF53900F261EA /* ViewProjectsOverviewServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProjectsOverviewServiceTests.swift; sourceTree = "<group>"; };
 		A5D9101F26B98E7900AAF35E /* Inventory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Inventory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5D9102226B98E7900AAF35E /* InventoryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryApp.swift; sourceTree = "<group>"; };
 		A5D9102626B98E7A00AAF35E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -206,6 +224,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A53F2D3526BAF50A00F261EA /* ViewProjectsOverview */ = {
+			isa = PBXGroup;
+			children = (
+				A53F2D3826BAF53900F261EA /* ViewProjectsOverviewInteractor.swift */,
+				A53F2D3D26BAF53900F261EA /* ViewProjectsOverviewInteractorTests.swift */,
+				A53F2D3C26BAF53900F261EA /* ViewProjectsOverviewModels.swift */,
+				A53F2D3726BAF53900F261EA /* ViewProjectsOverviewPresenter.swift */,
+				A53F2D3E26BAF53900F261EA /* ViewProjectsOverviewPresenterTests.swift */,
+				A53F2D3926BAF53900F261EA /* ViewProjectsOverviewScene.swift */,
+				A53F2D3A26BAF53900F261EA /* ViewProjectsOverviewService.swift */,
+				A53F2D3F26BAF53900F261EA /* ViewProjectsOverviewServiceTests.swift */,
+				A53F2D3B26BAF53900F261EA /* ViewProjectsOverviewView.swift */,
+			);
+			path = ViewProjectsOverview;
+			sourceTree = "<group>";
+		};
+		A53F2D3626BAF51600F261EA /* EditProject */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = EditProject;
+			sourceTree = "<group>";
+		};
 		A5D9101626B98E7900AAF35E = {
 			isa = PBXGroup;
 			children = (
@@ -342,7 +383,9 @@
 			children = (
 				A53F2D3326BAF2B300F261EA /* MainTabView.swift */,
 				A5D9107A26B9B3E500AAF35E /* EditItem */,
+				A53F2D3626BAF51600F261EA /* EditProject */,
 				A5D9105526B9953400AAF35E /* ViewItemsOverview */,
+				A53F2D3526BAF50A00F261EA /* ViewProjectsOverview */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -635,6 +678,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A53F2D4126BAF5C200F261EA /* ViewProjectsOverviewInteractor.swift in Sources */,
 				A5D910D726B9CCF900AAF35E /* CoreDataStorage.swift in Sources */,
 				A5D9108626B9B40000AAF35E /* EditItemService.swift in Sources */,
 				A5D9106C26B9966500AAF35E /* ErrorSheetModels.swift in Sources */,
@@ -646,8 +690,10 @@
 				A5D9105E26B9955C00AAF35E /* ViewItemsOverviewScene.swift in Sources */,
 				A5D9108E26B9C7A200AAF35E /* Item.swift in Sources */,
 				A5D910D826B9CCF900AAF35E /* StorageToDomainTransformer.swift in Sources */,
+				A53F2D4226BAF5C200F261EA /* ViewProjectsOverviewScene.swift in Sources */,
 				A5D910DD26B9CCF900AAF35E /* CoreDataStorage+Read.swift in Sources */,
 				A5D9107226B9974600AAF35E /* StandardButton.swift in Sources */,
+				A53F2D4026BAF5C200F261EA /* ViewProjectsOverviewService.swift in Sources */,
 				A5D9108426B9B40000AAF35E /* EditItemInteractor.swift in Sources */,
 				A5D9108126B9B40000AAF35E /* EditItemPresenter.swift in Sources */,
 				A5D910DC26B9CCF900AAF35E /* ItemRepository.swift in Sources */,
@@ -658,13 +704,16 @@
 				A5D910DE26B9CCF900AAF35E /* Storage.swift in Sources */,
 				A5D9108326B9B40000AAF35E /* EditItemScene.swift in Sources */,
 				A5D910E726B9D68B00AAF35E /* Optional+Extensions.swift in Sources */,
+				A53F2D4426BAF5C200F261EA /* ViewProjectsOverviewView.swift in Sources */,
 				A5D9106D26B9966500AAF35E /* ErrorSheetView.swift in Sources */,
 				A5D9108226B9B40000AAF35E /* EditItemModels.swift in Sources */,
+				A53F2D4326BAF5C200F261EA /* ViewProjectsOverviewModels.swift in Sources */,
 				A5D9106026B9955C00AAF35E /* ViewItemsOverviewView.swift in Sources */,
 				A5D9102326B98E7900AAF35E /* InventoryApp.swift in Sources */,
 				A5D910D626B9CCF900AAF35E /* RepositoryAction.swift in Sources */,
 				A5D9105F26B9955C00AAF35E /* ViewItemsOverviewInteractor.swift in Sources */,
 				A5D9107726B99AC300AAF35E /* View+Extensions.swift in Sources */,
+				A53F2D4526BAF5C200F261EA /* ViewProjectsOverviewPresenter.swift in Sources */,
 				A5D9107126B9973900AAF35E /* Color+Extensions.swift in Sources */,
 				A5D9108526B9B40000AAF35E /* EditItemView.swift in Sources */,
 				A5D910D526B9CCF900AAF35E /* CoreDataStoreStorageFactory.swift in Sources */,
@@ -676,6 +725,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5D9108A26B9B40D00AAF35E /* EditItemInteractorTests.swift in Sources */,
+				A53F2D4826BAF5CA00F261EA /* ViewProjectsOverviewServiceTests.swift in Sources */,
 				A5D910E326B9CD0400AAF35E /* CoreDataStoreStorageFactoryTests.swift in Sources */,
 				A5D9103926B98E7A00AAF35E /* InventoryTests.swift in Sources */,
 				A5D910E426B9CD0400AAF35E /* CoreDataStorage+WriteTests.swift in Sources */,
@@ -684,9 +734,11 @@
 				A5D9108B26B9B40D00AAF35E /* EditItemPresenterTests.swift in Sources */,
 				A5D910E026B9CD0400AAF35E /* ItemRepositoryTests.swift in Sources */,
 				A5D9106726B9956900AAF35E /* ViewItemsOverviewServiceTests.swift in Sources */,
+				A53F2D4726BAF5CA00F261EA /* ViewProjectsOverviewPresenterTests.swift in Sources */,
 				A5D910E226B9CD0400AAF35E /* CoreDataStorage+ReadTests.swift in Sources */,
 				A5D9106626B9956900AAF35E /* ViewItemsOverviewPresenterTests.swift in Sources */,
 				A5D910DF26B9CD0400AAF35E /* StorageToDomainTransformerTests.swift in Sources */,
+				A53F2D4626BAF5CA00F261EA /* ViewProjectsOverviewInteractorTests.swift in Sources */,
 				A5D9108C26B9B40D00AAF35E /* EditItemServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

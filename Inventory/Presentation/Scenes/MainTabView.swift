@@ -22,7 +22,7 @@ struct MainTabView: View {
                     Image(systemName: "square.3.stack.3d")
                     Text("Items")
                 }.tag(Tabs.itemsView)
-            Text("Coming soon!")
+            ViewProjectsOverview.Scene().view()
                 .tabItem {
                     Image(systemName: "square.stack.3d.up")
                     Text("Projects")
