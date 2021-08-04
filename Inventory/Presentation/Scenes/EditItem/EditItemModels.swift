@@ -44,7 +44,7 @@ extension EditItem {
         static let sceneEditTitle = "Edit Item"
         static let cancelButtonTitle = "Cancel"
         static let saveButtonTitle = "Save"
-        static let deleteButtonTitle = "Remove Item"
+        static let deleteButtonTitle = "Delete Item"
         static let itemNameTextFieldPlaceholder = "Item name"
         static let itemCountTextFieldPlaceholder = "Item count"
         

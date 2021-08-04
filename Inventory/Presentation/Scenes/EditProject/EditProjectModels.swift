@@ -24,6 +24,9 @@ extension EditProject {
         @Published var projectNameTextFieldInfo = TextFieldInfo(placeholder: Strings.projectNameTextFieldPlaceholder)
         @Published var showRemoveProjectButton = false
         @Published var sceneTitle = Strings.sceneAddTitle
+        @Published var projectItems = [ItemsGrid.Item]()
+        @Published var showAllItems = false
+        @Published var allItems = [ItemsGrid.Item]()
         
         init(isPresented: Binding<Bool>) {
             self.isPresented = isPresented
@@ -43,7 +46,7 @@ extension EditProject {
         static let sceneEditTitle = "Edit Project"
         static let cancelButtonTitle = "Cancel"
         static let saveButtonTitle = "Save"
-        static let deleteButtonTitle = "Remove Project"
+        static let deleteButtonTitle = "Delete Project"
         static let projectNameTextFieldPlaceholder = "Project name"
         
         static func displayError(for error: ServiceError) -> ErrorSheet.ViewModel {
