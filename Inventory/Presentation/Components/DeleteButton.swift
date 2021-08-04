@@ -14,7 +14,7 @@ struct DeleteButton: View {
     var body: some View {
         Button(action: onTap) {
             HStack {
-                Image(systemName: "trash")
+                Image(systemName: "minus.circle.fill")
                 Text(title)
             }
             .foregroundColor(.appErrorColor)
