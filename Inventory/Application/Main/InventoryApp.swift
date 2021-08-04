@@ -14,7 +14,7 @@ struct InventoryApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ViewItemsOverview.Scene().view()
+            MainTabView()
         }
     }
 }

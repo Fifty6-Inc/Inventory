@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A53F2D3426BAF2B300F261EA /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53F2D3326BAF2B300F261EA /* MainTabView.swift */; };
 		A5D9102326B98E7900AAF35E /* InventoryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D9102226B98E7900AAF35E /* InventoryApp.swift */; };
 		A5D9102726B98E7A00AAF35E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5D9102626B98E7A00AAF35E /* Assets.xcassets */; };
 		A5D9102A26B98E7A00AAF35E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5D9102926B98E7A00AAF35E /* Preview Assets.xcassets */; };
@@ -111,6 +112,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A53F2D3326BAF2B300F261EA /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		A5D9101F26B98E7900AAF35E /* Inventory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Inventory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5D9102226B98E7900AAF35E /* InventoryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryApp.swift; sourceTree = "<group>"; };
 		A5D9102626B98E7A00AAF35E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -340,6 +342,7 @@
 			children = (
 				A5D9107A26B9B3E500AAF35E /* EditItem */,
 				A5D9105526B9953400AAF35E /* ViewItemsOverview */,
+				A53F2D3326BAF2B300F261EA /* MainTabView.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -637,6 +640,7 @@
 				A5D9106C26B9966500AAF35E /* ErrorSheetModels.swift in Sources */,
 				A5D9107926B99D8D00AAF35E /* Font+Extensions.swift in Sources */,
 				A5D910DB26B9CCF900AAF35E /* DomainToStorageTransformer.swift in Sources */,
+				A53F2D3426BAF2B300F261EA /* MainTabView.swift in Sources */,
 				A5D9106126B9955C00AAF35E /* ViewItemsOverviewService.swift in Sources */,
 				A5D910D926B9CCF900AAF35E /* RepositoryRoot.swift in Sources */,
 				A5D9105E26B9955C00AAF35E /* ViewItemsOverviewScene.swift in Sources */,
