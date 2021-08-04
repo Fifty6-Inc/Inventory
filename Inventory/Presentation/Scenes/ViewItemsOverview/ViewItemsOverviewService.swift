@@ -27,7 +27,7 @@ extension ViewItemsOverview {
         case fetchFailed
     }
     
-    struct ItemDetails: Identifiable {
+    struct ItemDetails {
         let id: UUID
         let name: String
         let count: Int

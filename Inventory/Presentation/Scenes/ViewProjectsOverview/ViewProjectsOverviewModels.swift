@@ -10,25 +10,24 @@ import SwiftUI
 
 extension ViewProjectsOverview {
     
-    struct ItemViewModel: Identifiable {
+    struct ProjectViewModel: Identifiable {
         let id: UUID
         let name: String
-        let count: String
     }
     
     class ViewModel: ObservableObject {
-        @Published var items = [ViewProjectsOverview.ItemViewModel]()
-        @Published var showEditItem = false
+        @Published var projects = [ViewProjectsOverview.ProjectViewModel]()
+        @Published var showEditProject = false
         @Published var error: ErrorSheet.ViewModel?
     }
     
     struct Theme {
         static let tintColor = Color.appTintColor
-        static let itemsTitle = Strings.itemsTitle
+        static let projectsTitle = Strings.projectsTitle
     }
     
     enum Strings {
-        static let itemsTitle = "Items"
+        static let projectsTitle = "Projects"
         
         static func displayError(for error: ServiceError) -> ErrorSheet.ViewModel {
             switch error {

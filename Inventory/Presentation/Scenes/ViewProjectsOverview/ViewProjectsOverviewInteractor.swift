@@ -10,8 +10,8 @@ import Foundation
 import Combine
 
 protocol ViewProjectsOverviewInteracting {
-    func fetchItems()
-    func didTapItem(with id: UUID)
+    func fetchProjects()
+    func didTapProject(with id: UUID)
     func add()
 }
 
@@ -33,26 +33,26 @@ extension ViewProjectsOverview {
         }
         
         private func handleRefresh() {
-            fetchItems()
+            fetchProjects()
         }
         
-        func fetchItems() {
+        func fetchProjects() {
             do {
-                let items = try service.fetchItems()
-                presenter.presentFetch(items)
+                let projects = try service.fetchProjects()
+                presenter.presentFetch(projects)
             } catch {
                 presenter.present(error: error as? ServiceError)
             }
         }
         
-        func didTapItem(with id: UUID) {
-            service.prepareRouteToEditItem(with: id)
-            presenter.presentShowEditItem()
+        func didTapProject(with id: UUID) {
+            service.prepareRouteToEditProject(with: id)
+            presenter.presentShowEditProject()
         }
         
         func add() {
-            service.prepareRouteToEditItem(with: nil)
-            presenter.presentShowEditItem()
+            service.prepareRouteToEditProject(with: nil)
+            presenter.presentShowEditProject()
         }
     }
 }

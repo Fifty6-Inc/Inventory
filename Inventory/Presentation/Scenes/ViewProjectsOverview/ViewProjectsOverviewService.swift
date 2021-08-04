@@ -10,16 +10,16 @@ import Foundation
 
 protocol ViewProjectsOverviewService {
     var updatePublisher: RepositoryPublisher { get }
-    func fetchItems() throws -> [ViewProjectsOverview.ItemDetails]
-    func prepareRouteToEditItem(with id: UUID?)
+    func fetchProjects() throws -> [ViewProjectsOverview.ProjectDetails]
+    func prepareRouteToEditProject(with id: UUID?)
 }
 
 protocol ViewProjectsOverviewFetching {
-    func allItems() throws -> [Item]
+    func allProjects() throws -> [Project]
     
     var updatePublisher: RepositoryPublisher { get }
 }
-extension MainItemRepository: ViewProjectsOverviewFetching { }
+extension MainProjectRepository: ViewProjectsOverviewFetching { }
 
 extension ViewProjectsOverview {
     
@@ -27,40 +27,38 @@ extension ViewProjectsOverview {
         case fetchFailed
     }
     
-    struct ItemDetails: Identifiable {
+    struct ProjectDetails {
         let id: UUID
         let name: String
-        let count: Int
     }
     
     class Service: ViewProjectsOverviewService {
-        private let itemFetcher: ViewProjectsOverviewFetching
+        private let projectFetcher: ViewProjectsOverviewFetching
         
         var updatePublisher: RepositoryPublisher {
-            itemFetcher.updatePublisher.eraseToAnyPublisher()
+            projectFetcher.updatePublisher.eraseToAnyPublisher()
         }
         
-        init(itemFetcher: ViewProjectsOverviewFetching) {
-            self.itemFetcher = itemFetcher
+        init(projectFetcher: ViewProjectsOverviewFetching) {
+            self.projectFetcher = projectFetcher
         }
         
-        func fetchItems() throws -> [ItemDetails] {
+        func fetchProjects() throws -> [ProjectDetails] {
             do {
-                let items = try itemFetcher.allItems()
-                let itemDetails = items.map {
-                    ItemDetails(
+                let projects = try projectFetcher.allProjects()
+                let projectDetails = projects.map {
+                    ProjectDetails(
                         id: $0.id,
-                        name: $0.name,
-                        count: $0.count)
+                        name: $0.name)
                 }
-                return itemDetails
+                return projectDetails
             } catch {
                 throw ServiceError.fetchFailed
             }
         }
         
-        func prepareRouteToEditItem(with id: UUID?) {
-            EditItem.prepareIncomingRoute(with: id)
+        func prepareRouteToEditProject(with id: UUID?) {
+//            EditProject.prepareIncomingRoute(with: id)
         }
     }
     
@@ -68,33 +66,28 @@ extension ViewProjectsOverview {
         
         var updatePublisher: RepositoryPublisher = RepositorySubject().eraseToAnyPublisher()
         
-        func fetchItems() throws -> [ItemDetails] {
+        func fetchProjects() throws -> [ProjectDetails] {
             [
-                ItemDetails(
+                ProjectDetails(
                     id: UUID(),
-                    name: "Part 1",
-                    count: 5),
-                ItemDetails(
+                    name: "Part 1"),
+                ProjectDetails(
                     id: UUID(),
-                    name: "Part 2",
-                    count: 45433),
-                ItemDetails(
+                    name: "Part 2"),
+                ProjectDetails(
                     id: UUID(),
-                    name: "Part 3",
-                    count: 0),
-                ItemDetails(
+                    name: "Part 3"),
+                ProjectDetails(
                     id: UUID(),
-                    name: "Part 4",
-                    count: 3433),
-                ItemDetails(
+                    name: "Part 4"),
+                ProjectDetails(
                     id: UUID(),
-                    name: "Part 5",
-                    count: 999999999)
+                    name: "Part 5")
             ]
         }
         
-        func prepareRouteToEditItem(with id: UUID?) {
-            EditItem.prepareIncomingRoute(with: id)
+        func prepareRouteToEditProject(with id: UUID?) {
+//            EditProject.prepareIncomingRoute(with: id)
         }
     }
 }

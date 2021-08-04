@@ -15,13 +15,13 @@ enum ViewProjectsOverview {
             let presenter = Presenter(viewModel: ViewModel())
             let interactor = Interactor(service: service, presenter: presenter)
             let view = ContentView(viewModel: presenter.viewModel, interactor: interactor)
-            interactor.fetchItems()
+            interactor.fetchProjects()
             return view
         }
         
         func buildService() -> Service {
-            let itemFetcher = RepositoryRoot.shared.itemRepository
-            return Service(itemFetcher: itemFetcher)
+            let projectFetcher = RepositoryRoot.shared.projectRepository
+            return Service(projectFetcher: projectFetcher)
         }
     }
 }

@@ -22,22 +22,21 @@ extension ViewProjectsOverview {
             NavigationView {
                 ScrollView {
                     VStack(spacing: 10) {
-                        Text(Theme.itemsTitle)
+                        Text(Theme.projectsTitle)
                             .font(.system(size: 56, weight: .heavy, design: .rounded))
                             .frame(maxWidth: .infinity, alignment: .center)
                         LazyVGrid(columns: layout) {
-                            ForEach(viewModel.items) { item in
+                            ForEach(viewModel.projects) { project in
                                 RoundedRectangle(cornerRadius: 16, style: .continuous)
                                     .fill(Color.blue)
                                     .inverseMask {
                                         VStack {
-                                            Text(item.name)
-                                            Text(item.count)
+                                            Text(project.name)
                                         }
                                     }
                                     .frame(height: 150)
                                     .onTapGesture {
-                                        didTapItem(with: item.id)
+                                        didTapProject(with: project.id)
                                     }
                             }
                         }
@@ -54,8 +53,8 @@ extension ViewProjectsOverview {
                 .navigationBarBackButtonHidden(true)
                 .accentColor(Theme.tintColor)
                 .errorSheet($viewModel.error)
-                .sheet(isPresented: $viewModel.showEditItem) {
-                    EditItem.Scene().view(isPresented: $viewModel.showEditItem)
+                .sheet(isPresented: $viewModel.showEditProject) {
+//                    EditProject.Scene().view(isPresented: $viewModel.showEditProject)
                 }
             }
         }
@@ -74,8 +73,8 @@ extension ViewProjectsOverview {
 // MARK: - Interacting
 
 extension ViewProjectsOverview.ContentView {
-    func didTapItem(with id: UUID) {
-        interactor.didTapItem(with: id)
+    func didTapProject(with id: UUID) {
+        interactor.didTapProject(with: id)
     }
 }
 

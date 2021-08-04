@@ -7,7 +7,7 @@
     </entity>
     <entity name="Project" representedClassName="Project" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="itemIDs" optional="YES" attributeType="Transformable" customClassName="[UUID]"/>
+        <attribute name="itemIDs" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
     </entity>
     <elements>

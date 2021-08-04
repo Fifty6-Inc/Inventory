@@ -31,10 +31,13 @@ class CoreDataStoreStorageFactory: CoreDataStoreStorage {
     }
     
     func project(from storeProject: Persistence.Project) -> Storage.Project {
-        Storage.Project(
+        let stringIDs = storeProject.itemIDs
+        let arrayOfStrings = stringIDs?.components(separatedBy: ",")
+        let itemIDs = arrayOfStrings?.map { UUID(uuidString: $0)! }
+        return Storage.Project(
             id: storeProject.id,
             name: storeProject.name,
-            itemIDs: storeProject.itemIDs)
+            itemIDs: itemIDs)
     }
     
     // MARK: - Storage -> Core Data Store
@@ -47,6 +50,6 @@ class CoreDataStoreStorageFactory: CoreDataStoreStorage {
     func copyProjectValues(from project: Storage.Project, to storeProject: Persistence.Project) {
         storeProject.id = project.id
         storeProject.name = project.name
-        storeProject.itemIDs = project.itemIDs
+        storeProject.itemIDs = project.itemIDs?.map { $0.uuidString }.joined(separator: ",")
     }
 }
