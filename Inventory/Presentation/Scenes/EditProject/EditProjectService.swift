@@ -99,7 +99,7 @@ extension EditProject {
             do {
                 let items = try itemsFetcher.allItems()
                 allItems = items
-                return items
+                return filteredItems()
             } catch {
                 throw ServiceError.fetchFailed
             }

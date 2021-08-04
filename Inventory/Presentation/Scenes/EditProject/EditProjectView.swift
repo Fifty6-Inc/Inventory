@@ -46,11 +46,17 @@ extension EditProject {
                     var buttons = [ActionSheet.Button]()
                     
                     buttons.append(.destructive(
-                        Text(Theme.deleteItemButtonTitle),
+                        Text(Theme.confirmRemoveItemButtonTitle),
                         action: { didTapRemoveItem(with: selectedID) } ))
-                    buttons.append(.cancel(Text(Theme.cancelButtonTitle)))
+                    buttons.append(.cancel(
+                        Text(Theme.cancelButtonTitle),
+                        action: cancelRemoveItem
+                    ))
                     
-                    return ActionSheet(title: Text(""), message: nil, buttons: buttons)
+                    return ActionSheet(
+                        title: Text(Theme.confirmRemoveItemTitle),
+                        message: Text(Theme.confirmRemoveItemMessage),
+                        buttons: buttons)
                 }
                 .sheet(isPresented: $showAddItemSheet) {
                     ItemsGrid(
@@ -119,6 +125,10 @@ extension EditProject.ContentView {
     func didTapProjectItem(_ id: UUID) {
         showConfirmRemoveItem = true
         selectedID = id
+    }
+    
+    func cancelRemoveItem() {
+        selectedID = nil
     }
     
     func didTapRemoveItem(with id: UUID?) {

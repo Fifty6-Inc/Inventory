@@ -39,7 +39,10 @@ extension EditProject {
         static let cancelButtonTitle = Strings.cancelButtonTitle
         static let saveButtonTitle = Strings.saveButtonTitle
         static let deleteButtonTitle = Strings.deleteButtonTitle
-        static let deleteItemButtonTitle = Strings.deleteItemButtonTitle
+        
+        static let confirmRemoveItemTitle = Strings.confirmRemoveItemTitle
+        static let confirmRemoveItemMessage = Strings.confirmRemoveItemMessage
+        static let confirmRemoveItemButtonTitle = Strings.confirmRemoveItemButtonTitle
     }
     
     enum Strings {
@@ -48,8 +51,10 @@ extension EditProject {
         static let cancelButtonTitle = "Cancel"
         static let saveButtonTitle = "Save"
         static let deleteButtonTitle = "Delete Project"
-        static let deleteItemButtonTitle = "Delete item from project"
         static let projectNameTextFieldPlaceholder = "Project name"
+        static let confirmRemoveItemTitle = "You sure?"
+        static let confirmRemoveItemMessage = "Are you sure you want to remove this item from the project?"
+        static let confirmRemoveItemButtonTitle = "Remove item from project"
         
         static func displayError(for error: ServiceError) -> ErrorSheet.ViewModel {
             switch error {
