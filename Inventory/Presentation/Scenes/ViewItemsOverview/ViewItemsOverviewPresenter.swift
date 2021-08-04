@@ -9,8 +9,9 @@
 import Foundation
 
 protocol ViewItemsOverviewPresenting {
+    func presentFetch(_ items: [ViewItemsOverview.ItemDetails])
     func presentAdd()
-    func present(error: ViewItemsOverview.ServiceError)
+    func present(error: ViewItemsOverview.ServiceError?)
 }
 
 extension ViewItemsOverview {
@@ -19,12 +20,25 @@ extension ViewItemsOverview {
         
         let viewModel: ViewModel
         
+        func presentFetch(_ items: [ViewItemsOverview.ItemDetails]) {
+            viewModel.items = items.map {
+                ViewItemsOverview.ItemViewModel(
+                    id: $0.id,
+                    name: $0.name,
+                    count: String($0.count))
+            }
+        }
+        
         func presentAdd() {
             viewModel.showAddItem = true
         }
         
-        func present(error: ServiceError) {
-            viewModel.error = Strings.displayError(for: error)
+        func present(error: ServiceError?) {
+            if let error = error {
+                viewModel.error = Strings.displayError(for: error)
+            } else {
+                viewModel.error = Strings.defaultError
+            }
         }
     }
 }

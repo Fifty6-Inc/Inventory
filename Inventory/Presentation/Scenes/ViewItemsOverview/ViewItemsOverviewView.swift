@@ -14,7 +14,6 @@ extension ViewItemsOverview {
         @ObservedObject var viewModel: ViewModel
         let interactor: ViewItemsOverviewInteracting
         
-        let data = Array(1...1000).map { "\($0)" }
         let layout = [
             GridItem(.adaptive(minimum: 150))
         ]
@@ -27,11 +26,19 @@ extension ViewItemsOverview {
                             .font(.system(size: 56, weight: .heavy, design: .rounded))
                             .frame(maxWidth: .infinity, alignment: .center)
                         LazyVGrid(columns: layout) {
-                            ForEach(data, id: \.self) { item in
+                            ForEach(viewModel.items) { item in
                                 RoundedRectangle(cornerRadius: 16, style: .continuous)
                                     .fill(Color.blue)
-                                    .inverseMask { Text(item) }
+                                    .inverseMask {
+                                        VStack {
+                                            Text(item.name)
+                                            Text(item.count)
+                                        }
+                                    }
                                     .frame(height: 150)
+                                    .onTapGesture {
+                                        didTapItem(with: item.id)
+                                    }
                             }
                         }
                     }
@@ -61,6 +68,14 @@ extension ViewItemsOverview {
                     .accentColor(Theme.tintColor)
             }
         }
+    }
+}
+
+// MARK: - Interacting
+
+extension ViewItemsOverview.ContentView {
+    func didTapItem(with id: UUID) {
+        interactor.didTapItem(with: id)
     }
 }
 

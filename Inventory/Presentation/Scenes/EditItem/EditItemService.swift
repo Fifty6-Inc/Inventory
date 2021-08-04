@@ -25,7 +25,7 @@ protocol EditItemItemFetching {
     func updateItem(_ item: Item) throws
     func deleteItem(_ id: UUID) throws
 }
-extension MainItemRepository: EditItemItemFetching {}
+extension MainItemRepository: EditItemItemFetching { }
 
 extension EditItem {
     

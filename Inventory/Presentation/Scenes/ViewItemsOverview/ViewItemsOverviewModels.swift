@@ -10,7 +10,14 @@ import SwiftUI
 
 extension ViewItemsOverview {
     
+    struct ItemViewModel: Identifiable {
+        let id: UUID
+        let name: String
+        let count: String
+    }
+    
     class ViewModel: ObservableObject {
+        @Published var items = [ViewItemsOverview.ItemViewModel]()
         @Published var showAddItem = false
         @Published var error: ErrorSheet.ViewModel?
     }
@@ -25,9 +32,11 @@ extension ViewItemsOverview {
         
         static func displayError(for error: ServiceError) -> ErrorSheet.ViewModel {
             switch error {
-            case .saveFailed:
-                return .saveFailed
+            case .fetchFailed:
+                return .fetchFailed
             }
         }
+        
+        static let defaultError = ErrorSheet.ViewModel.default
     }
 }

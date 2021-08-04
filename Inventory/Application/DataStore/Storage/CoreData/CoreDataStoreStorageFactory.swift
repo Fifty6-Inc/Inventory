@@ -31,5 +31,7 @@ class CoreDataStoreStorageFactory: CoreDataStoreStorage {
     // MARK: - Storage -> Core Data Store
     func copyItemValues(from item: Storage.Item, to storeItem: Persistence.Item) {
         storeItem.id = item.id
+        storeItem.name = item.name
+        storeItem.count = item.count ?? 0
     }
 }
