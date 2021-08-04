@@ -340,9 +340,9 @@
 		A5D9107326B9975B00AAF35E /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				A53F2D3326BAF2B300F261EA /* MainTabView.swift */,
 				A5D9107A26B9B3E500AAF35E /* EditItem */,
 				A5D9105526B9953400AAF35E /* ViewItemsOverview */,
-				A53F2D3326BAF2B300F261EA /* MainTabView.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
