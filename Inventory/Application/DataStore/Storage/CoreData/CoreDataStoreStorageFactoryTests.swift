@@ -17,8 +17,6 @@ class CoreDataStoreStorageFactoryTests: XCTestCase {
     
     func testItem() {
         // Given
-        let givenDate = Date()
-        
         let storeItem = store.newItem()
         storeItem.id = UUID(uuidString: "123E4567-E89B-12D3-A456-426655440000")
         storeItem.name = "Some name"

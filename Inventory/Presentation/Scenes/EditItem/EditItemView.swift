@@ -20,6 +20,8 @@ extension EditItem {
                 VStack(spacing: 16) {
                     Field(info: viewModel.itemNameTextFieldInfo, update: interactor.updateName)
                     Field(info: viewModel.itemCountTextFieldInfo, update: interactor.updateCount)
+                    DeleteButton(title: Theme.deleteButtonTitle, onTap: interactor.delete)
+                        .opacity(viewModel.showRemoveItemButton ? 1 : 0)
                     
                     Spacer()
                     
@@ -30,7 +32,7 @@ extension EditItem {
                 }
                 .padding(.top)
                 .navigationBarTitleDisplayMode(.large)
-                .navigationTitle(Theme.sceneTitle)
+                .navigationTitle(viewModel.sceneTitle)
                 .navigationBarItems(leading: cancelButton, trailing: saveButton)
                 .navigationBarBackButtonHidden(true)
                 .accentColor(Theme.tintColor)

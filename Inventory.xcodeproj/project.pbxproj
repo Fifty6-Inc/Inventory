@@ -17,6 +17,7 @@
 		A53F2D4626BAF5CA00F261EA /* ViewProjectsOverviewInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53F2D3D26BAF53900F261EA /* ViewProjectsOverviewInteractorTests.swift */; };
 		A53F2D4726BAF5CA00F261EA /* ViewProjectsOverviewPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53F2D3E26BAF53900F261EA /* ViewProjectsOverviewPresenterTests.swift */; };
 		A53F2D4826BAF5CA00F261EA /* ViewProjectsOverviewServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53F2D3F26BAF53900F261EA /* ViewProjectsOverviewServiceTests.swift */; };
+		A53F2D4A26BAF64800F261EA /* DeleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53F2D4926BAF64800F261EA /* DeleteButton.swift */; };
 		A5D9102326B98E7900AAF35E /* InventoryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D9102226B98E7900AAF35E /* InventoryApp.swift */; };
 		A5D9102726B98E7A00AAF35E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5D9102626B98E7A00AAF35E /* Assets.xcassets */; };
 		A5D9102A26B98E7A00AAF35E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5D9102926B98E7A00AAF35E /* Preview Assets.xcassets */; };
@@ -131,6 +132,7 @@
 		A53F2D3D26BAF53900F261EA /* ViewProjectsOverviewInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProjectsOverviewInteractorTests.swift; sourceTree = "<group>"; };
 		A53F2D3E26BAF53900F261EA /* ViewProjectsOverviewPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProjectsOverviewPresenterTests.swift; sourceTree = "<group>"; };
 		A53F2D3F26BAF53900F261EA /* ViewProjectsOverviewServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProjectsOverviewServiceTests.swift; sourceTree = "<group>"; };
+		A53F2D4926BAF64800F261EA /* DeleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteButton.swift; sourceTree = "<group>"; };
 		A5D9101F26B98E7900AAF35E /* Inventory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Inventory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5D9102226B98E7900AAF35E /* InventoryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryApp.swift; sourceTree = "<group>"; };
 		A5D9102626B98E7A00AAF35E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -352,6 +354,7 @@
 		A5D9106826B995F300AAF35E /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				A53F2D4926BAF64800F261EA /* DeleteButton.swift */,
 				A5D9107426B99A3500AAF35E /* Logo.swift */,
 				A5D9106E26B9968500AAF35E /* StandardButton.swift */,
 				A5D9106926B9960300AAF35E /* ErrorSheet */,
@@ -682,6 +685,7 @@
 				A5D910D726B9CCF900AAF35E /* CoreDataStorage.swift in Sources */,
 				A5D9108626B9B40000AAF35E /* EditItemService.swift in Sources */,
 				A5D9106C26B9966500AAF35E /* ErrorSheetModels.swift in Sources */,
+				A53F2D4A26BAF64800F261EA /* DeleteButton.swift in Sources */,
 				A5D9107926B99D8D00AAF35E /* Font+Extensions.swift in Sources */,
 				A5D910DB26B9CCF900AAF35E /* DomainToStorageTransformer.swift in Sources */,
 				A53F2D3426BAF2B300F261EA /* MainTabView.swift in Sources */,

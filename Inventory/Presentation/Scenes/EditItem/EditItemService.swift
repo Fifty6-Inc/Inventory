@@ -9,7 +9,7 @@
 import Foundation
 
 protocol EditItemService {
-    func fetchItem() throws -> EditItem.ItemInfo
+    func fetchItem() throws -> EditItem.ItemInfo?
     func validateName(_ value: String) throws
     func validateCount(_ value: String) throws
     func subtractFromCount()
@@ -17,6 +17,7 @@ protocol EditItemService {
     func fetchCount() -> Int?
     func canSave() -> Bool
     func save() throws
+    func delete() throws
 }
 
 protocol EditItemItemFetching {
@@ -31,8 +32,9 @@ extension EditItem {
     
     enum ServiceError: Swift.Error {
         case fetchFailed
-        case saveFailed
         case invalidInput
+        case saveFailed
+        case deleteFailed
     }
     
     enum ValidationError: Swift.Error {
@@ -58,18 +60,19 @@ extension EditItem {
         private var name: String?
         private var count: Int?
         
-        func fetchItem() throws -> ItemInfo {
+        func fetchItem() throws -> ItemInfo? {
             if let itemID = itemID {
                 do {
                     let item = try itemFetcher.item(withID: itemID)
                     self.item = item
+                    name = item?.name
+                    count = item?.count
+                    return ItemInfo(name: item?.name, count: item?.count)
                 } catch {
                     throw ServiceError.fetchFailed
                 }
             }
-            name = item?.name
-            count = item?.count
-            return ItemInfo(name: name, count: count)
+            return nil
         }
         
         func validateName(_ value: String) throws {
@@ -124,13 +127,25 @@ extension EditItem {
                 throw ServiceError.invalidInput
             }
         }
+        
+        func delete() throws {
+            do {
+                if let item = item {
+                    try itemFetcher.deleteItem(item.id)
+                } else {
+                    throw ServiceError.deleteFailed
+                }
+            } catch {
+                throw ServiceError.deleteFailed
+            }
+        }
     }
     
     class PreviewService: EditItemService {
         private var name = ""
         private var count: Int?
         
-        func fetchItem() throws -> ItemInfo {
+        func fetchItem() throws -> ItemInfo? {
             ItemInfo(name: name, count: count)
         }
         
@@ -169,6 +184,10 @@ extension EditItem {
         
         func save() throws {
             throw ServiceError.saveFailed
+        }
+        
+        func delete() throws {
+            throw ServiceError.deleteFailed
         }
     }
 }

@@ -12,6 +12,7 @@ protocol EditItemInteracting {
     func fetchItem()
     func dismiss()
     func save()
+    func delete()
     func updateName(_ value: String)
     func updateCount(_ value: String)
     func subtractFromCount()
@@ -27,10 +28,7 @@ extension EditItem {
         func fetchItem() {
             do {
                 let item = try service.fetchItem()
-                if let name = item.name, let count = item.count {
-                    presenter.present(updateName: name, error: nil)
-                    presenter.present(updateCount: String(count), error: nil)
-                }
+                presenter.presentFetch(item)
             } catch {
                 presenter.present(error: error as? ServiceError)
             }
@@ -43,6 +41,15 @@ extension EditItem {
         func save() {
             do {
                 try service.save()
+                presenter.presentDismiss()
+            } catch {
+                presenter.present(error: error as? ServiceError)
+            }
+        }
+        
+        func delete() {
+            do {
+                try service.delete()
                 presenter.presentDismiss()
             } catch {
                 presenter.present(error: error as? ServiceError)

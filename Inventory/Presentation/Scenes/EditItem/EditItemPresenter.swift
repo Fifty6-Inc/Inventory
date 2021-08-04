@@ -9,10 +9,11 @@
 import Foundation
 
 protocol EditItemPresenting {
-    func present(canSave: Bool)
+    func presentFetch(_ item: EditItem.ItemInfo?)
     func present(updateName: String, error: EditItem.ValidationError?)
     func present(updateCount: String, error: EditItem.ValidationError?)
     func present(error: EditItem.ServiceError?)
+    func present(canSave: Bool)
     func presentDismiss()
 }
 
@@ -22,8 +23,15 @@ extension EditItem {
         
         let viewModel: ViewModel
         
-        func present(canSave: Bool) {
-            viewModel.canSave = canSave
+        func presentFetch(_ item: EditItem.ItemInfo?) {
+            if let item = item {
+                if let name = item.name, let count = item.count {
+                    present(updateName: name, error: nil)
+                    present(updateCount: String(count), error: nil)
+                }
+                viewModel.showRemoveItemButton = true
+                viewModel.sceneTitle = Strings.sceneEditTitle
+            }
         }
         
         func present(updateName: String, error: ValidationError?) {
@@ -44,6 +52,10 @@ extension EditItem {
             } else {
                 viewModel.error = Strings.defaultError
             }
+        }
+        
+        func present(canSave: Bool) {
+            viewModel.canSave = canSave
         }
         
         func presentDismiss() {

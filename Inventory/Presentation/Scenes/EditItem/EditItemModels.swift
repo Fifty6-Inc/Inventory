@@ -23,6 +23,8 @@ extension EditItem {
         @Published var error: ErrorSheet.ViewModel?
         @Published var itemNameTextFieldInfo = TextFieldInfo(placeholder: Strings.itemNameTextFieldPlaceholder)
         @Published var itemCountTextFieldInfo = TextFieldInfo(placeholder: Strings.itemCountTextFieldPlaceholder)
+        @Published var showRemoveItemButton = false
+        @Published var sceneTitle = Strings.sceneAddTitle
         
         init(isPresented: Binding<Bool>) {
             self.isPresented = isPresented
@@ -32,15 +34,17 @@ extension EditItem {
     struct Theme {
         static let tintColor = Color.appTintColor
         static let errorColor = Color.appErrorColor
-        static let sceneTitle = Strings.sceneTitle
         static let backButtonTitle = Strings.cancelButtonTitle
         static let saveButtonTitle = Strings.saveButtonTitle
+        static let deleteButtonTitle = Strings.deleteButtonTitle
     }
     
     enum Strings {
-        static let sceneTitle = "Edit Item"
+        static let sceneAddTitle = "Add Item"
+        static let sceneEditTitle = "Edit Item"
         static let cancelButtonTitle = "Cancel"
         static let saveButtonTitle = "Save"
+        static let deleteButtonTitle = "Remove Item"
         static let itemNameTextFieldPlaceholder = "Item name"
         static let itemCountTextFieldPlaceholder = "Item count"
         
@@ -50,6 +54,9 @@ extension EditItem {
             case .fetchFailed: return .fetchFailed
             case .invalidInput:
                 let message = "Some value is either missing or incorrect. Please make sure all values are entered correctly"
+                return .default(with: message)
+            case .deleteFailed:
+                let message = "Unable to delete. Please try again."
                 return .default(with: message)
             }
         }
