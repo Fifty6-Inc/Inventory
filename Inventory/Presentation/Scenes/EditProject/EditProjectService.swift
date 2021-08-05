@@ -121,7 +121,7 @@ extension EditProject {
         }
         
         func canSave() -> Bool {
-            !name.isNilOrEmpty
+            !name.isNilOrEmpty && items.count > 0
         }
         
         func save() throws {
