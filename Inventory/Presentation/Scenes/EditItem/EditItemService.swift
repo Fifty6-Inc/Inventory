@@ -28,6 +28,12 @@ protocol EditItemItemFetching {
 }
 extension MainItemRepository: EditItemItemFetching { }
 
+protocol EditItemProjectFetching {
+    func allProjects() throws -> [Project]
+    func updateProject(_ project: Project) throws
+}
+extension MainProjectRepository: EditItemProjectFetching { }
+
 extension EditItem {
     
     enum ServiceError: Swift.Error {
@@ -49,10 +55,15 @@ extension EditItem {
     
     class Service: EditItemService {
         private let itemFetcher: EditItemItemFetching
+        private let projectFetcher: EditItemProjectFetching
         private let itemID: UUID?
         
-        init(itemFetcher: EditItemItemFetching, itemID: UUID?) {
-            self.itemFetcher = itemFetcher
+        init(itemFetching: EditItemItemFetching,
+             projectFetching: EditItemProjectFetching,
+             itemID: UUID?) {
+            
+            self.itemFetcher = itemFetching
+            self.projectFetcher = projectFetching
             self.itemID = itemID
         }
         
@@ -132,11 +143,21 @@ extension EditItem {
             do {
                 if let item = item {
                     try itemFetcher.deleteItem(item.id)
+                    deleteItemIDFromAllProjects(item.id)
                 } else {
                     throw ServiceError.deleteFailed
                 }
             } catch {
                 throw ServiceError.deleteFailed
+            }
+        }
+        
+        private func deleteItemIDFromAllProjects(_ itemId: UUID) {
+            guard let projects = try? projectFetcher.allProjects() else { return }
+            for project in projects {
+                let newIDs = project.itemIDs.filter { $0 != itemID }
+                try? project.set(itemIDs: newIDs)
+                try? projectFetcher.updateProject(project)
             }
         }
     }

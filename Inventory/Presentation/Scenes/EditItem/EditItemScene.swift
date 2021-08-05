@@ -25,9 +25,11 @@ enum EditItem {
         private func buildService() -> Service {
             guard let input = EditItem.input
             else { fatalError("Required input is missing (\(#file))") }
-            let itemFetcher = RepositoryRoot.shared.itemRepository
             
-            return Service(itemFetcher: itemFetcher, itemID: input.itemID)
+            return Service(
+                itemFetching: RepositoryRoot.shared.itemRepository,
+                projectFetching: RepositoryRoot.shared.projectRepository,
+                itemID: input.itemID)
         }
     }
     
