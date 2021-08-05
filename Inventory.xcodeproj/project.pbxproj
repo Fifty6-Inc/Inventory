@@ -379,9 +379,9 @@
 		A5D9105326B98F1E00AAF35E /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				A5D910E526B9D67900AAF35E /* Extensions */,
 				A5D9108D26B9C7A200AAF35E /* Item.swift */,
 				A53F2D4F26BAFCE800F261EA /* Project.swift */,
+				A5D910E526B9D67900AAF35E /* Extensions */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
