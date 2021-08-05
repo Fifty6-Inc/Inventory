@@ -11,7 +11,8 @@ import Foundation
 protocol ViewProjectsOverviewService {
     var updatePublisher: RepositoryPublisher { get }
     func fetchProjects() throws -> [ViewProjectsOverview.ProjectDetails]
-    func prepareRouteToEditProject(with id: UUID?)
+    func prepareRouteToProject(with id: UUID)
+    func prepareRouteToAddProject()
 }
 
 protocol ViewProjectsOverviewFetching {
@@ -57,8 +58,12 @@ extension ViewProjectsOverview {
             }
         }
         
-        func prepareRouteToEditProject(with id: UUID?) {
-            EditProject.prepareIncomingRoute(with: id)
+        func prepareRouteToProject(with id: UUID) {
+            ViewProjectDetails.prepareIncomingRoute(with: id)
+        }
+        
+        func prepareRouteToAddProject() {
+            EditProject.prepareIncomingRoute(with: nil)
         }
     }
     
@@ -86,8 +91,12 @@ extension ViewProjectsOverview {
             ]
         }
         
-        func prepareRouteToEditProject(with id: UUID?) {
+        func prepareRouteToProject(with id: UUID) {
             EditProject.prepareIncomingRoute(with: id)
+        }
+        
+        func prepareRouteToAddProject() {
+            EditProject.prepareIncomingRoute(with: nil)
         }
     }
 }

@@ -26,8 +26,7 @@ extension ViewItemsOverview {
         
         static func displayError(for error: ServiceError) -> ErrorSheet.ViewModel {
             switch error {
-            case .fetchFailed:
-                return .fetchFailed
+            case .fetchFailed: return .fetchFailed
             }
         }
         

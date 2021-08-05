@@ -22,7 +22,8 @@ extension ViewItemsOverview {
         let presenter: ViewItemsOverviewPresenting
         private var updateSubscriber: AnyCancellable?
         
-        init(service: ViewItemsOverviewService, presenter: ViewItemsOverviewPresenting) {
+        init(service: ViewItemsOverviewService,
+             presenter: ViewItemsOverviewPresenting) {
             self.service = service
             self.presenter = presenter
             self.updateSubscriber = service.updatePublisher

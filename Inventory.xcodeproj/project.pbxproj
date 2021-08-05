@@ -88,6 +88,12 @@
 		A5DC0B8626BB1AE100D82987 /* EditProjectPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DC0B7926BB1A3800D82987 /* EditProjectPresenterTests.swift */; };
 		A5DC0B8826BB230D00D82987 /* ItemsGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DC0B8726BB230D00D82987 /* ItemsGrid.swift */; };
 		A5DC0B8B26BB448700D82987 /* AllItemsGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DC0B8A26BB448700D82987 /* AllItemsGrid.swift */; };
+		A5DC0B9326BB4C6400D82987 /* ViewProjectDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DC0B8D26BB4C6400D82987 /* ViewProjectDetailsPresenter.swift */; };
+		A5DC0B9426BB4C6400D82987 /* ViewProjectDetailsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DC0B8E26BB4C6400D82987 /* ViewProjectDetailsModels.swift */; };
+		A5DC0B9526BB4C6400D82987 /* ViewProjectDetailsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DC0B8F26BB4C6400D82987 /* ViewProjectDetailsScene.swift */; };
+		A5DC0B9626BB4C6400D82987 /* ViewProjectDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DC0B9026BB4C6400D82987 /* ViewProjectDetailsInteractor.swift */; };
+		A5DC0B9726BB4C6400D82987 /* ViewProjectDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DC0B9126BB4C6400D82987 /* ViewProjectDetailsView.swift */; };
+		A5DC0B9826BB4C6400D82987 /* ViewProjectDetailsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DC0B9226BB4C6400D82987 /* ViewProjectDetailsService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -218,6 +224,12 @@
 		A5DC0B7D26BB1A3800D82987 /* EditProjectModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectModels.swift; sourceTree = "<group>"; };
 		A5DC0B8726BB230D00D82987 /* ItemsGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsGrid.swift; sourceTree = "<group>"; };
 		A5DC0B8A26BB448700D82987 /* AllItemsGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllItemsGrid.swift; sourceTree = "<group>"; };
+		A5DC0B8D26BB4C6400D82987 /* ViewProjectDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProjectDetailsPresenter.swift; sourceTree = "<group>"; };
+		A5DC0B8E26BB4C6400D82987 /* ViewProjectDetailsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProjectDetailsModels.swift; sourceTree = "<group>"; };
+		A5DC0B8F26BB4C6400D82987 /* ViewProjectDetailsScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProjectDetailsScene.swift; sourceTree = "<group>"; };
+		A5DC0B9026BB4C6400D82987 /* ViewProjectDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProjectDetailsInteractor.swift; sourceTree = "<group>"; };
+		A5DC0B9126BB4C6400D82987 /* ViewProjectDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProjectDetailsView.swift; sourceTree = "<group>"; };
+		A5DC0B9226BB4C6400D82987 /* ViewProjectDetailsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProjectDetailsService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -426,8 +438,10 @@
 			children = (
 				A53F2D3326BAF2B300F261EA /* MainTabView.swift */,
 				A5D9107A26B9B3E500AAF35E /* EditItem */,
+				A5DC0B9926BB4F6300D82987 /* EditItemCount */,
 				A53F2D3626BAF51600F261EA /* EditProject */,
 				A5D9105526B9953400AAF35E /* ViewItemsOverview */,
+				A5DC0B8C26BB4C4000D82987 /* ViewProjectDetails */,
 				A53F2D3526BAF50A00F261EA /* ViewProjectsOverview */,
 			);
 			path = Scenes;
@@ -556,6 +570,26 @@
 				A5DC0B8A26BB448700D82987 /* AllItemsGrid.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		A5DC0B8C26BB4C4000D82987 /* ViewProjectDetails */ = {
+			isa = PBXGroup;
+			children = (
+				A5DC0B9026BB4C6400D82987 /* ViewProjectDetailsInteractor.swift */,
+				A5DC0B8E26BB4C6400D82987 /* ViewProjectDetailsModels.swift */,
+				A5DC0B8D26BB4C6400D82987 /* ViewProjectDetailsPresenter.swift */,
+				A5DC0B8F26BB4C6400D82987 /* ViewProjectDetailsScene.swift */,
+				A5DC0B9226BB4C6400D82987 /* ViewProjectDetailsService.swift */,
+				A5DC0B9126BB4C6400D82987 /* ViewProjectDetailsView.swift */,
+			);
+			path = ViewProjectDetails;
+			sourceTree = "<group>";
+		};
+		A5DC0B9926BB4F6300D82987 /* EditItemCount */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = EditItemCount;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -751,6 +785,7 @@
 				A5D910D826B9CCF900AAF35E /* StorageToDomainTransformer.swift in Sources */,
 				A53F2D4226BAF5C200F261EA /* ViewProjectsOverviewScene.swift in Sources */,
 				A5D910DD26B9CCF900AAF35E /* CoreDataStorage+Read.swift in Sources */,
+				A5DC0B9626BB4C6400D82987 /* ViewProjectDetailsInteractor.swift in Sources */,
 				A5D9107226B9974600AAF35E /* StandardButton.swift in Sources */,
 				A53F2D4026BAF5C200F261EA /* ViewProjectsOverviewService.swift in Sources */,
 				A5D9108426B9B40000AAF35E /* EditItemInteractor.swift in Sources */,
@@ -765,10 +800,13 @@
 				A5D9107526B99A3500AAF35E /* Logo.swift in Sources */,
 				A5D910DE26B9CCF900AAF35E /* Storage.swift in Sources */,
 				A5D9108326B9B40000AAF35E /* EditItemScene.swift in Sources */,
+				A5DC0B9826BB4C6400D82987 /* ViewProjectDetailsService.swift in Sources */,
 				A5D910E726B9D68B00AAF35E /* Optional+Extensions.swift in Sources */,
 				A53F2D4426BAF5C200F261EA /* ViewProjectsOverviewView.swift in Sources */,
 				A5D9106D26B9966500AAF35E /* ErrorSheetView.swift in Sources */,
+				A5DC0B9726BB4C6400D82987 /* ViewProjectDetailsView.swift in Sources */,
 				A5DC0B8126BB1ADD00D82987 /* EditProjectModels.swift in Sources */,
+				A5DC0B9526BB4C6400D82987 /* ViewProjectDetailsScene.swift in Sources */,
 				A5D9108226B9B40000AAF35E /* EditItemModels.swift in Sources */,
 				A53F2D4326BAF5C200F261EA /* ViewProjectsOverviewModels.swift in Sources */,
 				A5D9106026B9955C00AAF35E /* ViewItemsOverviewView.swift in Sources */,
@@ -776,10 +814,12 @@
 				A5D910D626B9CCF900AAF35E /* RepositoryAction.swift in Sources */,
 				A5D9105F26B9955C00AAF35E /* ViewItemsOverviewInteractor.swift in Sources */,
 				A5D9107726B99AC300AAF35E /* View+Extensions.swift in Sources */,
+				A5DC0B9426BB4C6400D82987 /* ViewProjectDetailsModels.swift in Sources */,
 				A53F2D4D26BAFCB700F261EA /* ProjectRepository.swift in Sources */,
 				A53F2D4526BAF5C200F261EA /* ViewProjectsOverviewPresenter.swift in Sources */,
 				A5D9107126B9973900AAF35E /* Color+Extensions.swift in Sources */,
 				A5D9108526B9B40000AAF35E /* EditItemView.swift in Sources */,
+				A5DC0B9326BB4C6400D82987 /* ViewProjectDetailsPresenter.swift in Sources */,
 				A5D910D526B9CCF900AAF35E /* CoreDataStoreStorageFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

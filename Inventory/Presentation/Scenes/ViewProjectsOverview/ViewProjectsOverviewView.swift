@@ -41,6 +41,10 @@ extension ViewProjectsOverview {
                             }
                         }
                     }
+                    NavigationLink(
+                        destination: ViewProjectDetails.Scene().view(isPresented: $viewModel.showProjectDetails),
+                        isActive: $viewModel.showProjectDetails,
+                        label: { EmptyView() })
                 }
                 .padding(.horizontal)
                 .navigationBarTitleDisplayMode(.inline)
@@ -53,8 +57,8 @@ extension ViewProjectsOverview {
                 .navigationBarBackButtonHidden(true)
                 .accentColor(Theme.tintColor)
                 .errorSheet($viewModel.error)
-                .sheet(isPresented: $viewModel.showEditProject) {
-                    EditProject.Scene().view(isPresented: $viewModel.showEditProject)
+                .sheet(isPresented: $viewModel.showAddProject) {
+                    EditProject.Scene().view(isPresented: $viewModel.showAddProject)
                 }
             }
         }

@@ -10,7 +10,8 @@ import Foundation
 
 protocol ViewProjectsOverviewPresenting {
     func presentFetch(_ projects: [ViewProjectsOverview.ProjectDetails])
-    func presentShowEditProject()
+    func presentShowAddProject()
+    func presentShowProjectDetails()
     func present(error: ViewProjectsOverview.ServiceError?)
 }
 
@@ -28,8 +29,12 @@ extension ViewProjectsOverview {
             }
         }
         
-        func presentShowEditProject() {
-            viewModel.showEditProject = true
+        func presentShowAddProject() {
+            viewModel.showAddProject = true
+        }
+        
+        func presentShowProjectDetails() {
+            viewModel.showProjectDetails = true
         }
         
         func present(error: ServiceError?) {

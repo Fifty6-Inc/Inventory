@@ -17,7 +17,8 @@ extension ViewProjectsOverview {
     
     class ViewModel: ObservableObject {
         @Published var projects = [ViewProjectsOverview.ProjectViewModel]()
-        @Published var showEditProject = false
+        @Published var showAddProject = false
+        @Published var showProjectDetails = false
         @Published var error: ErrorSheet.ViewModel?
     }
     

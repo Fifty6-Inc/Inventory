@@ -46,13 +46,13 @@ extension ViewProjectsOverview {
         }
         
         func didTapProject(with id: UUID) {
-            service.prepareRouteToEditProject(with: id)
-            presenter.presentShowEditProject()
+            service.prepareRouteToProject(with: id)
+            presenter.presentShowProjectDetails()
         }
         
         func add() {
-            service.prepareRouteToEditProject(with: nil)
-            presenter.presentShowEditProject()
+            service.prepareRouteToAddProject()
+            presenter.presentShowAddProject()
         }
     }
 }
