@@ -10,10 +10,12 @@ import SwiftUI
 struct AllItemsGrid: View {
     enum Theme {
         static let cancelButtonTitle = "Cancel"
+        static let addItemButtonTitle = "Add Item"
         static let tintColor = Color.appTintColor
     }
     
     @Environment(\.presentationMode) var presentationMode
+    @State private var showAddItem = false
     let items: [ItemsGrid.Item]
     let didTapItem: (UUID) -> Void
     
@@ -28,13 +30,25 @@ struct AllItemsGrid: View {
                             .padding(.horizontal)
                     }
                 } else {
-                    Text("No unused items here!")
-                        .font(.system(.largeTitle, design: .rounded))
-                        .fontWeight(.heavy)
-                        .padding(.horizontal)
+                    ZStack {
+                        Text("No unused items here!")
+                            .font(.system(.largeTitle, design: .rounded))
+                            .fontWeight(.heavy)
+                            .padding(.horizontal)
+                        
+                        StandardButton(
+                            title: Theme.addItemButtonTitle,
+                            action: didTapAddItem)
+                            .frame(maxHeight: .infinity, alignment: .bottom)
+                            .padding(.horizontal)
+                            .padding(.bottom)
+                    }
                 }
             }
             .navigationBarItems(leading: cancelButton)
+            .sheet(isPresented: $showAddItem) {
+                EditItem.Scene().view(isPresented: $showAddItem)
+            }
         }
     }
     
@@ -49,6 +63,11 @@ struct AllItemsGrid: View {
     
     func dismiss() {
         presentationMode.wrappedValue.dismiss()
+    }
+    
+    func didTapAddItem() {
+        EditItem.prepareIncomingRoute(with: nil)
+        showAddItem = true
     }
 }
 
