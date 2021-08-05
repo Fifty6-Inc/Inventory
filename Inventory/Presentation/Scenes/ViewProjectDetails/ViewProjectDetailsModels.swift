@@ -25,14 +25,12 @@ extension ViewProjectDetails {
     
     struct Theme {
         static let tintColor = Color.appTintColor
-        static let sceneTitle = Strings.sceneTitle
         static let backButtonTitle = Strings.cancelButtonTitle
         static let editButtonTitle = Strings.editButtonTitle
         static let buildProjectButtonTitle = Strings.buildProjectButtonTitle
     }
     
     enum Strings {
-        static let sceneTitle = "Edit Data Point"
         static let cancelButtonTitle = "Cancel"
         static let editButtonTitle = "Edit"
         static let buildProjectButtonTitle = "Build Project"

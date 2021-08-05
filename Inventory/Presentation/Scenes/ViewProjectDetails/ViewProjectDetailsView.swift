@@ -14,47 +14,32 @@ extension ViewProjectDetails {
         @ObservedObject var viewModel: ViewModel
         let interactor: ViewProjectDetailsInteracting
         
-        var sheetBinding: Binding<Bool> {
-            Binding(get: {
-                viewModel.showEditProject || viewModel.showEditItem
-            }, set: { dismiss in
-                if dismiss {
-                    viewModel.showEditProject = false
-                    viewModel.showEditItem = false
-                }
-            })
-        }
-        
         var body: some View {
             ZStack {
                 ScrollView {
-                    Text(viewModel.projectName)
-                        .font(.system(.largeTitle, design: .rounded))
-                        .fontWeight(.medium)
-                    
                     ItemsGrid(
                         items: viewModel.items,
                         didTapItem: interactor.didTapItem(with:))
-                }
-                VStack {
-                    Spacer()
-                    StandardButton(
-                        title: Theme.buildProjectButtonTitle,
-                        action: buildProject)
                         .padding(.horizontal)
+                        .sheet(isPresented: $viewModel.showEditItem) {
+                            EditItem.Scene().view(isPresented: $viewModel.showEditItem)
+                        }
                 }
+                StandardButton(
+                    title: Theme.buildProjectButtonTitle,
+                    action: buildProject)
+                    .frame(maxHeight: .infinity, alignment: .bottom)
+                    .padding(.horizontal)
+                    .padding(.bottom)
             }
-            .navigationTitle(Theme.sceneTitle)
+            .navigationBarTitleDisplayMode(.large)
+            .navigationTitle(viewModel.projectName)
             .navigationBarItems(leading: cancelButton, trailing: editButton)
             .navigationBarBackButtonHidden(true)
             .accentColor(Theme.tintColor)
             .errorSheet($viewModel.error)
-            .sheet(isPresented: sheetBinding) {
-                if viewModel.showEditProject {
-                    EditProject.Scene().view(isPresented: sheetBinding)
-                } else {
-                    EditItem.Scene().view(isPresented: sheetBinding)
-                }
+            .sheet(isPresented: $viewModel.showEditProject) {
+                EditProject.Scene().view(isPresented: $viewModel.showEditProject)
             }
         }
         
