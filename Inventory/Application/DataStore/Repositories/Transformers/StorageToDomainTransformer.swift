@@ -32,17 +32,31 @@ class StorageToDomainFactory: StorageToDomainTransformer {
         
         return try Item(with: itemInfo)
     }
+    
     func project(from storageProject: Storage.Project) throws -> Project {
         guard let id = storageProject.id,
               let name = storageProject.name,
-              let itemIDs = storageProject.itemIDs
+              let items = storageProject.items
         else { throw ReconstitutionError.missingRequiredFields }
         
         let projectInfo = Project.ReconstitutionInfo(
             id: id,
             name: name,
-            itemIDs: itemIDs)
+            items: try items.map(projectItem(from:)))
         
         return try Project(with: projectInfo)
+    }
+    
+    func projectItem(from storageProjectItem: Storage.ProjectItem) throws -> ProjectItem {
+        guard let id = storageProjectItem.id,
+              let itemID = storageProjectItem.itemID,
+              let numberRequiredPerBuild = storageProjectItem.numberRequiredPerBuild
+        else { throw ReconstitutionError.missingRequiredFields }
+        
+        let projectItemInfo = ProjectItem.ReconstitutionInfo(
+            id: id,
+            itemID: itemID,
+            numberRequiredPerBuild: Int(numberRequiredPerBuild))
+        return try ProjectItem(with: projectItemInfo)
     }
 }

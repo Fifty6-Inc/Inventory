@@ -7,11 +7,18 @@
     </entity>
     <entity name="Project" representedClassName="Project" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="itemIDs" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="projectItems" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ProjectItem" inverseName="project" inverseEntity="ProjectItem"/>
+    </entity>
+    <entity name="ProjectItem" representedClassName="ProjectItem" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="itemID" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="numberRequiredPerBuild" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="project" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="projectItems" inverseEntity="Project"/>
     </entity>
     <elements>
         <element name="Item" positionX="-63" positionY="-18" width="128" height="74"/>
         <element name="Project" positionX="-63" positionY="9" width="128" height="74"/>
+        <element name="ProjectItem" positionX="-63" positionY="18" width="128" height="89"/>
     </elements>
 </model>

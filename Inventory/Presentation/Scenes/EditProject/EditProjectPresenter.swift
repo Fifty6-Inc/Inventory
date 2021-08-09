@@ -12,7 +12,7 @@ protocol EditProjectPresenting {
     func presentFetch(_ project: EditProject.ProjectInfo?)
     func present(allItems: [Item])
     func present(updateName: String, error: EditProject.ValidationError?)
-    func present(projectItems: [Item])
+    func present(projectItems: [EditProject.ItemInfo])
     func present(error: EditProject.ServiceError?)
     func present(canSave: Bool)
     func presentDismiss()
@@ -46,7 +46,7 @@ extension EditProject {
             viewModel.projectNameTextFieldInfo.borderColor = errorIsNil ? Theme.tintColor : Theme.errorColor
         }
         
-        func present(projectItems: [Item]) {
+        func present(projectItems: [ItemInfo]) {
             viewModel.projectItems = mapItemToItemsGridItem(projectItems)
         }
         
@@ -70,6 +70,15 @@ extension EditProject {
             items.map {
                 ItemsGrid.Item(
                     id: $0.id,
+                    name: $0.name,
+                    count: "\($0.count)")
+            }
+        }
+        
+        private func mapItemToItemsGridItem(_ items: [ItemInfo]) -> [ItemsGrid.Item] {
+            items.map {
+                ItemsGrid.Item(
+                    id: $0.itemID,
                     name: $0.name,
                     count: "\($0.count)")
             }

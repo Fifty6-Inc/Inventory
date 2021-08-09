@@ -9,14 +9,19 @@
 import Foundation
 
 enum Storage {
-    struct Item: Codable {
+    struct Item {
         let id: UUID?
         let name: String?
         let count: Int64?
     }
-    struct Project: Codable {
+    struct Project {
         let id: UUID?
         let name: String?
-        let itemIDs: [UUID]?
+        let items: [ProjectItem]?
+    }
+    struct ProjectItem {
+        let id: UUID?
+        let itemID: UUID?
+        let numberRequiredPerBuild: Int64?
     }
 }

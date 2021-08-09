@@ -155,8 +155,8 @@ extension EditItem {
         private func deleteItemIDFromAllProjects(_ itemId: UUID) {
             guard let projects = try? projectFetcher.allProjects() else { return }
             for project in projects {
-                let newIDs = project.itemIDs.filter { $0 != itemID }
-                try? project.set(itemIDs: newIDs)
+                let newItems = project.items.filter { $0.itemID != itemID }
+                try? project.set(items: newItems)
                 try? projectFetcher.updateProject(project)
             }
         }

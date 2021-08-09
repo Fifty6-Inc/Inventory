@@ -13,11 +13,13 @@ protocol CoreDataStoreStorage {
     // Core Data Store -> Storage
     func item(from storeItem: Persistence.Item) -> Storage.Item
     func project(from storeProject: Persistence.Project) -> Storage.Project
+    func projectItem(from storeProjectItem: Persistence.ProjectItem) -> Storage.ProjectItem
     
     // Storage -> Core Data Store
     // The store does the actual creation. We just copy values here.
     func copyItemValues(from item: Storage.Item, to storeItem: Persistence.Item)
     func copyProjectValues(from project: Storage.Project, to storeProject: Persistence.Project)
+    func copyProjectItemValues(from projectItem: Storage.ProjectItem, to storeProjectItem: Persistence.ProjectItem)
 }
 
 class CoreDataStoreStorageFactory: CoreDataStoreStorage {
@@ -31,13 +33,18 @@ class CoreDataStoreStorageFactory: CoreDataStoreStorage {
     }
     
     func project(from storeProject: Persistence.Project) -> Storage.Project {
-        let stringIDs = storeProject.itemIDs
-        let arrayOfStrings = stringIDs?.components(separatedBy: ",")
-        let itemIDs = arrayOfStrings?.compactMap { UUID(uuidString: $0) }
+        let items = storeProject.projectItems?.allObjects as? [Persistence.ProjectItem]
         return Storage.Project(
             id: storeProject.id,
             name: storeProject.name,
-            itemIDs: itemIDs)
+            items: items?.map(projectItem(from:)))
+    }
+    
+    func projectItem(from storeProjectItem: Persistence.ProjectItem) -> Storage.ProjectItem {
+        Storage.ProjectItem(
+            id: storeProjectItem.id,
+            itemID: storeProjectItem.itemID,
+            numberRequiredPerBuild: storeProjectItem.numberRequiredPerBuild)
     }
     
     // MARK: - Storage -> Core Data Store
@@ -50,6 +57,12 @@ class CoreDataStoreStorageFactory: CoreDataStoreStorage {
     func copyProjectValues(from project: Storage.Project, to storeProject: Persistence.Project) {
         storeProject.id = project.id
         storeProject.name = project.name
-        storeProject.itemIDs = project.itemIDs?.map { $0.uuidString }.joined(separator: ",")
+    }
+    
+    func copyProjectItemValues(from projectItem: Storage.ProjectItem, to storeProjectItem: Persistence.ProjectItem) {
+        storeProjectItem.itemID = projectItem.itemID
+        if let numberRequiredPerBuild = projectItem.numberRequiredPerBuild {
+            storeProjectItem.numberRequiredPerBuild = numberRequiredPerBuild
+        }
     }
 }

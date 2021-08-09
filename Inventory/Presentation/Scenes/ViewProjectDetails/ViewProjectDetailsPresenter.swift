@@ -25,7 +25,7 @@ extension ViewProjectDetails {
             viewModel.projectName = projectInfo.name
             viewModel.items = projectInfo.items.map {
                 ItemsGrid.Item(
-                    id: $0.id,
+                    id: $0.itemID,
                     name: $0.name,
                     count: "\($0.count)")
             }

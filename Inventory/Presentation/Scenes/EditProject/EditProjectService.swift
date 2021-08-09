@@ -11,7 +11,7 @@ import Foundation
 protocol EditProjectService {
     func fetchProject() throws -> EditProject.ProjectInfo?
     func fetchAllItems() throws -> [Item]
-    func projectItems() -> [Item]
+    func projectItems() -> [EditProject.ItemInfo]
     func filteredItems() -> [Item]
     func validateName(_ value: String) throws
     func canSave() -> Bool
@@ -50,9 +50,16 @@ extension EditProject {
         case invalid
     }
     
+    struct ItemInfo {
+        let itemID: UUID
+        let name: String
+        let count: Int
+        let numberRequiredPerBuild: Int
+    }
+    
     struct ProjectInfo {
         var name: String?
-        var items: [Item]
+        var items: [ItemInfo]
     }
     
     class Service: EditProjectService {
@@ -71,7 +78,7 @@ extension EditProject {
         
         private var project: Project?
         private var name: String?
-        private var items = [Item]()
+        private var items = [ItemInfo]()
         private var allItems = [Item]()
         
         func fetchProject() throws -> ProjectInfo? {
@@ -80,8 +87,14 @@ extension EditProject {
                     let project = try projectFetcher.project(withID: projectID)
                     self.project = project
                     name = project?.name
-                    let items = project?.itemIDs.compactMap {
-                        try? itemsFetcher.item(withID: $0)
+                    let items = try project?.items.map { projectItem -> ItemInfo in
+                        guard let item = try itemsFetcher.item(withID: projectItem.itemID)
+                        else { throw ServiceError.fetchFailed }
+                        return ItemInfo(
+                            itemID: item.id,
+                            name: item.name,
+                            count: item.count,
+                            numberRequiredPerBuild: projectItem.numberRequiredPerBuild)
                     }
                     self.items = items ?? []
                     
@@ -105,14 +118,14 @@ extension EditProject {
             }
         }
         
-        func projectItems() -> [Item] {
-            items
-        }
-        
         func filteredItems() -> [Item] {
             allItems.filter { item in
-                !items.contains(where: { $0.id == item.id })
+                !items.contains(where: { $0.itemID == item.id })
             }
+        }
+        
+        func projectItems() -> [ItemInfo] {
+            items
         }
         
         func validateName(_ value: String) throws {
@@ -129,10 +142,10 @@ extension EditProject {
                 do {
                     if let project = project {
                         try project.set(name: name)
-                        try project.set(itemIDs: items.map { $0.id })
+                        try project.set(items: items.map(map(item:)))
                         try projectFetcher.updateProject(project)
                     } else {
-                        let project = Project(name: name, itemIDs: items.map { $0.id })
+                        let project = Project(name: name, items: items.map(map(item:)))
                         try projectFetcher.addProject(project)
                         self.project = project
                     }
@@ -142,6 +155,12 @@ extension EditProject {
             } else {
                 throw ServiceError.invalidInput
             }
+        }
+        
+        private func map(item: ItemInfo) -> ProjectItem {
+            ProjectItem(
+                itemID: item.itemID,
+                numberRequiredPerBuild: item.numberRequiredPerBuild)
         }
         
         func delete() throws {
@@ -161,14 +180,19 @@ extension EditProject {
                 guard let item = try itemsFetcher.item(withID: id) else {
                     throw ServiceError.addItemFailed
                 }
-                items.append(item)
+                let itemInfo = ItemInfo(
+                    itemID: item.id,
+                    name: item.name,
+                    count: item.count,
+                    numberRequiredPerBuild: 0)
+                items.append(itemInfo)
             } catch {
                 throw ServiceError.addItemFailed
             }
         }
         
         func removeItem(with id: UUID) {
-            items.removeAll(where: { $0.id == id })
+            items.removeAll(where: { $0.itemID == id })
         }
     }
     
@@ -178,8 +202,16 @@ extension EditProject {
         
         func fetchProject() throws -> ProjectInfo? {
             let items = [
-                Item(name: "First", count: 5),
-                Item(name: "Second", count: 6)
+                ItemInfo(
+                    itemID: UUID(),
+                    name: "First",
+                    count: 5,
+                    numberRequiredPerBuild: 6),
+                ItemInfo(
+                    itemID: UUID(),
+                    name: "Second",
+                    count: 6,
+                    numberRequiredPerBuild: 6)
             ]
             return ProjectInfo(
                 name: name,
@@ -193,10 +225,18 @@ extension EditProject {
             ]
         }
         
-        func projectItems() -> [Item] {
+        func projectItems() -> [ItemInfo] {
             [
-                Item(name: "First", count: 5),
-                Item(name: "Second", count: 6)
+                ItemInfo(
+                    itemID: UUID(),
+                    name: "First",
+                    count: 5,
+                    numberRequiredPerBuild: 6),
+                ItemInfo(
+                    itemID: UUID(),
+                    name: "Second",
+                    count: 6,
+                    numberRequiredPerBuild: 6)
             ]
         }
         

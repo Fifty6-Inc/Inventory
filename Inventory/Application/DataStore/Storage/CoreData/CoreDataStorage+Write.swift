@@ -62,4 +62,35 @@ extension CoreDataStorage: StorageWritable {
         try store.deleteProject(with: id)
         try store.save()
     }
+    
+    // MARK: - ProjectItems
+    
+    func addProjectItem(_ projectItem: Storage.ProjectItem, toProject projectID: UUID) throws {
+        guard let storeProject = try store.getProject(with: projectID) else {
+            throw StorageError.objectNotFound(projectID.uuidString)
+        }
+        
+        let storeProjectItem = store.newProjectItem()
+        factory.copyProjectItemValues(from: projectItem, to: storeProjectItem)
+        storeProject.addToProjectItems(storeProjectItem)
+        try store.save()
+    }
+    
+    func updateProjectItem(_ projectItem: Storage.ProjectItem) throws {
+        guard let projectItemID = projectItem.id else {
+            throw StorageError.missingID
+        }
+        
+        guard let storeProjectItem = try store.getProjectItem(with: projectItemID) else {
+            throw StorageError.objectNotFound(projectItemID.uuidString)
+        }
+        
+        factory.copyProjectItemValues(from: projectItem, to: storeProjectItem)
+        try store.save()
+    }
+    
+    func deleteProjectItem(_ taxReturnID: UUID) throws {
+        try store.deleteProjectItem(with: taxReturnID)
+        try store.save()
+    }
 }

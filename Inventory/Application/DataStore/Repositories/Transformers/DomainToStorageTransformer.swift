@@ -20,10 +20,18 @@ class DomainToStorageFactory: DomainToStorageTransformer {
             name: domainItem.name,
             count: Int64(domainItem.count))
     }
+    
     func project(from domainProject: Project) -> Storage.Project {
         Storage.Project(
             id: domainProject.id,
             name: domainProject.name,
-            itemIDs: domainProject.itemIDs)
+            items: domainProject.items.map(projectItem(from:)))
+    }
+    
+    func projectItem(from domainProjectItem: ProjectItem) -> Storage.ProjectItem {
+        Storage.ProjectItem(
+            id: domainProjectItem.id,
+            itemID: domainProjectItem.itemID,
+            numberRequiredPerBuild: Int64(domainProjectItem.numberRequiredPerBuild))
     }
 }

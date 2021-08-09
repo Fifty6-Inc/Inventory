@@ -32,9 +32,16 @@ extension MainProjectRepository: ViewProjectDetailsProjectFetching { }
 
 extension ViewProjectDetails {
     
+    struct ItemInfo {
+        let itemID: UUID
+        let name: String
+        let count: Int
+        let numberRequiredPerBuild: Int
+    }
+    
     struct ProjectInfo {
         let name: String
-        let items: [Item]
+        let items: [ItemInfo]
     }
     
     enum ServiceError: Swift.Error {
@@ -66,8 +73,15 @@ extension ViewProjectDetails {
                     throw ServiceError.fetchFailed
                 }
                 
-                let items = try project.itemIDs.compactMap {
-                    try itemFetcher.item(withID: $0)
+                let items = try project.items.map { projectItem -> ItemInfo in
+                    guard let item = try itemFetcher.item(withID: projectItem.itemID) else {
+                        throw ServiceError.fetchFailed
+                    }
+                    return ItemInfo(
+                        itemID: item.id,
+                        name: item.name,
+                        count: item.count,
+                        numberRequiredPerBuild: projectItem.numberRequiredPerBuild)
                 }
                 
                 return ProjectInfo(
@@ -99,8 +113,11 @@ extension ViewProjectDetails {
             ProjectInfo(
                 name: "Caliburn",
                 items: [
-                    Item(name: "Bolts",
-                         count: 5)
+                    ItemInfo(
+                        itemID: UUID(),
+                        name: "Bolts",
+                        count: 5,
+                        numberRequiredPerBuild: 4)
                 ])
         }
         

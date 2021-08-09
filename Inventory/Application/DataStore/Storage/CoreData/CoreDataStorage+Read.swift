@@ -40,4 +40,22 @@ extension CoreDataStorage: StorageReadable {
         let storeItems = try store.getAllProjects()
         return storeItems.map { factory.project(from: $0) }
     }
+    
+    // MARK: - ProjectItems
+    
+    func getProjectItem(with id: UUID) throws -> Storage.ProjectItem? {
+        guard let persistenceProjectItem = try? store.getProjectItem(with: id)
+        else {
+            throw StorageError.objectNotFound(id.uuidString)
+        }
+        return factory.projectItem(from: persistenceProjectItem)
+    }
+    
+    func getAllProjectItems(project projectID: UUID) throws -> [Storage.ProjectItem] {
+        guard let storeProject = try store.getProject(with: projectID) else {
+            throw StorageError.objectNotFound(projectID.uuidString)
+        }
+        let projectItems = storeProject.projectItems?.allObjects as? [Persistence.ProjectItem]
+        return projectItems?.map(factory.projectItem(from:)) ?? []
+    }
 }

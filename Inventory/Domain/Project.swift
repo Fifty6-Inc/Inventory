@@ -16,15 +16,18 @@ class Project {
         self.name = name
     }
     
-    private(set) var itemIDs: [UUID]
-    func set(itemIDs: [UUID]) throws {
-        self.itemIDs = itemIDs
+    private(set) var items: [ProjectItem]
+    func set(items: [ProjectItem]) throws {
+        self.items = items
     }
     
-    init(id: UUID = UUID(), name: String, itemIDs: [UUID]) {
+    init(id: UUID = UUID(),
+         name: String,
+         items: [ProjectItem]) {
+        
         self.id = id
         self.name = name
-        self.itemIDs = itemIDs
+        self.items = items
     }
     
     // MARK: - Reconstitution
@@ -32,12 +35,12 @@ class Project {
     struct ReconstitutionInfo {
         let id: UUID
         let name: String
-        let itemIDs: [UUID]
+        let items: [ProjectItem]
     }
     
     init(with info: ReconstitutionInfo) throws {
         self.id = info.id
         self.name = info.name
-        self.itemIDs = info.itemIDs
+        self.items = info.items
     }
 }
