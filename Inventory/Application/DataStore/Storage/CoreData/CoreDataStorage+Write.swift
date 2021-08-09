@@ -89,8 +89,8 @@ extension CoreDataStorage: StorageWritable {
         try store.save()
     }
     
-    func deleteProjectItem(_ taxReturnID: UUID) throws {
-        try store.deleteProjectItem(with: taxReturnID)
+    func deleteProjectItem(with id: UUID) throws {
+        try store.deleteProjectItem(with: id)
         try store.save()
     }
 }

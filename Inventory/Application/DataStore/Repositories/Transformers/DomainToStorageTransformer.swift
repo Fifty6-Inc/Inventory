@@ -11,6 +11,7 @@ import Foundation
 protocol DomainToStorageTransformer {
     func item(from domainItem: Item) -> Storage.Item
     func project(from domainProject: Project) -> Storage.Project
+    func projectItem(from domainProjectItem: ProjectItem) -> Storage.ProjectItem
 }
 
 class DomainToStorageFactory: DomainToStorageTransformer {

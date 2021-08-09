@@ -10,10 +10,10 @@ import Foundation
 import Combine
 
 protocol ProjectItemRepository {
-    func allProjectItems() throws -> [ProjectItem]
+    func allProjectItems(for project: UUID) throws -> [ProjectItem]
     func projectItem(withID: UUID) throws -> ProjectItem?
     
-    func addProjectItem(_ projectItem: ProjectItem) throws
+    func addProjectItem(_ projectItem: ProjectItem, toProject projectID: UUID) throws
     func updateProjectItem(_ projectItem: ProjectItem) throws
     func deleteProjectItem(_ id: UUID) throws
     
@@ -22,16 +22,15 @@ protocol ProjectItemRepository {
 
 protocol ProjectItemRepositoryReadable {
     func getProjectItem(with id: UUID) throws -> Storage.ProjectItem?
-    func getAllProjectItems() throws -> [Storage.ProjectItem]
+    func getAllProjectItems(for project: UUID) throws -> [Storage.ProjectItem]
 }
 protocol ProjectItemRepositoryWritable {
-    func addProjectItem(_ storageProjectItem: Storage.ProjectItem) throws
+    func addProjectItem(_ projectItem: Storage.ProjectItem, toProject projectID: UUID) throws
     func updateProjectItem(_ storageProjectItem: Storage.ProjectItem) throws
     func deleteProjectItem(with id: UUID) throws
 }
 
 class MainProjectItemRepository: ProjectItemRepository {
-    
     private let subject = PassthroughSubject<RepositoryAction, Never>()
     var updatePublisher: RepositoryPublisher {
         subject.eraseToAnyPublisher()
@@ -53,8 +52,8 @@ class MainProjectItemRepository: ProjectItemRepository {
         self.toStorage = toStorageTransformer
     }
     
-    func allProjectItems() throws -> [ProjectItem] {
-        guard let allProjectItems = try? storageRead.getAllProjectItems() else { return [] }
+    func allProjectItems(for project: UUID) throws -> [ProjectItem] {
+        guard let allProjectItems = try? storageRead.getAllProjectItems(for: project) else { return [] }
         return allProjectItems.compactMap { try? toDomain.projectItem(from: $0) }
     }
     
@@ -63,9 +62,9 @@ class MainProjectItemRepository: ProjectItemRepository {
         return try toDomain.projectItem(from: storageProjectItem)
     }
     
-    func addProjectItem(_ projectItem: ProjectItem) throws {
+    func addProjectItem(_ projectItem: ProjectItem, toProject projectID: UUID) throws {
         let storageProjectItem = toStorage.projectItem(from: projectItem)
-        try storageWrite.addProjectItem(storageProjectItem)
+        try storageWrite.addProjectItem(storageProjectItem, toProject: projectID)
         subject.send(.add(projectItem.id))
     }
     

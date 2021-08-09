@@ -16,6 +16,7 @@ enum ReconstitutionError: Error {
 protocol StorageToDomainTransformer {
     func item(from storageItem: Storage.Item) throws -> Item
     func project(from storageProject: Storage.Project) throws -> Project
+    func projectItem(from storageProjectItem: Storage.ProjectItem) throws -> ProjectItem
 }
 
 class StorageToDomainFactory: StorageToDomainTransformer {
