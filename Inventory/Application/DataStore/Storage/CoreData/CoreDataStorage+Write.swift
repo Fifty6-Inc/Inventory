@@ -42,6 +42,14 @@ extension CoreDataStorage: StorageWritable {
     func addProject(_ storageProject: Storage.Project) throws {
         let storeProject = store.newProject()
         factory.copyProjectValues(from: storageProject, to: storeProject)
+        
+        if let projectItems = storageProject.projectItems,
+           let projectID = storageProject.id {
+            for projectItem in projectItems {
+                try addProjectItem(projectItem, toProject: projectID)
+            }
+        }
+        
         try store.save()
     }
     
@@ -55,6 +63,34 @@ extension CoreDataStorage: StorageWritable {
         }
         
         factory.copyProjectValues(from: storageProject, to: storeProject)
+        
+        guard let storeProjectItems = storeProject.projectItems?.allObjects as? [Persistence.ProjectItem] else {
+            throw StorageError.objectNotFound("ProjectItems missing")
+        }
+        try storageProject.projectItems?.forEach { storageProjectItem in
+            let projectItemExists = storeProjectItems.contains { storeProjectItem in
+                storageProjectItem.id == storeProjectItem.id
+            }
+            
+            if projectItemExists {
+                try updateProjectItem(storageProjectItem)
+            } else {
+                try addProjectItem(storageProjectItem, toProject: projectID)
+            }
+        }
+        
+        try storeProjectItems.forEach { storeProjectItem in
+            guard let projectItems = storageProject.projectItems else {
+                throw StorageError.objectNotFound("ProjectItems missing")
+            }
+            let itemRemoved = projectItems.contains { $0.id == storeProjectItem.id }
+            if itemRemoved {
+                if let id = storeProjectItem.id {
+                    try deleteProjectItem(with: id)
+                }
+            }
+        }
+        
         try store.save()
     }
     
@@ -65,7 +101,7 @@ extension CoreDataStorage: StorageWritable {
     
     // MARK: - ProjectItems
     
-    func addProjectItem(_ projectItem: Storage.ProjectItem, toProject projectID: UUID) throws {
+    private func addProjectItem(_ projectItem: Storage.ProjectItem, toProject projectID: UUID) throws {
         guard let storeProject = try store.getProject(with: projectID) else {
             throw StorageError.objectNotFound(projectID.uuidString)
         }
@@ -76,7 +112,7 @@ extension CoreDataStorage: StorageWritable {
         try store.save()
     }
     
-    func updateProjectItem(_ projectItem: Storage.ProjectItem) throws {
+    private func updateProjectItem(_ projectItem: Storage.ProjectItem) throws {
         guard let projectItemID = projectItem.id else {
             throw StorageError.missingID
         }
@@ -89,7 +125,7 @@ extension CoreDataStorage: StorageWritable {
         try store.save()
     }
     
-    func deleteProjectItem(with id: UUID) throws {
+    private func deleteProjectItem(with id: UUID) throws {
         try store.deleteProjectItem(with: id)
         try store.save()
     }

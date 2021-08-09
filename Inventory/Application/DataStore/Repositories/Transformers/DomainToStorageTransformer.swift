@@ -26,7 +26,7 @@ class DomainToStorageFactory: DomainToStorageTransformer {
         Storage.Project(
             id: domainProject.id,
             name: domainProject.name,
-            items: domainProject.items.map(projectItem(from:)))
+            projectItems: domainProject.items.map(projectItem(from:)))
     }
     
     func projectItem(from domainProjectItem: ProjectItem) -> Storage.ProjectItem {

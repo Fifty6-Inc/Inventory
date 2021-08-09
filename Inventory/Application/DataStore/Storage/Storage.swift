@@ -17,7 +17,7 @@ enum Storage {
     struct Project {
         let id: UUID?
         let name: String?
-        let items: [ProjectItem]?
+        let projectItems: [ProjectItem]?
     }
     struct ProjectItem {
         let id: UUID?

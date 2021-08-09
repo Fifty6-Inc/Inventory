@@ -35,11 +35,6 @@ protocol EditProjectItemsFetching {
 }
 extension MainItemRepository: EditProjectItemsFetching { }
 
-protocol EditProjectProjectItemFetching {
-    
-}
-extension MainProjectItemRepository: EditProjectProjectItemFetching { }
-
 extension EditProject {
     
     enum ServiceError: Swift.Error {

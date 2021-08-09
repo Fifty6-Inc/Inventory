@@ -22,8 +22,6 @@
 		A53F2D4E26BAFCBB00F261EA /* ProjectRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53F2D4C26BAFBFB00F261EA /* ProjectRepositoryTests.swift */; };
 		A53F2D5026BAFCE800F261EA /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53F2D4F26BAFCE800F261EA /* Project.swift */; };
 		A573FC7E26BC572C00FDCE76 /* ProjectItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A573FC7D26BC572C00FDCE76 /* ProjectItem.swift */; };
-		A5A78AB726C16E42002120DE /* ProjectItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A78AB526C16C6B002120DE /* ProjectItemRepository.swift */; };
-		A5A78AB926C16E53002120DE /* ProjectItemRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A78AB626C16C6B002120DE /* ProjectItemRepositoryTests.swift */; };
 		A5D9102326B98E7900AAF35E /* InventoryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D9102226B98E7900AAF35E /* InventoryApp.swift */; };
 		A5D9102726B98E7A00AAF35E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5D9102626B98E7A00AAF35E /* Assets.xcassets */; };
 		A5D9102A26B98E7A00AAF35E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5D9102926B98E7A00AAF35E /* Preview Assets.xcassets */; };
@@ -160,8 +158,6 @@
 		A53F2D4C26BAFBFB00F261EA /* ProjectRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectRepositoryTests.swift; sourceTree = "<group>"; };
 		A53F2D4F26BAFCE800F261EA /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		A573FC7D26BC572C00FDCE76 /* ProjectItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectItem.swift; sourceTree = "<group>"; };
-		A5A78AB526C16C6B002120DE /* ProjectItemRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectItemRepository.swift; sourceTree = "<group>"; };
-		A5A78AB626C16C6B002120DE /* ProjectItemRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectItemRepositoryTests.swift; sourceTree = "<group>"; };
 		A5D9101F26B98E7900AAF35E /* Inventory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Inventory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5D9102226B98E7900AAF35E /* InventoryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryApp.swift; sourceTree = "<group>"; };
 		A5D9102626B98E7A00AAF35E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -523,8 +519,6 @@
 			children = (
 				A5D910C426B9CCC500AAF35E /* ItemRepository.swift */,
 				A5D910C526B9CCC500AAF35E /* ItemRepositoryTests.swift */,
-				A5A78AB526C16C6B002120DE /* ProjectItemRepository.swift */,
-				A5A78AB626C16C6B002120DE /* ProjectItemRepositoryTests.swift */,
 				A53F2D4B26BAFBFB00F261EA /* ProjectRepository.swift */,
 				A53F2D4C26BAFBFB00F261EA /* ProjectRepositoryTests.swift */,
 			);
@@ -826,7 +820,6 @@
 				A5D9107726B99AC300AAF35E /* View+Extensions.swift in Sources */,
 				A5DC0B9426BB4C6400D82987 /* ViewProjectDetailsModels.swift in Sources */,
 				A53F2D4D26BAFCB700F261EA /* ProjectRepository.swift in Sources */,
-				A5A78AB726C16E42002120DE /* ProjectItemRepository.swift in Sources */,
 				A53F2D4526BAF5C200F261EA /* ViewProjectsOverviewPresenter.swift in Sources */,
 				A5D9107126B9973900AAF35E /* Color+Extensions.swift in Sources */,
 				A5D9108526B9B40000AAF35E /* EditItemView.swift in Sources */,
@@ -845,7 +838,6 @@
 				A5D910E326B9CD0400AAF35E /* CoreDataStoreStorageFactoryTests.swift in Sources */,
 				A5D9103926B98E7A00AAF35E /* InventoryTests.swift in Sources */,
 				A5D910E426B9CD0400AAF35E /* CoreDataStorage+WriteTests.swift in Sources */,
-				A5A78AB926C16E53002120DE /* ProjectItemRepositoryTests.swift in Sources */,
 				A5D910E126B9CD0400AAF35E /* DomainToStorageTransformerTests.swift in Sources */,
 				A5D9106526B9956900AAF35E /* ViewItemsOverviewInteractorTests.swift in Sources */,
 				A5D9108B26B9B40D00AAF35E /* EditItemPresenterTests.swift in Sources */,

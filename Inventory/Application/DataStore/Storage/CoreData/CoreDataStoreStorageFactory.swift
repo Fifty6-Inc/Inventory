@@ -37,7 +37,7 @@ class CoreDataStoreStorageFactory: CoreDataStoreStorage {
         return Storage.Project(
             id: storeProject.id,
             name: storeProject.name,
-            items: items?.map(projectItem(from:)))
+            projectItems: items?.map(projectItem(from:)))
     }
     
     func projectItem(from storeProjectItem: Persistence.ProjectItem) -> Storage.ProjectItem {

@@ -37,7 +37,7 @@ class StorageToDomainFactory: StorageToDomainTransformer {
     func project(from storageProject: Storage.Project) throws -> Project {
         guard let id = storageProject.id,
               let name = storageProject.name,
-              let items = storageProject.items
+              let items = storageProject.projectItems
         else { throw ReconstitutionError.missingRequiredFields }
         
         let projectInfo = Project.ReconstitutionInfo(
