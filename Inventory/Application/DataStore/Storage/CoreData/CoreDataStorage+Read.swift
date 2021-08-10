@@ -16,13 +16,16 @@ extension CoreDataStorage: StorageReadable {
     func getItem(with id: UUID) throws -> Storage.Item? {
         guard let persistenceItem = try? store.getItem(with: id)
         else {
-            throw StorageError.objectNotFound(id.uuidString)
+            throw StorageError.objectNotFound(id)
         }
         return factory.item(from: persistenceItem)
     }
     
     func getAllItems() throws -> [Storage.Item] {
-        let storeItems = try store.getAllItems()
+        guard let storeItems = try? store.getAllItems()
+        else {
+            throw StorageError.storeThrewError
+        }
         return storeItems.map { factory.item(from: $0) }
     }
     
@@ -31,13 +34,16 @@ extension CoreDataStorage: StorageReadable {
     func getProject(with id: UUID) throws -> Storage.Project? {
         guard let persistenceProject = try? store.getProject(with: id)
         else {
-            throw StorageError.objectNotFound(id.uuidString)
+            throw StorageError.objectNotFound(id)
         }
         return factory.project(from: persistenceProject)
     }
     
     func getAllProjects() throws -> [Storage.Project] {
-        let storeItems = try store.getAllProjects()
+        guard let storeItems = try? store.getAllProjects()
+        else {
+            throw StorageError.storeThrewError
+        }
         return storeItems.map { factory.project(from: $0) }
     }
     
@@ -46,14 +52,14 @@ extension CoreDataStorage: StorageReadable {
     func getProjectItem(with id: UUID) throws -> Storage.ProjectItem? {
         guard let persistenceProjectItem = try? store.getProjectItem(with: id)
         else {
-            throw StorageError.objectNotFound(id.uuidString)
+            throw StorageError.objectNotFound(id)
         }
         return factory.projectItem(from: persistenceProjectItem)
     }
     
     func getAllProjectItems(for project: UUID) throws -> [Storage.ProjectItem] {
-        guard let storeProject = try store.getProject(with: project) else {
-            throw StorageError.objectNotFound(project.uuidString)
+        guard let storeProject = try? store.getProject(with: project) else {
+            throw StorageError.objectNotFound(project)
         }
         let projectItems = storeProject.projectItems?.allObjects as? [Persistence.ProjectItem]
         return projectItems?.map(factory.projectItem(from:)) ?? []

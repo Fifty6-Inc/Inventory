@@ -10,7 +10,8 @@ import Foundation
 import Persistence
 
 enum StorageError: Error, Equatable {
-    case objectNotFound(String)
+    case objectNotFound(UUID)
+    case storeThrewError
     case missingID
 }
 

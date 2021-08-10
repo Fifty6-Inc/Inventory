@@ -25,7 +25,7 @@ extension CoreDataStorage: StorageWritable {
         }
         
         guard let storeItem = try store.getItem(with: itemID) else {
-            throw StorageError.objectNotFound(itemID.uuidString)
+            throw StorageError.objectNotFound(itemID)
         }
         
         factory.copyItemValues(from: storageItem, to: storeItem)
@@ -59,13 +59,13 @@ extension CoreDataStorage: StorageWritable {
         }
         
         guard let storeProject = try store.getProject(with: projectID) else {
-            throw StorageError.objectNotFound(projectID.uuidString)
+            throw StorageError.objectNotFound(projectID)
         }
         
         factory.copyProjectValues(from: storageProject, to: storeProject)
         
         guard let storeProjectItems = storeProject.projectItems?.allObjects as? [Persistence.ProjectItem] else {
-            throw StorageError.objectNotFound("ProjectItems missing")
+            throw StorageError.objectNotFound(UUID())
         }
         
         try storageProject.projectItems?.forEach { storageProjectItem in
@@ -82,7 +82,7 @@ extension CoreDataStorage: StorageWritable {
         
         try storeProjectItems.forEach { storeProjectItem in
             guard let projectItems = storageProject.projectItems else {
-                throw StorageError.objectNotFound("ProjectItems missing")
+                throw StorageError.objectNotFound(UUID())
             }
             let itemRemoved = !projectItems.contains { $0.id == storeProjectItem.id }
             if itemRemoved {
@@ -104,7 +104,7 @@ extension CoreDataStorage: StorageWritable {
     
     private func addProjectItem(_ projectItem: Storage.ProjectItem, toProject projectID: UUID) throws {
         guard let storeProject = try store.getProject(with: projectID) else {
-            throw StorageError.objectNotFound(projectID.uuidString)
+            throw StorageError.objectNotFound(projectID)
         }
         
         let storeProjectItem = store.newProjectItem()
@@ -119,7 +119,7 @@ extension CoreDataStorage: StorageWritable {
         }
         
         guard let storeProjectItem = try store.getProjectItem(with: projectItemID) else {
-            throw StorageError.objectNotFound(projectItemID.uuidString)
+            throw StorageError.objectNotFound(projectItemID)
         }
         
         factory.copyProjectItemValues(from: projectItem, to: storeProjectItem)
