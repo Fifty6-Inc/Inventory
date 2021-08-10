@@ -54,8 +54,8 @@ class MainProjectRepository: ProjectRepository {
     }
     
     func allProjects() throws -> [Project] {
-        guard let allProjects = try? storageRead.getAllProjects() else { return [] }
-        return allProjects.compactMap { try? toDomain.project(from: $0) }
+        let allProjects = try storageRead.getAllProjects()
+        return try allProjects.compactMap { try toDomain.project(from: $0) }
     }
     
     func project(withID: UUID) throws -> Project? {

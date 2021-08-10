@@ -60,6 +60,7 @@ class CoreDataStoreStorageFactory: CoreDataStoreStorage {
     }
     
     func copyProjectItemValues(from projectItem: Storage.ProjectItem, to storeProjectItem: Persistence.ProjectItem) {
+        storeProjectItem.id = projectItem.id
         storeProjectItem.itemID = projectItem.itemID
         if let numberRequiredPerBuild = projectItem.numberRequiredPerBuild {
             storeProjectItem.numberRequiredPerBuild = numberRequiredPerBuild
