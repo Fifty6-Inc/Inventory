@@ -71,7 +71,8 @@ extension EditProject {
                 ItemsGrid.Item(
                     id: $0.id,
                     name: $0.name,
-                    count: "\($0.count)")
+                    count: "Count: \($0.count)",
+                    numberPerBuild: nil)
             }
         }
         
@@ -80,7 +81,8 @@ extension EditProject {
                 ItemsGrid.Item(
                     id: $0.itemID,
                     name: $0.name,
-                    count: "\($0.count)")
+                    count: "\($0.count)",
+                    numberPerBuild: "Num/Build: \($0.numberRequiredPerBuild)")
             }
         }
     }

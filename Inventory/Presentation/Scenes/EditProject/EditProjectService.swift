@@ -15,7 +15,7 @@ protocol EditProjectService {
     func filteredItems() -> [Item]
     func validateName(_ value: String) throws
     func canSave() -> Bool
-    func addItem(with id: UUID) throws
+    func addProjectItem(with id: UUID, numberRequiredPerBuild: Int) throws
     func removeItem(with id: UUID)
     func save() throws
     func delete() throws
@@ -135,7 +135,7 @@ extension EditProject {
             if value.isEmpty { throw ValidationError.empty }
         }
         
-        func addItem(with id: UUID) throws {
+        func addProjectItem(with id: UUID, numberRequiredPerBuild: Int) throws {
             do {
                 guard let item = try itemsFetcher.item(withID: id) else {
                     throw ServiceError.addItemFailed
@@ -145,7 +145,7 @@ extension EditProject {
                     itemID: item.id,
                     name: item.name,
                     count: item.count,
-                    numberRequiredPerBuild: 0)
+                    numberRequiredPerBuild: numberRequiredPerBuild)
                 items.append(itemInfo)
             } catch {
                 throw ServiceError.addItemFailed
@@ -255,30 +255,6 @@ extension EditProject {
             if value.isEmpty { throw ValidationError.empty }
         }
         
-        func validateCount(_ value: String) throws {
-            count = Int(value)
-            if value.isEmpty { throw ValidationError.empty }
-            if count == nil { throw ValidationError.invalid }
-        }
-        
-        func subtractFromCount() {
-            count? -= 1
-            if count == nil {
-                count = 1
-            }
-        }
-        
-        func addToCount() {
-            count? += 1
-            if count == nil {
-                count = 1
-            }
-        }
-        
-        func fetchCount() -> Int? {
-            count
-        }
-        
         func canSave() -> Bool {
             !name.isEmpty && count != nil
         }
@@ -291,7 +267,7 @@ extension EditProject {
             throw ServiceError.deleteFailed
         }
         
-        func addItem(with id: UUID) throws { }
+        func addProjectItem(with id: UUID, numberRequiredPerBuild: Int) throws { }
         
         func removeItem(with id: UUID) { }
     }

@@ -17,6 +17,13 @@ extension EditProject {
         var borderColor = Theme.tintColor
     }
     
+    enum AddProjectItem {
+        struct Request {
+            let itemID: UUID
+            let numberRequiredPerBuild: Int
+        }
+    }
+    
     class ViewModel: ObservableObject {
         let isPresented: Binding<Bool>
         @Published var canSave = false
@@ -41,6 +48,11 @@ extension EditProject {
         static let saveButtonTitle = Strings.saveButtonTitle
         static let deleteButtonTitle = Strings.deleteButtonTitle
         
+        static let addItemButtonTitle = Strings.addItemButtonTitle
+        
+        static let numberPerBuildTitle = Strings.numberPerBuildTitle
+        static let mustBeIntegerValueTextFieldErrorMessage = Strings.mustBeIntegerValueTextFieldErrorMessage
+        
         static let confirmRemoveItemTitle = Strings.confirmRemoveItemTitle
         static let confirmRemoveItemMessage = Strings.confirmRemoveItemMessage
         static let confirmRemoveItemButtonTitle = Strings.confirmRemoveItemButtonTitle
@@ -58,6 +70,11 @@ extension EditProject {
         static let saveButtonTitle = "Save"
         static let deleteButtonTitle = "Delete Project"
         static let projectNameTextFieldPlaceholder = "Project name"
+        
+        static let addItemButtonTitle = "Add Item"
+        
+        static let numberPerBuildTitle = "Number Required Per Build"
+        static let mustBeIntegerValueTextFieldErrorMessage = "Must be integer value"
         
         static let confirmRemoveItemTitle = "You sure?"
         static let confirmRemoveItemMessage = "Are you sure you want to remove this item from the project?"

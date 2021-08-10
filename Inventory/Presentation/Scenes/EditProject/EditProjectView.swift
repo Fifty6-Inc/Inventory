@@ -59,7 +59,7 @@ extension EditProject {
                 .sheet(isPresented: $showAddItemSheet) {
                     AllItemsGrid(
                         items: viewModel.allItems,
-                        didTapItem: didTapNewItem(with:))
+                        addProjectItem: addProjectItem(with:))
                 }
             }
         }
@@ -103,7 +103,8 @@ extension EditProject {
             
             buttons.append(.destructive(
                 Text(Theme.confirmRemoveItemButtonTitle),
-                action: { didTapRemoveItem(with: selectedID) } ))
+                action: { didTapRemoveItem(with: selectedID) }
+            ))
             buttons.append(.cancel(
                 Text(Theme.cancelButtonTitle),
                 action: cancelRemoveItem
@@ -159,8 +160,8 @@ extension EditProject.ContentView {
         showActionSheet = true
     }
     
-    func didTapNewItem(with id: UUID) {
-        interactor.addItem(with: id)
+    func addProjectItem(with request: EditProject.AddProjectItem.Request) {
+        interactor.addProjectItem(with: request)
         showAddItemSheet = false
     }
 }

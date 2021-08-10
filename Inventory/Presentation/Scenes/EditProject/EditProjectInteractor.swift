@@ -15,7 +15,7 @@ protocol EditProjectInteracting {
     func delete()
     func updateName(_ value: String)
     func removeItem(with id: UUID)
-    func addItem(with id: UUID)
+    func addProjectItem(with request: EditProject.AddProjectItem.Request)
 }
 
 extension EditProject {
@@ -75,9 +75,11 @@ extension EditProject {
             refreshItems()
         }
         
-        func addItem(with id: UUID) {
+        func addProjectItem(with request: AddProjectItem.Request) {
             attempt {
-                try service.addItem(with: id)
+                try service.addProjectItem(
+                    with: request.itemID,
+                    numberRequiredPerBuild: request.numberRequiredPerBuild)
                 refreshItems()
             }
         }

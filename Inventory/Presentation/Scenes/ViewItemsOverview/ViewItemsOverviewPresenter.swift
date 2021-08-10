@@ -25,7 +25,8 @@ extension ViewItemsOverview {
                 ItemsGrid.Item(
                     id: $0.id,
                     name: $0.name,
-                    count: "Count: \($0.count)")
+                    count: "Count: \($0.count)",
+                    numberPerBuild: nil)
             }
         }
         

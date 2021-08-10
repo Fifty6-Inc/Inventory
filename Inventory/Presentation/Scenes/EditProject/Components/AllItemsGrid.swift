@@ -7,72 +7,80 @@
 
 import SwiftUI
 
-struct AllItemsGrid: View {
-    enum Theme {
-        static let cancelButtonTitle = "Cancel"
-        static let addItemButtonTitle = "Add Item"
-        static let tintColor = Color.appTintColor
-    }
-    
-    @Environment(\.presentationMode) var presentationMode
-    @State private var showAddItem = false
-    let items: [ItemsGrid.Item]
-    let didTapItem: (UUID) -> Void
-    
-    var body: some View {
-        NavigationView {
-            Group {
-                if items.count > 0 {
-                    ScrollView {
-                        ItemsGrid(
-                            items: items,
-                            didTapItem: didTapItem)
-                            .padding(.horizontal)
-                    }
-                } else {
-                    ZStack {
+extension EditProject {
+    struct AllItemsGrid: View {
+        @State private var showEditProjectItemSheet = false
+        @State private var selectedItemID: UUID? = nil
+        typealias Theme = EditProject.Theme
+        @Environment(\.presentationMode) var presentationMode
+        let items: [ItemsGrid.Item]
+        let addProjectItem: (AddProjectItem.Request) -> Void
+        
+        private var itemName: String {
+            let firstItem = items.first { item in
+                item.id == selectedItemID
+            }
+            return firstItem?.name ?? ""
+        }
+        
+        var body: some View {
+            NavigationView {
+                Group {
+                    if items.count > 0 {
+                        ScrollView {
+                            ItemsGrid(
+                                items: items,
+                                didTapItem: didTapItem)
+                                .padding(.horizontal)
+                        }
+                    } else {
                         Text("No unused items here!")
                             .font(.system(.largeTitle, design: .rounded))
                             .fontWeight(.heavy)
                             .padding(.horizontal)
-                        
-                        StandardButton(
-                            title: Theme.addItemButtonTitle,
-                            action: didTapAddItem)
-                            .frame(maxHeight: .infinity, alignment: .bottom)
-                            .padding(.horizontal)
-                            .padding(.bottom)
                     }
                 }
-            }
-            .navigationBarItems(leading: cancelButton)
-            .sheet(isPresented: $showAddItem) {
-                EditItem.Scene().view(isPresented: $showAddItem)
-            }
-        }
-    }
-    
-    var cancelButton: some View {
-        Button(action: dismiss) {
-            Text(Theme.cancelButtonTitle)
+                .navigationBarItems(leading: cancelButton)
+                .navigationBarBackButtonHidden(true)
                 .accentColor(Theme.tintColor)
+                .sheet(isPresented: $showEditProjectItemSheet) {
+                    NumberPerBuild(itemName: itemName, onSave: onSave)
+                }
+            }
         }
-    }
-    
-    // MARK: - Interacting
-    
-    func dismiss() {
-        presentationMode.wrappedValue.dismiss()
-    }
-    
-    func didTapAddItem() {
-        EditItem.prepareIncomingRoute(with: nil)
-        showAddItem = true
+        
+        var cancelButton: some View {
+            Button(action: dismiss) {
+                Text(Theme.cancelButtonTitle)
+                    .accentColor(Theme.tintColor)
+            }
+        }
+        
+        // MARK: - Interacting
+        
+        func dismiss() {
+            presentationMode.wrappedValue.dismiss()
+        }
+        
+        func didTapItem(_ id: UUID) {
+            selectedItemID = id
+            showEditProjectItemSheet = true
+        }
+        
+        func onSave(_ numberRequiredPerBuild: Int) {
+            guard let itemID = selectedItemID else { return }
+            let request = AddProjectItem.Request(
+                itemID: itemID,
+                numberRequiredPerBuild: numberRequiredPerBuild)
+            
+            addProjectItem(request)
+            dismiss()
+        }
     }
 }
 
 struct AllItemsGrid_Previews: PreviewProvider {
     static var previews: some View {
-        AllItemsGrid(items: [], didTapItem: { _ in })
+        EditProject.AllItemsGrid(items: [], addProjectItem: { _ in })
     }
 }

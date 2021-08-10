@@ -12,6 +12,7 @@ struct ItemsGrid: View {
         let id: UUID
         let name: String
         let count: String
+        let numberPerBuild: String?
     }
     let items: [Item]
     let didTapItem: (UUID) -> Void
@@ -39,6 +40,9 @@ struct ItemsGrid: View {
                         VStack {
                             Text(item.name)
                             Text(item.count)
+                            if let numberPerBuild = item.numberPerBuild {
+                                Text(numberPerBuild)
+                            }
                         }
                     }
                     .frame(height: 150)
@@ -67,14 +71,14 @@ struct ItemsGrid_Previews: PreviewProvider {
     static var previews: some View {
         ItemsGrid(
             items: [
-                .init(id: UUID(), name: "Item 1", count: "1"),
-                .init(id: UUID(), name: "Item 2", count: "2"),
-                .init(id: UUID(), name: "Item 3", count: "3"),
-                .init(id: UUID(), name: "Item 4", count: "4"),
-                .init(id: UUID(), name: "Item 5", count: "5"),
-                .init(id: UUID(), name: "Item 6", count: "6"),
-                .init(id: UUID(), name: "Item 7", count: "7"),
-                .init(id: UUID(), name: "Item 8", count: "8")
+                .init(id: UUID(), name: "Item 1", count: "1", numberPerBuild: "7"),
+                .init(id: UUID(), name: "Item 2", count: "2", numberPerBuild: "1"),
+                .init(id: UUID(), name: "Item 3", count: "3", numberPerBuild: "6"),
+                .init(id: UUID(), name: "Item 4", count: "4", numberPerBuild: "5"),
+                .init(id: UUID(), name: "Item 5", count: "5", numberPerBuild: "2"),
+                .init(id: UUID(), name: "Item 6", count: "6", numberPerBuild: "3"),
+                .init(id: UUID(), name: "Item 7", count: "7", numberPerBuild: "4"),
+                .init(id: UUID(), name: "Item 8", count: "8", numberPerBuild: "8")
             ],
             didTapItem: { _ in },
             didTapAdd: { }
