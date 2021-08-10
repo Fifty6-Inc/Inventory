@@ -17,7 +17,6 @@
 		A53F2D4526BAF5C200F261EA /* ViewProjectsOverviewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53F2D3726BAF53900F261EA /* ViewProjectsOverviewPresenter.swift */; };
 		A53F2D4A26BAF64800F261EA /* DeleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53F2D4926BAF64800F261EA /* DeleteButton.swift */; };
 		A53F2D4D26BAFCB700F261EA /* ProjectRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53F2D4B26BAFBFB00F261EA /* ProjectRepository.swift */; };
-		A53F2D4E26BAFCBB00F261EA /* ProjectRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53F2D4C26BAFBFB00F261EA /* ProjectRepositoryTests.swift */; };
 		A53F2D5026BAFCE800F261EA /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53F2D4F26BAFCE800F261EA /* Project.swift */; };
 		A573FC7E26BC572C00FDCE76 /* ProjectItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A573FC7D26BC572C00FDCE76 /* ProjectItem.swift */; };
 		A5A78ABF26C316E3002120DE /* NumberPerBuild.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A78ABE26C316E3002120DE /* NumberPerBuild.swift */; };
@@ -63,12 +62,6 @@
 		A5D910DC26B9CCF900AAF35E /* ItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D910C426B9CCC500AAF35E /* ItemRepository.swift */; };
 		A5D910DD26B9CCF900AAF35E /* CoreDataStorage+Read.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D910D326B9CCC500AAF35E /* CoreDataStorage+Read.swift */; };
 		A5D910DE26B9CCF900AAF35E /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D910CC26B9CCC500AAF35E /* Storage.swift */; };
-		A5D910DF26B9CD0400AAF35E /* StorageToDomainTransformerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D910C926B9CCC500AAF35E /* StorageToDomainTransformerTests.swift */; };
-		A5D910E026B9CD0400AAF35E /* ItemRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D910C526B9CCC500AAF35E /* ItemRepositoryTests.swift */; };
-		A5D910E126B9CD0400AAF35E /* DomainToStorageTransformerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D910C826B9CCC500AAF35E /* DomainToStorageTransformerTests.swift */; };
-		A5D910E226B9CD0400AAF35E /* CoreDataStorage+ReadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D910CE26B9CCC500AAF35E /* CoreDataStorage+ReadTests.swift */; };
-		A5D910E326B9CD0400AAF35E /* CoreDataStoreStorageFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D910D126B9CCC500AAF35E /* CoreDataStoreStorageFactoryTests.swift */; };
-		A5D910E426B9CD0400AAF35E /* CoreDataStorage+WriteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D910D426B9CCC500AAF35E /* CoreDataStorage+WriteTests.swift */; };
 		A5D910E726B9D68B00AAF35E /* Optional+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D910E626B9D68B00AAF35E /* Optional+Extensions.swift */; };
 		A5DC0B7E26BB1ADD00D82987 /* EditProjectScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DC0B7526BB1A3700D82987 /* EditProjectScene.swift */; };
 		A5DC0B7F26BB1ADD00D82987 /* EditProjectService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DC0B7626BB1A3800D82987 /* EditProjectService.swift */; };
@@ -786,13 +779,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A529287F26C330B800EEF23B /* TestSupport.swift in Sources */,
-				A5D910E326B9CD0400AAF35E /* CoreDataStoreStorageFactoryTests.swift in Sources */,
-				A5D910E426B9CD0400AAF35E /* CoreDataStorage+WriteTests.swift in Sources */,
-				A5D910E126B9CD0400AAF35E /* DomainToStorageTransformerTests.swift in Sources */,
-				A5D910E026B9CD0400AAF35E /* ItemRepositoryTests.swift in Sources */,
-				A5D910E226B9CD0400AAF35E /* CoreDataStorage+ReadTests.swift in Sources */,
-				A53F2D4E26BAFCBB00F261EA /* ProjectRepositoryTests.swift in Sources */,
-				A5D910DF26B9CD0400AAF35E /* StorageToDomainTransformerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
