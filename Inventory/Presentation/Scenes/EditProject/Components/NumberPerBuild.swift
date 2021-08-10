@@ -70,6 +70,7 @@ extension EditProject {
         
         func save() {
             onSave(Int(text) ?? 0)
+            presentationMode.wrappedValue.dismiss()
         }
     }
 }
