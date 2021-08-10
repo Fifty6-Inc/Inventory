@@ -28,7 +28,7 @@ extension ViewProjectsOverview {
                         LazyVGrid(columns: layout) {
                             ForEach(viewModel.projects) { project in
                                 RoundedRectangle(cornerRadius: 16, style: .continuous)
-                                    .fill(Color.blue)
+                                    .fill(Color.appTintColor)
                                     .inverseMask {
                                         VStack {
                                             Text(project.name)

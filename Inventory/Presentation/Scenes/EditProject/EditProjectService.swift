@@ -51,6 +51,7 @@ extension EditProject {
     }
     
     struct ItemInfo {
+        let id: UUID
         let itemID: UUID
         let name: String
         let count: Int
@@ -91,6 +92,7 @@ extension EditProject {
                         guard let item = try itemsFetcher.item(withID: projectItem.itemID)
                         else { throw ServiceError.fetchFailed }
                         return ItemInfo(
+                            id: projectItem.id,
                             itemID: item.id,
                             name: item.name,
                             count: item.count,
@@ -133,54 +135,13 @@ extension EditProject {
             if value.isEmpty { throw ValidationError.empty }
         }
         
-        func canSave() -> Bool {
-            !name.isNilOrEmpty && items.count > 0
-        }
-        
-        func save() throws {
-            if let name = name {
-                do {
-                    if let project = project {
-                        try project.set(name: name)
-                        try project.set(items: items.map(map(item:)))
-                        try projectFetcher.updateProject(project)
-                    } else {
-                        let project = Project(name: name, items: items.map(map(item:)))
-                        try projectFetcher.addProject(project)
-                        self.project = project
-                    }
-                } catch {
-                    throw ServiceError.saveFailed
-                }
-            } else {
-                throw ServiceError.invalidInput
-            }
-        }
-        
-        private func map(item: ItemInfo) -> ProjectItem {
-            ProjectItem(
-                itemID: item.itemID,
-                numberRequiredPerBuild: item.numberRequiredPerBuild)
-        }
-        
-        func delete() throws {
-            do {
-                if let project = project {
-                    try projectFetcher.deleteProject(project.id)
-                } else {
-                    throw ServiceError.deleteFailed
-                }
-            } catch {
-                throw ServiceError.deleteFailed
-            }
-        }
-        
         func addItem(with id: UUID) throws {
             do {
                 guard let item = try itemsFetcher.item(withID: id) else {
                     throw ServiceError.addItemFailed
                 }
                 let itemInfo = ItemInfo(
+                    id: UUID(),
                     itemID: item.id,
                     name: item.name,
                     count: item.count,
@@ -194,6 +155,49 @@ extension EditProject {
         func removeItem(with id: UUID) {
             items.removeAll(where: { $0.itemID == id })
         }
+        
+        func canSave() -> Bool {
+            !name.isNilOrEmpty && items.count > 0
+        }
+        
+        func save() throws {
+            if let name = name {
+                do {
+                    if let project = project {
+                        try project.set(name: name)
+                        try project.set(items: items.map(map(itemInfo:)))
+                        try projectFetcher.updateProject(project)
+                    } else {
+                        let project = Project(name: name, items: items.map(map(itemInfo:)))
+                        try projectFetcher.addProject(project)
+                        self.project = project
+                    }
+                } catch {
+                    throw ServiceError.saveFailed
+                }
+            } else {
+                throw ServiceError.invalidInput
+            }
+        }
+        
+        private func map(itemInfo: ItemInfo) -> ProjectItem {
+            ProjectItem(
+                id: itemInfo.id,
+                itemID: itemInfo.itemID,
+                numberRequiredPerBuild: itemInfo.numberRequiredPerBuild)
+        }
+        
+        func delete() throws {
+            do {
+                if let project = project {
+                    try projectFetcher.deleteProject(project.id)
+                } else {
+                    throw ServiceError.deleteFailed
+                }
+            } catch {
+                throw ServiceError.deleteFailed
+            }
+        }
     }
     
     class PreviewService: EditProjectService {
@@ -203,11 +207,13 @@ extension EditProject {
         func fetchProject() throws -> ProjectInfo? {
             let items = [
                 ItemInfo(
+                    id: UUID(),
                     itemID: UUID(),
                     name: "First",
                     count: 5,
                     numberRequiredPerBuild: 6),
                 ItemInfo(
+                    id: UUID(),
                     itemID: UUID(),
                     name: "Second",
                     count: 6,
@@ -228,11 +234,13 @@ extension EditProject {
         func projectItems() -> [ItemInfo] {
             [
                 ItemInfo(
+                    id: UUID(),
                     itemID: UUID(),
                     name: "First",
                     count: 5,
                     numberRequiredPerBuild: 6),
                 ItemInfo(
+                    id: UUID(),
                     itemID: UUID(),
                     name: "Second",
                     count: 6,

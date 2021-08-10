@@ -83,7 +83,7 @@ extension CoreDataStorage: StorageWritable {
             guard let projectItems = storageProject.projectItems else {
                 throw StorageError.objectNotFound("ProjectItems missing")
             }
-            let itemRemoved = projectItems.contains { $0.id == storeProjectItem.id }
+            let itemRemoved = !projectItems.contains { $0.id == storeProjectItem.id }
             if itemRemoved {
                 if let id = storeProjectItem.id {
                     try deleteProjectItem(with: id)

@@ -34,7 +34,7 @@ struct ItemsGrid: View {
         LazyVGrid(columns: layout) {
             ForEach(items) { item in
                 RoundedRectangle(cornerRadius: 16, style: .continuous)
-                    .fill(Color.blue)
+                    .fill(Color.appTintColor)
                     .inverseMask {
                         VStack {
                             Text(item.name)
@@ -47,14 +47,14 @@ struct ItemsGrid: View {
                     }
             }
             RoundedRectangle(cornerRadius: 16, style: .continuous)
-                .fill(Color.blue)
+                .fill(Color.appTintColor)
                 .inverseMask {
                     Image(systemName: "plus.circle.fill")
                         .font(.system(.largeTitle))
                 }
                 .frame(height: 150)
                 .frame(maxWidth: .infinity)
-                .foregroundColor(.blue)
+                .foregroundColor(.appTintColor)
                 .onTapGesture(perform: didTapAdd ?? {})
                 .if(didTapAdd == nil) {
                     $0.hidden()
