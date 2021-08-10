@@ -13,11 +13,12 @@ protocol ViewProjectDetailsService {
     func fetchProject() throws -> ViewProjectDetails.ProjectInfo
     func prepareRouteToEditProject()
     func prepareRouteToEditItemCount(with id: UUID)
-    func buildProject()
+    func buildProject() throws
 }
 
 protocol ViewProjectDetailsItemsFetching {
     func item(withID: UUID) throws -> Item?
+    func updateItem(_ item: Item) throws
     
     var updatePublisher: RepositoryPublisher { get }
 }
@@ -73,7 +74,7 @@ extension ViewProjectDetails {
                     throw ServiceError.fetchFailed
                 }
                 
-                let items = try project.items.map { projectItem -> ItemInfo in
+                let items = try project.projectItems.map { projectItem -> ItemInfo in
                     guard let item = try itemFetcher.item(withID: projectItem.itemID) else {
                         throw ServiceError.fetchFailed
                     }
@@ -100,8 +101,19 @@ extension ViewProjectDetails {
             EditItem.prepareIncomingRoute(with: id)
         }
         
-        func buildProject() {
-            // AAAAAAA
+        func buildProject() throws {
+            let project = try projectFetcher.project(withID: projectID)
+            guard let projectItems = project?.projectItems else {
+                throw ServiceError.fetchFailed
+            }
+            for projectItem in projectItems {
+                guard let item = try itemFetcher.item(withID: projectItem.itemID) else {
+                    throw ServiceError.fetchFailed
+                }
+                let newCount = item.count - projectItem.numberRequiredPerBuild
+                try item.set(count: newCount)
+                try itemFetcher.updateItem(item)
+            }
         }
     }
     
@@ -129,6 +141,6 @@ extension ViewProjectDetails {
             EditItem.prepareIncomingRoute(with: id)
         }
         
-        func buildProject() { }
+        func buildProject() throws { }
     }
 }

@@ -67,23 +67,25 @@ extension EditProject {
         }
         
         private func mapItemToItemsGridItem(_ items: [Item]) -> [ItemsGrid.Item] {
-            items.map {
+            let gridItems = items.map {
                 ItemsGrid.Item(
                     id: $0.id,
                     name: $0.name,
                     count: "Count: \($0.count)",
                     numberPerBuild: nil)
             }
+            return gridItems.sorted(by: { $0.name < $1.name })
         }
         
         private func mapItemToItemsGridItem(_ items: [ItemInfo]) -> [ItemsGrid.Item] {
-            items.map {
+            let gridItems = items.map {
                 ItemsGrid.Item(
                     id: $0.itemID,
                     name: $0.name,
                     count: "\($0.count)",
                     numberPerBuild: "Num/Build: \($0.numberRequiredPerBuild)")
             }
+            return gridItems.sorted(by: { $0.name < $1.name })
         }
     }
 }

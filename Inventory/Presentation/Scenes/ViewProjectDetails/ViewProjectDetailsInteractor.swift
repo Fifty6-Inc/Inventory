@@ -62,7 +62,11 @@ extension ViewProjectDetails {
         }
         
         func buildProject() {
-            service.buildProject()
+            do {
+                try service.buildProject()
+            } catch {
+                presenter.present(error: error as? ServiceError)
+            }
         }
     }
 }

@@ -88,7 +88,7 @@ extension EditProject {
                     let project = try projectFetcher.project(withID: projectID)
                     self.project = project
                     name = project?.name
-                    let items = try project?.items.map { projectItem -> ItemInfo in
+                    let items = try project?.projectItems.map { projectItem -> ItemInfo in
                         guard let item = try itemsFetcher.item(withID: projectItem.itemID)
                         else { throw ServiceError.fetchFailed }
                         return ItemInfo(
@@ -165,7 +165,7 @@ extension EditProject {
                 do {
                     if let project = project {
                         try project.set(name: name)
-                        try project.set(items: items.map(map(itemInfo:)))
+                        try project.set(projectItems: items.map(map(itemInfo:)))
                         try projectFetcher.updateProject(project)
                     } else {
                         let project = Project(name: name, items: items.map(map(itemInfo:)))

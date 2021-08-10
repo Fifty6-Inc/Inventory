@@ -16,9 +16,9 @@ class Project {
         self.name = name
     }
     
-    private(set) var items: [ProjectItem]
-    func set(items: [ProjectItem]) throws {
-        self.items = items
+    private(set) var projectItems: [ProjectItem]
+    func set(projectItems: [ProjectItem]) throws {
+        self.projectItems = projectItems
     }
     
     init(id: UUID = UUID(),
@@ -27,7 +27,7 @@ class Project {
         
         self.id = id
         self.name = name
-        self.items = items
+        self.projectItems = items
     }
     
     // MARK: - Reconstitution
@@ -41,6 +41,6 @@ class Project {
     init(with info: ReconstitutionInfo) throws {
         self.id = info.id
         self.name = info.name
-        self.items = info.items
+        self.projectItems = info.items
     }
 }

@@ -21,13 +21,15 @@ extension ViewItemsOverview {
         let viewModel: ViewModel
         
         func presentFetch(_ items: [ViewItemsOverview.ItemDetails]) {
-            viewModel.items = items.map {
+            let gridItems = items.map {
                 ItemsGrid.Item(
                     id: $0.id,
                     name: $0.name,
                     count: "Count: \($0.count)",
                     numberPerBuild: nil)
             }
+            
+            viewModel.items = gridItems.sorted(by: { $0.name < $1.name })
         }
         
         func presentShowEditItem() {

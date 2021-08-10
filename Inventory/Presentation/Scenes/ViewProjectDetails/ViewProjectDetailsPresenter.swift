@@ -23,13 +23,14 @@ extension ViewProjectDetails {
         
         func presentFetch(_ projectInfo: ProjectInfo) {
             viewModel.projectName = projectInfo.name
-            viewModel.items = projectInfo.items.map {
+            let gridItems = projectInfo.items.map {
                 ItemsGrid.Item(
                     id: $0.itemID,
                     name: $0.name,
                     count: "Count: \($0.count)",
                     numberPerBuild: "Num/Build: \($0.numberRequiredPerBuild)")
             }
+            viewModel.items = gridItems.sorted(by: { $0.name < $1.name })
         }
         
         func presentPrepareRouteToEditProject() {
