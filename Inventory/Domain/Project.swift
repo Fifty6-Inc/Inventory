@@ -24,7 +24,6 @@ class Project {
     init(id: UUID = UUID(),
          name: String,
          items: [ProjectItem]) {
-        
         self.id = id
         self.name = name
         self.projectItems = items

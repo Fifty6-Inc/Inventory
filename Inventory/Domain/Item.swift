@@ -21,7 +21,9 @@ class Item {
         self.count = count
     }
     
-    init(id: UUID = UUID(), name: String, count: Int) {
+    init(id: UUID = UUID(),
+         name: String,
+         count: Int) {
         self.id = id
         self.name = name
         self.count = count

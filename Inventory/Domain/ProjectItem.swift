@@ -12,7 +12,10 @@ struct ProjectItem {
     let itemID: UUID
     let numberRequiredPerBuild: Int
     
-    init(id: UUID = UUID(), itemID: UUID, numberRequiredPerBuild: Int) {
+    init(id: UUID = UUID(),
+         itemID: UUID,
+         numberRequiredPerBuild: Int) {
+        
         self.id = id
         self.itemID = itemID
         self.numberRequiredPerBuild = numberRequiredPerBuild
