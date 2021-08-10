@@ -13,13 +13,14 @@ struct StandardButton: View {
     let action: () -> Void
     var body: some View {
         Button(action: action) {
-            Text(title.uppercased())
-                .font(.system(size: 20, weight: .bold, design: .rounded))
+            Color.appDeepBlue.cornerRadius(33)
                 .frame(maxWidth: .infinity)
                 .frame(height: 64)
-                .accentColor(.appGrayDark)
+                .inverseMask {
+                    Text(title.uppercased())
+                        .font(.system(size: 20, weight: .bold, design: .rounded))
+                }
         }
-        .background(Color.appDeepBlue.cornerRadius(33))
     }
 }
 
