@@ -32,6 +32,8 @@ extension EditItem {
                         CountButton(imageName: "minus", onTap: interactor.subtractFromCount)
                         CountButton(imageName: "plus", onTap: interactor.addToCount)
                     }
+                    
+                    Spacer().frame(maxHeight: 32)
                 }
                 .padding(.top)
                 .navigationBarTitleDisplayMode(.large)
