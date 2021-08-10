@@ -67,6 +67,7 @@ extension CoreDataStorage: StorageWritable {
         guard let storeProjectItems = storeProject.projectItems?.allObjects as? [Persistence.ProjectItem] else {
             throw StorageError.objectNotFound("ProjectItems missing")
         }
+        
         try storageProject.projectItems?.forEach { storageProjectItem in
             let projectItemExists = storeProjectItems.contains { storeProjectItem in
                 storageProjectItem.id == storeProjectItem.id
