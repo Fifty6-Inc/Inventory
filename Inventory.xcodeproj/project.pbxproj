@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A529287F26C330B800EEF23B /* TestSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = A529287E26C330B800EEF23B /* TestSupport.swift */; };
 		A53F2D3426BAF2B300F261EA /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53F2D3326BAF2B300F261EA /* MainTabView.swift */; };
 		A53F2D4026BAF5C200F261EA /* ViewProjectsOverviewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53F2D3A26BAF53900F261EA /* ViewProjectsOverviewService.swift */; };
 		A53F2D4126BAF5C200F261EA /* ViewProjectsOverviewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53F2D3826BAF53900F261EA /* ViewProjectsOverviewInteractor.swift */; };
@@ -24,7 +25,6 @@
 		A5D9102326B98E7900AAF35E /* InventoryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D9102226B98E7900AAF35E /* InventoryApp.swift */; };
 		A5D9102726B98E7A00AAF35E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5D9102626B98E7A00AAF35E /* Assets.xcassets */; };
 		A5D9102A26B98E7A00AAF35E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5D9102926B98E7A00AAF35E /* Preview Assets.xcassets */; };
-		A5D9103926B98E7A00AAF35E /* InventoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D9103826B98E7A00AAF35E /* InventoryTests.swift */; };
 		A5D9105C26B9955C00AAF35E /* ViewItemsOverviewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D9105626B9955C00AAF35E /* ViewItemsOverviewPresenter.swift */; };
 		A5D9105D26B9955C00AAF35E /* ViewItemsOverviewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D9105726B9955C00AAF35E /* ViewItemsOverviewModels.swift */; };
 		A5D9105E26B9955C00AAF35E /* ViewItemsOverviewScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D9105826B9955C00AAF35E /* ViewItemsOverviewScene.swift */; };
@@ -46,7 +46,6 @@
 		A5D9108626B9B40000AAF35E /* EditItemService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D9108026B9B40000AAF35E /* EditItemService.swift */; };
 		A5D9108E26B9C7A200AAF35E /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D9108D26B9C7A200AAF35E /* Item.swift */; };
 		A5D9109E26B9C87D00AAF35E /* Persistence.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5D9109426B9C87D00AAF35E /* Persistence.framework */; };
-		A5D910A526B9C87D00AAF35E /* PersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D910A426B9C87D00AAF35E /* PersistenceTests.swift */; };
 		A5D910A626B9C87D00AAF35E /* Persistence.h in Headers */ = {isa = PBXBuildFile; fileRef = A5D9109626B9C87D00AAF35E /* Persistence.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A5D910A926B9C87D00AAF35E /* Persistence.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5D9109426B9C87D00AAF35E /* Persistence.framework */; };
 		A5D910AA26B9C87D00AAF35E /* Persistence.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A5D9109426B9C87D00AAF35E /* Persistence.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -133,6 +132,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A529287E26C330B800EEF23B /* TestSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSupport.swift; sourceTree = "<group>"; };
 		A53F2D3326BAF2B300F261EA /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		A53F2D3726BAF53900F261EA /* ViewProjectsOverviewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProjectsOverviewPresenter.swift; sourceTree = "<group>"; };
 		A53F2D3826BAF53900F261EA /* ViewProjectsOverviewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProjectsOverviewInteractor.swift; sourceTree = "<group>"; };
@@ -153,7 +153,6 @@
 		A5D9102926B98E7A00AAF35E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A5D9102E26B98E7A00AAF35E /* Inventory.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Inventory.xcdatamodel; sourceTree = "<group>"; };
 		A5D9103426B98E7A00AAF35E /* InventoryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InventoryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A5D9103826B98E7A00AAF35E /* InventoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryTests.swift; sourceTree = "<group>"; };
 		A5D9105626B9955C00AAF35E /* ViewItemsOverviewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewItemsOverviewPresenter.swift; sourceTree = "<group>"; };
 		A5D9105726B9955C00AAF35E /* ViewItemsOverviewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewItemsOverviewModels.swift; sourceTree = "<group>"; };
 		A5D9105826B9955C00AAF35E /* ViewItemsOverviewScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewItemsOverviewScene.swift; sourceTree = "<group>"; };
@@ -177,7 +176,6 @@
 		A5D9109426B9C87D00AAF35E /* Persistence.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Persistence.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5D9109626B9C87D00AAF35E /* Persistence.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Persistence.h; sourceTree = "<group>"; };
 		A5D9109D26B9C87D00AAF35E /* PersistenceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PersistenceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A5D910A426B9C87D00AAF35E /* PersistenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceTests.swift; sourceTree = "<group>"; };
 		A5D910B426B9C99200AAF35E /* Logging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
 		A5D910B526B9C99200AAF35E /* CoreDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStore.swift; sourceTree = "<group>"; };
 		A5D910B626B9C99200AAF35E /* CoreDataStoreTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStoreTests.swift; sourceTree = "<group>"; };
@@ -281,7 +279,6 @@
 				A5D9102126B98E7900AAF35E /* Inventory */,
 				A5D9103726B98E7A00AAF35E /* InventoryTests */,
 				A5D9109526B9C87D00AAF35E /* Persistence */,
-				A5D910A326B9C87D00AAF35E /* PersistenceTests */,
 				A5D9102026B98E7900AAF35E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -318,7 +315,7 @@
 		A5D9103726B98E7A00AAF35E /* InventoryTests */ = {
 			isa = PBXGroup;
 			children = (
-				A5D9103826B98E7A00AAF35E /* InventoryTests.swift */,
+				A529287E26C330B800EEF23B /* TestSupport.swift */,
 			);
 			path = InventoryTests;
 			sourceTree = "<group>";
@@ -444,14 +441,6 @@
 				A5D9102D26B98E7A00AAF35E /* Inventory.xcdatamodeld */,
 			);
 			path = Persistence;
-			sourceTree = "<group>";
-		};
-		A5D910A326B9C87D00AAF35E /* PersistenceTests */ = {
-			isa = PBXGroup;
-			children = (
-				A5D910A426B9C87D00AAF35E /* PersistenceTests.swift */,
-			);
-			path = PersistenceTests;
 			sourceTree = "<group>";
 		};
 		A5D910BE26B9CCC500AAF35E /* DataStore */ = {
@@ -796,8 +785,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A529287F26C330B800EEF23B /* TestSupport.swift in Sources */,
 				A5D910E326B9CD0400AAF35E /* CoreDataStoreStorageFactoryTests.swift in Sources */,
-				A5D9103926B98E7A00AAF35E /* InventoryTests.swift in Sources */,
 				A5D910E426B9CD0400AAF35E /* CoreDataStorage+WriteTests.swift in Sources */,
 				A5D910E126B9CD0400AAF35E /* DomainToStorageTransformerTests.swift in Sources */,
 				A5D910E026B9CD0400AAF35E /* ItemRepositoryTests.swift in Sources */,
@@ -822,7 +811,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5D910BC26B9CAB700AAF35E /* CoreDataStoreTests.swift in Sources */,
-				A5D910A526B9C87D00AAF35E /* PersistenceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
