@@ -36,7 +36,7 @@ class CoreDataStorageReadTests: XCTestCase {
         
         // When/Then
         XCTAssertThrowsError(try storage.getItem(with: randomID)) { error in
-            XCTAssertEqual(error as? StorageError, StorageError.objectNotFound(randomID))
+            XCTAssertEqual(error as? StorageError, .objectNotFound(randomID))
         }
     }
     
@@ -74,7 +74,7 @@ class CoreDataStorageReadTests: XCTestCase {
         
         // When/Then
         XCTAssertThrowsError(try storage.getProject(with: randomID)) { error in
-            XCTAssertEqual(error as? StorageError, StorageError.objectNotFound(randomID))
+            XCTAssertEqual(error as? StorageError, .objectNotFound(randomID))
         }
     }
     
@@ -112,7 +112,7 @@ class CoreDataStorageReadTests: XCTestCase {
         
         // When/Then
         XCTAssertThrowsError(try storage.getProjectItem(with: randomID)) { error in
-            XCTAssertEqual(error as? StorageError, StorageError.objectNotFound(randomID))
+            XCTAssertEqual(error as? StorageError, .objectNotFound(randomID))
         }
     }
     
@@ -139,7 +139,7 @@ class CoreDataStorageReadTests: XCTestCase {
         
         //When/Then
         XCTAssertThrowsError(try storage.getAllProjectItems(for: randomID)) { error in
-            XCTAssertEqual(error as? StorageError, StorageError.objectNotFound(randomID))
+            XCTAssertEqual(error as? StorageError, .objectNotFound(randomID))
         }
     }
     

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A529287F26C330B800EEF23B /* TestSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = A529287E26C330B800EEF23B /* TestSupport.swift */; };
 		A529288026C33B6800EEF23B /* CoreDataStorage+ReadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D910CE26B9CCC500AAF35E /* CoreDataStorage+ReadTests.swift */; };
+		A529288126C340B700EEF23B /* CoreDataStorage+WriteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D910D426B9CCC500AAF35E /* CoreDataStorage+WriteTests.swift */; };
 		A53F2D3426BAF2B300F261EA /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53F2D3326BAF2B300F261EA /* MainTabView.swift */; };
 		A53F2D4026BAF5C200F261EA /* ViewProjectsOverviewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53F2D3A26BAF53900F261EA /* ViewProjectsOverviewService.swift */; };
 		A53F2D4126BAF5C200F261EA /* ViewProjectsOverviewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53F2D3826BAF53900F261EA /* ViewProjectsOverviewInteractor.swift */; };
@@ -781,6 +782,7 @@
 			files = (
 				A529288026C33B6800EEF23B /* CoreDataStorage+ReadTests.swift in Sources */,
 				A529287F26C330B800EEF23B /* TestSupport.swift in Sources */,
+				A529288126C340B700EEF23B /* CoreDataStorage+WriteTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

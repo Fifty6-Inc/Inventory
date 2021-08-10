@@ -11,12 +11,19 @@ import Persistence
 
 extension CoreDataStorage: StorageWritable {
     
+    // MARK: - Save
+    
+    private func save() throws {
+        do { try store.save() }
+        catch { throw StorageError.saveFailed }
+    }
+    
     // MARK: - Items
     
     func addItem(_ storageItem: Storage.Item) throws {
         let storeItem = store.newItem()
         factory.copyItemValues(from: storageItem, to: storeItem)
-        try store.save()
+        try save()
     }
     
     func updateItem(_ storageItem: Storage.Item) throws {
@@ -29,12 +36,16 @@ extension CoreDataStorage: StorageWritable {
         }
         
         factory.copyItemValues(from: storageItem, to: storeItem)
-        try store.save()
+        try save()
     }
     
     func deleteItem(with id: UUID) throws {
-        try store.deleteItem(with: id)
-        try store.save()
+        do {
+            try store.deleteItem(with: id)
+        } catch {
+            throw StorageError.deleteFailed(id)
+        }
+        try save()
     }
     
     // MARK: - Projects
@@ -50,7 +61,7 @@ extension CoreDataStorage: StorageWritable {
             }
         }
         
-        try store.save()
+        try save()
     }
     
     func updateProject(_ storageProject: Storage.Project) throws {
@@ -65,7 +76,7 @@ extension CoreDataStorage: StorageWritable {
         factory.copyProjectValues(from: storageProject, to: storeProject)
         
         guard let storeProjectItems = storeProject.projectItems?.allObjects as? [Persistence.ProjectItem] else {
-            throw StorageError.objectNotFound(UUID())
+            throw StorageError.missingValue
         }
         
         try storageProject.projectItems?.forEach { storageProjectItem in
@@ -82,7 +93,7 @@ extension CoreDataStorage: StorageWritable {
         
         try storeProjectItems.forEach { storeProjectItem in
             guard let projectItems = storageProject.projectItems else {
-                throw StorageError.objectNotFound(UUID())
+                throw StorageError.missingValue
             }
             let itemRemoved = !projectItems.contains { $0.id == storeProjectItem.id }
             if itemRemoved {
@@ -92,12 +103,16 @@ extension CoreDataStorage: StorageWritable {
             }
         }
         
-        try store.save()
+        try save()
     }
     
     func deleteProject(with id: UUID) throws {
-        try store.deleteProject(with: id)
-        try store.save()
+        do {
+            try store.deleteProject(with: id)
+        } catch {
+            throw StorageError.deleteFailed(id)
+        }
+        try save()
     }
     
     // MARK: - ProjectItems
@@ -110,7 +125,7 @@ extension CoreDataStorage: StorageWritable {
         let storeProjectItem = store.newProjectItem()
         factory.copyProjectItemValues(from: projectItem, to: storeProjectItem)
         storeProject.addToProjectItems(storeProjectItem)
-        try store.save()
+        try save()
     }
     
     private func updateProjectItem(_ projectItem: Storage.ProjectItem) throws {
@@ -123,11 +138,15 @@ extension CoreDataStorage: StorageWritable {
         }
         
         factory.copyProjectItemValues(from: projectItem, to: storeProjectItem)
-        try store.save()
+        try save()
     }
     
     private func deleteProjectItem(with id: UUID) throws {
-        try store.deleteProjectItem(with: id)
-        try store.save()
+        do {
+            try store.deleteProjectItem(with: id)
+        } catch {
+            throw StorageError.deleteFailed(id)
+        }
+        try save()
     }
 }

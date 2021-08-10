@@ -11,6 +11,9 @@ import Persistence
 
 enum StorageError: Error, Equatable {
     case objectNotFound(UUID)
+    case missingValue
+    case deleteFailed(UUID)
+    case saveFailed
     case storeThrewError
     case missingID
 }

@@ -20,7 +20,6 @@ class CoreDataStorageWriteTests: XCTestCase {
     func testAddItem() throws {
         // Given
         let id = UUID()
-        let date = Date()
         let storageItem = makeStorageItem(
             id: id,
             name: "Some name",
@@ -38,6 +37,23 @@ class CoreDataStorageWriteTests: XCTestCase {
         XCTAssertEqual(storeItems.count, 1)
     }
     
+    func testUpdateItem() throws {
+        // Given
+        let givenID = UUID()
+        let storageItem = makeStorageItem(id: givenID, name: "Name", count: nil)
+        try storage.addItem(storageItem)
+        let newItem = makeStorageItem(id: givenID, name: "New Name", count: 5)
+        
+        // When
+        try storage.updateItem(newItem)
+        
+        // Then
+        let storeItem = try store.getItem(with: givenID)
+        XCTAssertEqual(storeItem?.id, givenID)
+        XCTAssertEqual(storeItem?.name, "New Name")
+        XCTAssertEqual(storeItem?.count, 5)
+    }
+    
     func testUpdateItemMissingID() {
         // Given
         let storageItem = makeStorageItem(id: nil)
@@ -46,11 +62,36 @@ class CoreDataStorageWriteTests: XCTestCase {
         XCTAssertThrowsError(try storage.updateItem(storageItem))
     }
     
+    func testUpdateItemObjectNotFound() {
+        // Given
+        let randomID = UUID()
+        let storageItem = makeStorageItem(id: randomID)
+        
+        // When/Then
+        XCTAssertThrowsError(try storage.updateItem(storageItem)) { error in
+            XCTAssertEqual(error as? StorageError, .objectNotFound(randomID))
+        }
+    }
+    
+    func testDeleteItem() throws {
+        // Given
+        let givenID = UUID()
+        let storageItem = makeStorageItem(id: givenID)
+        try storage.addItem(storageItem)
+        XCTAssertNoThrow(try storage.getItem(with: givenID))
+        
+        // When
+        try storage.deleteItem(with: givenID)
+        
+        // Then
+        XCTAssertThrowsError(try storage.getItem(with: givenID))
+    }
+    
     // MARK: - Helpers
     func makeStorageItem(
         id: UUID? = nil,
         name: String? = nil,
-        count: Int? = nil) -> Storage.Item {
+        count: Int64? = nil) -> Storage.Item {
         
         Storage.Item(
             id: id,
