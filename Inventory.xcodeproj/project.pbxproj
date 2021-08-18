@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A52505C926CDCAD8006081EA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A52505C826CDCA97006081EA /* LaunchScreen.storyboard */; };
 		A529287F26C330B800EEF23B /* TestSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = A529287E26C330B800EEF23B /* TestSupport.swift */; };
 		A529288026C33B6800EEF23B /* CoreDataStorage+ReadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D910CE26B9CCC500AAF35E /* CoreDataStorage+ReadTests.swift */; };
 		A529288126C340B700EEF23B /* CoreDataStorage+WriteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D910D426B9CCC500AAF35E /* CoreDataStorage+WriteTests.swift */; };
@@ -127,6 +128,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A52505C826CDCA97006081EA /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A52505E726CDCD58006081EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A529287E26C330B800EEF23B /* TestSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSupport.swift; sourceTree = "<group>"; };
 		A53F2D3326BAF2B300F261EA /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		A53F2D3726BAF53900F261EA /* ViewProjectsOverviewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProjectsOverviewPresenter.swift; sourceTree = "<group>"; };
@@ -241,6 +244,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A52505C526CDC9EC006081EA /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				A52505C826CDCA97006081EA /* LaunchScreen.storyboard */,
+			);
+			path = LaunchScreen;
+			sourceTree = "<group>";
+		};
 		A53F2D3526BAF50A00F261EA /* ViewProjectsOverview */ = {
 			isa = PBXGroup;
 			children = (
@@ -318,8 +329,10 @@
 		A5D9105026B98F0800AAF35E /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				A52505E726CDCD58006081EA /* Info.plist */,
 				A5D9102226B98E7900AAF35E /* InventoryApp.swift */,
 				A5D9102626B98E7A00AAF35E /* Assets.xcassets */,
+				A52505C526CDC9EC006081EA /* LaunchScreen */,
 				A5D9102826B98E7A00AAF35E /* Preview Content */,
 			);
 			path = Main;
@@ -681,6 +694,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A52505C926CDCAD8006081EA /* LaunchScreen.storyboard in Resources */,
 				A5D9102A26B98E7A00AAF35E /* Preview Assets.xcassets in Resources */,
 				A5D9102726B98E7A00AAF35E /* Assets.xcassets in Resources */,
 			);
@@ -958,6 +972,7 @@
 				DEVELOPMENT_TEAM = G92MFAN3ZT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/Inventory/Application/Main/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -989,6 +1004,7 @@
 				DEVELOPMENT_TEAM = G92MFAN3ZT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/Inventory/Application/Main/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1069,6 +1085,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1100,6 +1117,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
