@@ -955,7 +955,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Inventory/Application/Main/Preview Content\"";
-				DEVELOPMENT_TEAM = X7WM6K9T24;
+				DEVELOPMENT_TEAM = G92MFAN3ZT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -986,7 +986,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Inventory/Application/Main/Preview Content\"";
-				DEVELOPMENT_TEAM = X7WM6K9T24;
+				DEVELOPMENT_TEAM = G92MFAN3ZT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
