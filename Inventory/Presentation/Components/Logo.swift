@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct Logo: View {
+    @State private var isShowingEasterEgg = false
+    
     var body: some View {
         Circle()
             .fill(Color.appTintColor)
@@ -18,6 +20,16 @@ struct Logo: View {
                     .font(Font(name: "CourierNewPS-BoldMT", size: 26))
                     .offset(y: 1)
             }
+            .onTapGesture(perform: onTap)
+            .sheet(isPresented: $isShowingEasterEgg) {
+                LogoEasterEgg()
+            }
+    }
+    
+    // MARK: - Interacting
+    
+    func onTap() {
+        isShowingEasterEgg = true
     }
 }
 
