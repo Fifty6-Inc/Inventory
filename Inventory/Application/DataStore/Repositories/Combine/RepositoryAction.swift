@@ -3,7 +3,7 @@
 //  Inventory
 //
 //  Created by Mikael Weiss on 2/17/21.
-//  Copyright © 2021 Fifty6 Incorporated. All rights reserved.
+//  Copyright © 2021 Fifty6, Inc. All rights reserved.
 //
 
 import Foundation
