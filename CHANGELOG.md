@@ -15,6 +15,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Updated copyright comments in files
+- Updated copyright comments in files.
 
 ## [0.1.0] - 08-19-2021
