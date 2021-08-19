@@ -208,6 +208,7 @@
 		A5DC0B9026BB4C6400D82987 /* ViewProjectDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProjectDetailsInteractor.swift; sourceTree = "<group>"; };
 		A5DC0B9126BB4C6400D82987 /* ViewProjectDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProjectDetailsView.swift; sourceTree = "<group>"; };
 		A5DC0B9226BB4C6400D82987 /* ViewProjectDetailsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProjectDetailsService.swift; sourceTree = "<group>"; };
+		A5F398B826CF0CE200CD7734 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -282,6 +283,7 @@
 		A5D9101626B98E7900AAF35E = {
 			isa = PBXGroup;
 			children = (
+				A5F398B826CF0CE200CD7734 /* CHANGELOG.md */,
 				A5D9102126B98E7900AAF35E /* Inventory */,
 				A5D9103726B98E7A00AAF35E /* InventoryTests */,
 				A5D9109526B9C87D00AAF35E /* Persistence */,
