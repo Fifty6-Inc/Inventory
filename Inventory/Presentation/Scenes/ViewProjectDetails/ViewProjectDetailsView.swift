@@ -17,6 +17,13 @@ extension ViewProjectDetails {
         var body: some View {
             ZStack {
                 ScrollView {
+                    ProjectTitleBar(
+                        title: viewModel.projectName,
+                        onBack: didTapBack,
+                        onEdit: didTapEdit)
+                        .frame(maxHeight: .infinity, alignment: .top)
+                        .padding(.bottom)
+                    
                     ItemsGrid(
                         items: viewModel.items,
                         didTapItem: interactor.didTapItem(with:))
@@ -24,13 +31,7 @@ extension ViewProjectDetails {
                         .sheet(isPresented: $viewModel.showEditItem) {
                             EditItem.Scene().view(isPresented: $viewModel.showEditItem)
                         }
-                        .padding(.top, 50)
                 }
-                ProjectTitleBar(
-                    title: viewModel.projectName,
-                    onBack: didTapBack,
-                    onEdit: didTapEdit)
-                    .frame(maxHeight: .infinity, alignment: .top)
                 StandardButton(
                     title: Theme.buildProjectButtonTitle,
                     action: buildProject)
@@ -38,10 +39,7 @@ extension ViewProjectDetails {
                     .padding(.horizontal)
                     .padding(.bottom)
             }
-            .navigationBarTitleDisplayMode(.large)
-            .navigationTitle(viewModel.projectName)
-            .navigationBarBackButtonHidden(true)
-            .accentColor(Theme.tintColor)
+            .navigationBarHidden(true)
             .errorSheet($viewModel.error)
             .sheet(isPresented: $viewModel.showEditProject) {
                 EditProject.Scene().view(isPresented: $viewModel.showEditProject)

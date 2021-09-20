@@ -17,13 +17,11 @@ extension ViewProjectsOverview {
         var body: some View {
             NavigationView {
                 ScrollView {
-                    VStack {
-                        TitleBar(title: Theme.projectsTitle,
-                                 onAdd: didTapAdd)
-                        ProjectsGrid(projects: viewModel.projects,
-                                     didTapProject: didTapProject(with:))
-                        .padding(.horizontal)
-                    }
+                    TitleBar(title: Theme.projectsTitle,
+                             onAdd: didTapAdd)
+                    ProjectsGrid(projects: viewModel.projects,
+                                 didTapProject: didTapProject(with:))
+                    .padding(.horizontal)
                 }
                 .navigationBarHidden(true)
                 .errorSheet($viewModel.error)

@@ -17,13 +17,11 @@ extension ViewItemsOverview {
         var body: some View {
             NavigationView {
                 ScrollView {
-                    VStack {
-                        TitleBar(title: Theme.itemsTitle, onAdd: didTapAdd)
-                        ItemsGrid(
-                            items: viewModel.items,
-                            didTapItem: didTapItem(with:))
-                            .padding(.horizontal, 18)
-                    }
+                    TitleBar(title: Theme.itemsTitle, onAdd: didTapAdd)
+                    ItemsGrid(
+                        items: viewModel.items,
+                        didTapItem: didTapItem(with:))
+                        .padding(.horizontal, 18)
                 }
                 .navigationBarHidden(true)
                 .errorSheet($viewModel.error)
