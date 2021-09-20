@@ -80,6 +80,8 @@
 		A5DC0B9626BB4C6400D82987 /* ViewProjectDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DC0B9026BB4C6400D82987 /* ViewProjectDetailsInteractor.swift */; };
 		A5DC0B9726BB4C6400D82987 /* ViewProjectDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DC0B9126BB4C6400D82987 /* ViewProjectDetailsView.swift */; };
 		A5DC0B9826BB4C6400D82987 /* ViewProjectDetailsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DC0B9226BB4C6400D82987 /* ViewProjectDetailsService.swift */; };
+		A5E1C80226F931D300514CD7 /* TitleBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E1C80126F931D300514CD7 /* TitleBar.swift */; };
+		A5E1C80426F9372300514CD7 /* ProjectsGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E1C80326F9372300514CD7 /* ProjectsGrid.swift */; };
 		A5F398BB26CF0ECB00CD7734 /* LogoEasterEgg.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F398BA26CF0ECB00CD7734 /* LogoEasterEgg.swift */; };
 /* End PBXBuildFile section */
 
@@ -209,6 +211,8 @@
 		A5DC0B9026BB4C6400D82987 /* ViewProjectDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProjectDetailsInteractor.swift; sourceTree = "<group>"; };
 		A5DC0B9126BB4C6400D82987 /* ViewProjectDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProjectDetailsView.swift; sourceTree = "<group>"; };
 		A5DC0B9226BB4C6400D82987 /* ViewProjectDetailsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProjectDetailsService.swift; sourceTree = "<group>"; };
+		A5E1C80126F931D300514CD7 /* TitleBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleBar.swift; sourceTree = "<group>"; };
+		A5E1C80326F9372300514CD7 /* ProjectsGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsGrid.swift; sourceTree = "<group>"; };
 		A5F398B826CF0CE200CD7734 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		A5F398BA26CF0ECB00CD7734 /* LogoEasterEgg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoEasterEgg.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -390,8 +394,10 @@
 			children = (
 				A53F2D4926BAF64800F261EA /* DeleteButton.swift */,
 				A5DC0B8726BB230D00D82987 /* ItemsGrid.swift */,
+				A5E1C80326F9372300514CD7 /* ProjectsGrid.swift */,
 				A5D9107426B99A3500AAF35E /* Logo.swift */,
 				A5D9106E26B9968500AAF35E /* StandardButton.swift */,
+				A5E1C80126F931D300514CD7 /* TitleBar.swift */,
 				A5D9106926B9960300AAF35E /* ErrorSheet */,
 			);
 			path = Components;
@@ -764,6 +770,7 @@
 				A5D910D826B9CCF900AAF35E /* StorageToDomainTransformer.swift in Sources */,
 				A53F2D4226BAF5C200F261EA /* ViewProjectsOverviewScene.swift in Sources */,
 				A5D910DD26B9CCF900AAF35E /* CoreDataStorage+Read.swift in Sources */,
+				A5E1C80426F9372300514CD7 /* ProjectsGrid.swift in Sources */,
 				A5DC0B9626BB4C6400D82987 /* ViewProjectDetailsInteractor.swift in Sources */,
 				A5D9107226B9974600AAF35E /* StandardButton.swift in Sources */,
 				A53F2D4026BAF5C200F261EA /* ViewProjectsOverviewService.swift in Sources */,
@@ -775,6 +782,7 @@
 				A5D9105D26B9955C00AAF35E /* ViewItemsOverviewModels.swift in Sources */,
 				A5A78AC126C32C8A002120DE /* UINavigationController+Extensions.swift in Sources */,
 				A5D910DA26B9CCF900AAF35E /* CoreDataStorage+Write.swift in Sources */,
+				A5E1C80226F931D300514CD7 /* TitleBar.swift in Sources */,
 				A5D9105C26B9955C00AAF35E /* ViewItemsOverviewPresenter.swift in Sources */,
 				A5DC0B8826BB230D00D82987 /* ItemsGrid.swift in Sources */,
 				A5D9107526B99A3500AAF35E /* Logo.swift in Sources */,

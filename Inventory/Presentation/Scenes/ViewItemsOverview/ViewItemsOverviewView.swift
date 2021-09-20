@@ -17,38 +17,19 @@ extension ViewItemsOverview {
         var body: some View {
             NavigationView {
                 ScrollView {
-                    VStack(spacing: 10) {
-                        Text(Theme.itemsTitle)
-                            .font(.system(size: 56, weight: .heavy, design: .rounded))
-                            .frame(maxWidth: .infinity, alignment: .center)
+                    VStack {
+                        TitleBar(title: Theme.itemsTitle, onAdd: didTapAdd)
                         ItemsGrid(
                             items: viewModel.items,
                             didTapItem: didTapItem(with:))
+                            .padding(.horizontal, 18)
                     }
                 }
-                .padding(.horizontal)
-                .navigationBarTitleDisplayMode(.inline)
-                .navigationBarItems(trailing: addButton)
-                .toolbar {
-                    ToolbarItem(placement: .principal) {
-                        Logo()
-                    }
-                }
-                .navigationBarBackButtonHidden(true)
-                .accentColor(Theme.tintColor)
+                .navigationBarHidden(true)
                 .errorSheet($viewModel.error)
                 .sheet(isPresented: $viewModel.showEditItem) {
                     EditItem.Scene().view(isPresented: $viewModel.showEditItem)
                 }
-            }
-        }
-        
-        var addButton: some View {
-            Button(action: interactor.add) {
-                Image(systemName: "plus")
-                    .font(.system(size: 16, weight: .heavy, design: .rounded))
-                    .contentShape(Rectangle())
-                    .accentColor(Theme.tintColor)
             }
         }
     }
@@ -59,6 +40,10 @@ extension ViewItemsOverview {
 extension ViewItemsOverview.ContentView {
     func didTapItem(with id: UUID) {
         interactor.didTapItem(with: id)
+    }
+    
+    func didTapAdd() {
+        interactor.add()
     }
 }
 

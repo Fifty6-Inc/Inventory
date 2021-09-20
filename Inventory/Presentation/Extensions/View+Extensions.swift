@@ -32,11 +32,21 @@ extension View {
 
 extension View {
     /// Used to provide an inverse masking
-    public func inverseMask<M: View>(_ mask: () -> M) -> some View {
+    func inverseMask<M: View>(_ mask: () -> M) -> some View {
         ZStack {
             self
             mask()
                 .blendMode(.destinationOut)
         }.compositingGroup()
+    }
+}
+
+extension View {
+    /// Used to make link navigation read like sheet navigation
+    func navLink<Destination: View>(isActive: Binding<Bool>, destination: () -> Destination) -> some View {
+        ZStack {
+            self
+            NavigationLink(destination: destination(), isActive: isActive, label: { EmptyView() })
+        }
     }
 }

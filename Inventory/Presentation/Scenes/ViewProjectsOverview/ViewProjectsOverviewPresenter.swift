@@ -23,7 +23,7 @@ extension ViewProjectsOverview {
         
         func presentFetch(_ projects: [ViewProjectsOverview.ProjectDetails]) {
             viewModel.projects = projects.map {
-                ViewProjectsOverview.ProjectViewModel(
+                ProjectsGrid.Project(
                     id: $0.id,
                     name: $0.name)
             }

@@ -14,61 +14,25 @@ extension ViewProjectsOverview {
         @ObservedObject var viewModel: ViewModel
         let interactor: ViewProjectsOverviewInteracting
         
-        let layout = [
-            GridItem(.adaptive(minimum: 150))
-        ]
-        
         var body: some View {
             NavigationView {
                 ScrollView {
-                    VStack(spacing: 10) {
-                        Text(Theme.projectsTitle)
-                            .font(.system(size: 56, weight: .heavy, design: .rounded))
-                            .frame(maxWidth: .infinity, alignment: .center)
-                        LazyVGrid(columns: layout) {
-                            ForEach(viewModel.projects) { project in
-                                RoundedRectangle(cornerRadius: 16, style: .continuous)
-                                    .fill(Color.appTintColor)
-                                    .inverseMask {
-                                        VStack {
-                                            Text(project.name)
-                                        }
-                                    }
-                                    .frame(height: 150)
-                                    .onTapGesture {
-                                        didTapProject(with: project.id)
-                                    }
-                            }
-                        }
-                    }
-                    NavigationLink(
-                        destination: ViewProjectDetails.Scene().view(isPresented: $viewModel.showProjectDetails),
-                        isActive: $viewModel.showProjectDetails,
-                        label: { EmptyView() })
-                }
-                .padding(.horizontal)
-                .navigationBarTitleDisplayMode(.inline)
-                .navigationBarItems(trailing: addButton)
-                .toolbar {
-                    ToolbarItem(placement: .principal) {
-                        Logo()
+                    VStack {
+                        TitleBar(title: Theme.projectsTitle,
+                                 onAdd: didTapAdd)
+                        ProjectsGrid(projects: viewModel.projects,
+                                     didTapProject: didTapProject(with:))
+                        .padding(.horizontal)
                     }
                 }
-                .navigationBarBackButtonHidden(true)
-                .accentColor(Theme.tintColor)
+                .navigationBarHidden(true)
                 .errorSheet($viewModel.error)
                 .sheet(isPresented: $viewModel.showAddProject) {
                     EditProject.Scene().view(isPresented: $viewModel.showAddProject)
                 }
-            }
-        }
-        
-        var addButton: some View {
-            Button(action: interactor.add) {
-                Image(systemName: "plus")
-                    .font(.system(size: 16, weight: .heavy, design: .rounded))
-                    .contentShape(Rectangle())
-                    .accentColor(Theme.tintColor)
+                .navLink(isActive: $viewModel.showProjectDetails) {
+                    ViewProjectDetails.Scene().view(isPresented: $viewModel.showProjectDetails)
+                }
             }
         }
     }
@@ -79,6 +43,10 @@ extension ViewProjectsOverview {
 extension ViewProjectsOverview.ContentView {
     func didTapProject(with id: UUID) {
         interactor.didTapProject(with: id)
+    }
+    
+    func didTapAdd() {
+        interactor.add()
     }
 }
 

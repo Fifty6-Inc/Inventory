@@ -10,13 +10,8 @@ import SwiftUI
 
 extension ViewProjectsOverview {
     
-    struct ProjectViewModel: Identifiable {
-        let id: UUID
-        let name: String
-    }
-    
     class ViewModel: ObservableObject {
-        @Published var projects = [ViewProjectsOverview.ProjectViewModel]()
+        @Published var projects = [ProjectsGrid.Project]()
         @Published var showAddProject = false
         @Published var showProjectDetails = false
         @Published var error: ErrorSheet.ViewModel?
