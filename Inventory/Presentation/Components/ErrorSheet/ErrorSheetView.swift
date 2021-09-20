@@ -94,7 +94,7 @@ struct ErrorSheet_Previews: PreviewProvider {
         @State private var viewModel: ErrorSheet.ViewModel? = .default
         
         var body: some View {
-            Color.appDeepBlue
+            Color.appTintColor
                 .ignoresSafeArea()
                 .onTapGesture {
                     viewModel = .default

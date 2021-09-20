@@ -13,7 +13,7 @@ struct StandardButton: View {
     let action: () -> Void
     var body: some View {
         Button(action: action) {
-            Color.appDeepBlue.cornerRadius(33)
+            Color.appTintColor.cornerRadius(33)
                 .frame(maxWidth: .infinity)
                 .frame(height: 64)
                 .inverseMask {
