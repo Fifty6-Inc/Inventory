@@ -50,3 +50,20 @@ extension View {
         }
     }
 }
+
+extension View {
+    func gradientNavBar() -> some View {
+        GeometryReader { geo in
+            ZStack {
+                self
+                LinearGradient(
+                    gradient: Gradient(colors: [.appWhite, .appWhite.opacity(0)]),
+                    startPoint: .top,
+                    endPoint: .bottom)
+                    .frame(height: geo.safeAreaInsets.top + 15)
+                    .position(x: geo.frame(in: .global).midX, y: 15)
+                    .ignoresSafeArea()
+            }
+        }
+    }
+}

@@ -394,8 +394,8 @@
 			children = (
 				A53F2D4926BAF64800F261EA /* DeleteButton.swift */,
 				A5DC0B8726BB230D00D82987 /* ItemsGrid.swift */,
-				A5E1C80326F9372300514CD7 /* ProjectsGrid.swift */,
 				A5D9107426B99A3500AAF35E /* Logo.swift */,
+				A5E1C80326F9372300514CD7 /* ProjectsGrid.swift */,
 				A5D9106E26B9968500AAF35E /* StandardButton.swift */,
 				A5E1C80126F931D300514CD7 /* TitleBar.swift */,
 				A5D9106926B9960300AAF35E /* ErrorSheet */,

@@ -34,6 +34,7 @@ extension ViewProjectsOverview {
                     ViewProjectDetails.Scene().view(isPresented: $viewModel.showProjectDetails)
                 }
             }
+            .gradientNavBar()
         }
     }
 }

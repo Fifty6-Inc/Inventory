@@ -26,7 +26,7 @@ struct TitleBar: View {
             Image(systemName: "plus")
                 .font(.system(size: 16, weight: .heavy, design: .rounded))
                 .contentShape(Rectangle())
-                .accentColor(Color.appDeepBlue)
+                .accentColor(Color.appTintColor)
                 .padding()
                 .background(
                     Circle()
