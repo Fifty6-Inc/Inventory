@@ -2,7 +2,7 @@
 //  CoreDataStore.swift
 //  Persistence
 //
-//  Created by Mikael Weiss on 4/29/21.
+//  Created by Mikael Weiss on 8/29/21.
 //  Copyright © 2021 Fifty6, Inc. All rights reserved.
 //
 

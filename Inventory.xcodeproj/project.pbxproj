@@ -82,6 +82,7 @@
 		A5DC0B9826BB4C6400D82987 /* ViewProjectDetailsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DC0B9226BB4C6400D82987 /* ViewProjectDetailsService.swift */; };
 		A5E1C80226F931D300514CD7 /* TitleBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E1C80126F931D300514CD7 /* TitleBar.swift */; };
 		A5E1C80426F9372300514CD7 /* ProjectsGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E1C80326F9372300514CD7 /* ProjectsGrid.swift */; };
+		A5E1C80626F9461500514CD7 /* ProjectTitleBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E1C80526F9461500514CD7 /* ProjectTitleBar.swift */; };
 		A5F398BB26CF0ECB00CD7734 /* LogoEasterEgg.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F398BA26CF0ECB00CD7734 /* LogoEasterEgg.swift */; };
 /* End PBXBuildFile section */
 
@@ -213,6 +214,7 @@
 		A5DC0B9226BB4C6400D82987 /* ViewProjectDetailsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProjectDetailsService.swift; sourceTree = "<group>"; };
 		A5E1C80126F931D300514CD7 /* TitleBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleBar.swift; sourceTree = "<group>"; };
 		A5E1C80326F9372300514CD7 /* ProjectsGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsGrid.swift; sourceTree = "<group>"; };
+		A5E1C80526F9461500514CD7 /* ProjectTitleBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTitleBar.swift; sourceTree = "<group>"; };
 		A5F398B826CF0CE200CD7734 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		A5F398BA26CF0ECB00CD7734 /* LogoEasterEgg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoEasterEgg.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -398,6 +400,7 @@
 				A5E1C80326F9372300514CD7 /* ProjectsGrid.swift */,
 				A5D9106E26B9968500AAF35E /* StandardButton.swift */,
 				A5E1C80126F931D300514CD7 /* TitleBar.swift */,
+				A5E1C80526F9461500514CD7 /* ProjectTitleBar.swift */,
 				A5D9106926B9960300AAF35E /* ErrorSheet */,
 			);
 			path = Components;
@@ -670,6 +673,7 @@
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1300;
 				LastUpgradeCheck = 1300;
+				ORGANIZATIONNAME = "Fifty6, Inc.";
 				TargetAttributes = {
 					A5D9101E26B98E7900AAF35E = {
 						CreatedOnToolsVersion = 13.0;
@@ -804,6 +808,7 @@
 				A5D9107726B99AC300AAF35E /* View+Extensions.swift in Sources */,
 				A5DC0B9426BB4C6400D82987 /* ViewProjectDetailsModels.swift in Sources */,
 				A53F2D4D26BAFCB700F261EA /* ProjectRepository.swift in Sources */,
+				A5E1C80626F9461500514CD7 /* ProjectTitleBar.swift in Sources */,
 				A53F2D4526BAF5C200F261EA /* ViewProjectsOverviewPresenter.swift in Sources */,
 				A5D9107126B9973900AAF35E /* Color+Extensions.swift in Sources */,
 				A5D9108526B9B40000AAF35E /* EditItemView.swift in Sources */,
