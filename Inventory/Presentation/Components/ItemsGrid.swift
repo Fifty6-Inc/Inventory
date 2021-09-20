@@ -50,19 +50,18 @@ struct ItemsGrid: View {
                         didTapItem(item.id)
                     }
             }
-            RoundedRectangle(cornerRadius: 16, style: .continuous)
-                .fill(Color.appTintColor)
-                .inverseMask {
-                    Image(systemName: "plus.circle.fill")
-                        .font(.system(.largeTitle))
-                }
-                .frame(height: 150)
-                .frame(maxWidth: .infinity)
-                .foregroundColor(.appTintColor)
-                .onTapGesture(perform: didTapAdd ?? {})
-                .if(didTapAdd == nil) {
-                    $0.hidden()
-                }
+            if let didTapAdd = didTapAdd {
+                RoundedRectangle(cornerRadius: 16, style: .continuous)
+                    .fill(Color.appTintColor)
+                    .inverseMask {
+                        Image(systemName: "plus.circle.fill")
+                            .font(.system(.largeTitle))
+                    }
+                    .frame(height: 150)
+                    .frame(maxWidth: .infinity)
+                    .foregroundColor(.appTintColor)
+                    .onTapGesture(perform: didTapAdd)
+            }
         }
     }
 }
