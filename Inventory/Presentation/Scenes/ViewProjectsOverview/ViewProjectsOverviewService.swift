@@ -63,7 +63,7 @@ extension ViewProjectsOverview {
         }
         
         func prepareRouteToAddProject() {
-            EditProject.prepareIncomingRoute(with: nil)
+            EditProject.prepareIncomingRoute(with: nil, onDelete: {})
         }
     }
     
@@ -92,11 +92,11 @@ extension ViewProjectsOverview {
         }
         
         func prepareRouteToProject(with id: UUID) {
-            EditProject.prepareIncomingRoute(with: id)
+            EditProject.prepareIncomingRoute(with: id, onDelete: {})
         }
         
         func prepareRouteToAddProject() {
-            EditProject.prepareIncomingRoute(with: nil)
+            EditProject.prepareIncomingRoute(with: nil, onDelete: {})
         }
     }
 }

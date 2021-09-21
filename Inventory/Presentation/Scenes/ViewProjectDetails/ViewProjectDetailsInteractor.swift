@@ -52,7 +52,7 @@ extension ViewProjectDetails {
         }
         
         func edit() {
-            service.prepareRouteToEditProject()
+            service.prepareRouteToEditProject(onDelete: dismiss)
             presenter.presentPrepareRouteToEditProject()
         }
         

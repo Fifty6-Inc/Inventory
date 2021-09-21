@@ -32,7 +32,8 @@ enum EditProject {
             return Service(
                 projectFetcher: projectFetcher,
                 itemsFetcher: itemsFetcher,
-                projectID: input.projectID)
+                projectID: input.projectID,
+                onDelete: input.onDelete)
         }
     }
     
@@ -40,9 +41,10 @@ enum EditProject {
     
     private struct Input {
         let projectID: UUID?
+        let onDelete: () -> Void
     }
     private static var input: Input?
-    static func prepareIncomingRoute(with projectID: UUID?) {
-        input = Input(projectID: projectID)
+    static func prepareIncomingRoute(with projectID: UUID?, onDelete: @escaping () -> Void) {
+        input = Input(projectID: projectID, onDelete: onDelete)
     }
 }

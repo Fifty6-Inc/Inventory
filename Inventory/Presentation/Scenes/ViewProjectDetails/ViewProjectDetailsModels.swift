@@ -38,6 +38,10 @@ extension ViewProjectDetails {
         static func displayError(for error: ServiceError) -> ErrorSheet.ViewModel {
             switch error {
             case .fetchFailed: return .fetchFailed
+            case .buildFailed: return ErrorSheet.ViewModel(
+                title: "Failed to build",
+                body: "If you're seeing this, something really weird happened. Try again.",
+                dismissButtonTitle: "Okay")
             }
         }
         

@@ -69,6 +69,7 @@ extension EditProject {
         private let projectFetcher: EditProjectProjectFetching
         private let itemsFetcher: EditProjectItemsFetching
         private let projectID: UUID?
+        private let onDelete: () -> Void
         
         var updatePublisher: RepositoryPublisher {
             itemsFetcher.updatePublisher.eraseToAnyPublisher()
@@ -76,11 +77,13 @@ extension EditProject {
         
         init(projectFetcher: EditProjectProjectFetching,
              itemsFetcher: EditProjectItemsFetching,
-             projectID: UUID?) {
+             projectID: UUID?,
+             onDelete: @escaping () -> Void) {
             
             self.projectFetcher = projectFetcher
             self.itemsFetcher = itemsFetcher
             self.projectID = projectID
+            self.onDelete = onDelete
         }
         
         private var project: Project?
@@ -197,6 +200,7 @@ extension EditProject {
             do {
                 if let project = project {
                     try projectFetcher.deleteProject(project.id)
+                    onDelete()
                 } else {
                     throw ServiceError.deleteFailed
                 }

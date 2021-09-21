@@ -11,7 +11,7 @@ import Foundation
 protocol ViewProjectDetailsService {
     var updatePublisher: RepositoryPublisher { get }
     func fetchProject() throws -> ViewProjectDetails.ProjectInfo
-    func prepareRouteToEditProject()
+    func prepareRouteToEditProject(onDelete: @escaping () -> Void)
     func prepareRouteToEditItemCount(with id: UUID)
     func buildProject() throws
 }
@@ -47,6 +47,7 @@ extension ViewProjectDetails {
     
     enum ServiceError: Swift.Error {
         case fetchFailed
+        case buildFailed
     }
     
     class Service: ViewProjectDetailsService {
@@ -93,8 +94,8 @@ extension ViewProjectDetails {
             }
         }
         
-        func prepareRouteToEditProject() {
-            EditProject.prepareIncomingRoute(with: projectID)
+        func prepareRouteToEditProject(onDelete: @escaping () -> Void) {
+            EditProject.prepareIncomingRoute(with: projectID, onDelete: onDelete)
         }
         
         func prepareRouteToEditItemCount(with id: UUID) {
@@ -104,11 +105,11 @@ extension ViewProjectDetails {
         func buildProject() throws {
             let project = try projectFetcher.project(withID: projectID)
             guard let projectItems = project?.projectItems else {
-                throw ServiceError.fetchFailed
+                throw ServiceError.buildFailed
             }
             for projectItem in projectItems {
                 guard let item = try itemFetcher.item(withID: projectItem.itemID) else {
-                    throw ServiceError.fetchFailed
+                    throw ServiceError.buildFailed
                 }
                 let newCount = item.count - projectItem.numberRequiredPerBuild
                 try item.set(count: newCount)
@@ -133,8 +134,8 @@ extension ViewProjectDetails {
                 ])
         }
         
-        func prepareRouteToEditProject() {
-            EditProject.prepareIncomingRoute(with: nil)
+        func prepareRouteToEditProject(onDelete: @escaping () -> Void) {
+            EditProject.prepareIncomingRoute(with: nil, onDelete: onDelete)
         }
         
         func prepareRouteToEditItemCount(with id: UUID) {

@@ -43,11 +43,22 @@ extension View {
 
 extension View {
     /// Used to make link navigation read like sheet navigation
-    func navLink<Destination: View>(isActive: Binding<Bool>, destination: () -> Destination) -> some View {
+    func navLink<Destination: View>(isActive: Binding<Bool>, destination: @escaping () -> Destination) -> some View {
         ZStack {
             self
-            NavigationLink(destination: destination(), isActive: isActive, label: { EmptyView() })
+            NavigationLink(destination: LazyView(destination()), isActive: isActive, label: { EmptyView() })
         }
+    }
+}
+/// Used to fix issue where view inside NavigationLink is initilized before the link is clicked on
+/// See more [here](https://stackoverflow.com/questions/57594159/swiftui-navigationlink-loads-destination-view-immediately-without-clicking)
+private struct LazyView<Content: View>: View {
+    let build: () -> Content
+    init(_ build: @autoclosure @escaping () -> Content) {
+        self.build = build
+    }
+    var body: Content {
+        build()
     }
 }
 
