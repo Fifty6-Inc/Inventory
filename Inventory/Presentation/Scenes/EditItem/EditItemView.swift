@@ -79,6 +79,13 @@ extension EditItem {
             private var dragGesture: some Gesture {
                 DragGesture(minimumDistance: 0, coordinateSpace: .global)
                     .onEnded { value in
+                        if offset < 1 && offset > -1 {
+                            if negative {
+                                onChange(-1)
+                            } else {
+                                onChange(1)
+                            }
+                        }
                         withAnimation {
                             offset = 0
                         }
