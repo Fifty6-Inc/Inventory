@@ -44,7 +44,9 @@ struct ItemsGrid: View {
                             if let numberPerBuild = item.numberPerBuild {
                                 Text(numberPerBuild)
                             }
-                        }.foregroundColor(.appWhite)
+                        }
+                            .font(.title2)
+                            .foregroundColor(.appWhite)
                     )
                     .frame(height: 150)
                     .onTapGesture {

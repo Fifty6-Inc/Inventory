@@ -33,6 +33,7 @@ struct ProjectsGrid: View {
                 RoundedRectangle(cornerRadius: 16, style: .continuous)
                     .fill(Color.appTintColor)
                     .overlay(Text(item.name))
+                    .font(.title2)
                     .foregroundColor(.appWhite)
                     .frame(height: 150)
                     .onTapGesture {
