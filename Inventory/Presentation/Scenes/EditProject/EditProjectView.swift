@@ -49,6 +49,8 @@ extension EditProject {
                                 .padding(.horizontal)
                                 .transition(.opacity.animation(.easeIn))
                         }
+                        
+                        Spacer().frame(height: 64)
                     }
                 }
                 .navigationBarTitleDisplayMode(.large)
@@ -68,7 +70,8 @@ extension EditProject {
                     AllItemsGrid(
                         isShowing: $showAddItemSheet,
                         items: viewModel.allItems,
-                        addProjectItem: addProjectItem(with:))
+                        addProjectItem: addProjectItem(with:),
+                        addItemAndProjectItem: addItemAndProjectItem(with:))
                 }
             }
         }
@@ -171,7 +174,10 @@ extension EditProject.ContentView {
     
     func addProjectItem(with request: EditProject.AddProjectItem.Request) {
         interactor.addProjectItem(with: request)
-        showAddItemSheet = false
+    }
+    
+    func addItemAndProjectItem(with request: EditProject.AddItemAndProjectItem.Request) {
+        interactor.addItemAndProjectItem(with: request)
     }
 }
 

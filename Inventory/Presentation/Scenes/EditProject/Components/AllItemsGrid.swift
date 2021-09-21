@@ -18,6 +18,7 @@ extension EditProject {
         @Binding var isShowing: Bool
         let items: [ItemsGrid.Item]
         let addProjectItem: (AddProjectItem.Request) -> Void
+        let addItemAndProjectItem: (AddItemAndProjectItem.Request) -> Void
         
         private var itemName: String {
             let firstItem = items.first { item in
@@ -53,7 +54,7 @@ extension EditProject {
                                 .padding(.bottom)
                         }
                         .sheet(isPresented: $showAddItem) {
-                            EditItem.Scene().view(isPresented: $showAddItem)
+                            AddNewProjectItem.Scene().view(isPresented: $showAddItem)
                         }
                     }
                 }
@@ -68,7 +69,7 @@ extension EditProject {
         
         var cancelButton: some View {
             Button(action: dismiss) {
-                Text(Theme.cancelButtonTitle)
+                Text(Theme.doneButtonTitle)
                     .accentColor(Theme.tintColor)
             }
         }
@@ -93,11 +94,16 @@ extension EditProject {
             addProjectItem(request)
             
             showNumberPerBuildSheet = false
-            dismiss()
         }
         
         func didTapAddItem() {
-            EditItem.prepareIncomingRoute(with: nil)
+            AddNewProjectItem.prepareIncomingRoute { itemInfo in
+                let request = AddItemAndProjectItem.Request(
+                    name: itemInfo.name,
+                    count: itemInfo.count,
+                    numberRequiredPerBuild: itemInfo.numberRequiredPerBuild)
+                addItemAndProjectItem(request)
+            }
             showAddItem = true
         }
     }
@@ -105,6 +111,6 @@ extension EditProject {
 
 struct AllItemsGrid_Previews: PreviewProvider {
     static var previews: some View {
-        EditProject.AllItemsGrid(isShowing: .constant(true), items: [], addProjectItem: { _ in })
+        EditProject.AllItemsGrid(isShowing: .constant(true), items: [], addProjectItem: { _ in }, addItemAndProjectItem: { _ in })
     }
 }

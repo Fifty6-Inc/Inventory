@@ -16,6 +16,7 @@ protocol EditProjectService {
     func validateName(_ value: String) throws
     func canSave() -> Bool
     func addProjectItem(with id: UUID, numberRequiredPerBuild: Int) throws
+    func addItemAndProjectItem(itemName: String, count: Int, numberRequiredPerBuild: Int)
     func removeItem(with id: UUID)
     func save() throws
     func delete() throws
@@ -32,6 +33,7 @@ extension MainProjectRepository: EditProjectProjectFetching { }
 protocol EditProjectItemsFetching {
     func allItems() throws -> [Item]
     func item(withID: UUID) throws -> Item?
+    func addItem(_ item: Item) throws
 }
 extension MainItemRepository: EditProjectItemsFetching { }
 
@@ -84,6 +86,7 @@ extension EditProject {
         private var name: String?
         private var items = [ItemInfo]()
         private var allItems = [Item]()
+        private var itemsThatAreNotYetInTheRepository = [Item]()
         
         func fetchProject() throws -> ProjectInfo? {
             if let projectID = projectID {
@@ -155,6 +158,18 @@ extension EditProject {
             }
         }
         
+        func addItemAndProjectItem(itemName: String, count: Int, numberRequiredPerBuild: Int) {
+            let item = Item(name: itemName, count: count)
+            itemsThatAreNotYetInTheRepository.append(item)
+            let itemInfo = ItemInfo(
+                id: UUID(),
+                itemID: item.id,
+                name: item.name,
+                count: item.count,
+                numberRequiredPerBuild: numberRequiredPerBuild)
+            items.append(itemInfo)
+        }
+        
         func removeItem(with id: UUID) {
             items.removeAll(where: { $0.itemID == id })
         }
@@ -164,6 +179,10 @@ extension EditProject {
         }
         
         func save() throws {
+            try itemsThatAreNotYetInTheRepository.forEach {
+                try itemsFetcher.addItem($0)
+            }
+            
             if let name = name {
                 do {
                     if let project = project {
@@ -272,6 +291,8 @@ extension EditProject {
         }
         
         func addProjectItem(with id: UUID, numberRequiredPerBuild: Int) throws { }
+        
+        func addItemAndProjectItem(itemName: String, count: Int, numberRequiredPerBuild: Int) { }
         
         func removeItem(with id: UUID) { }
     }

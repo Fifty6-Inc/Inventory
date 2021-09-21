@@ -21,6 +21,12 @@
 		A53F2D4A26BAF64800F261EA /* DeleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53F2D4926BAF64800F261EA /* DeleteButton.swift */; };
 		A53F2D4D26BAFCB700F261EA /* ProjectRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53F2D4B26BAFBFB00F261EA /* ProjectRepository.swift */; };
 		A53F2D5026BAFCE800F261EA /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53F2D4F26BAFCE800F261EA /* Project.swift */; };
+		A53FA4D826FA920C004F9EDF /* AddNewProjectItemInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53FA4D426FA8BA3004F9EDF /* AddNewProjectItemInteractor.swift */; };
+		A53FA4D926FA920C004F9EDF /* AddNewProjectItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53FA4D526FA8BA4004F9EDF /* AddNewProjectItemView.swift */; };
+		A53FA4DA26FA920C004F9EDF /* AddNewProjectItemPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53FA4D326FA8BA3004F9EDF /* AddNewProjectItemPresenter.swift */; };
+		A53FA4DB26FA920C004F9EDF /* AddNewProjectItemScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53FA4D726FA8BA4004F9EDF /* AddNewProjectItemScene.swift */; };
+		A53FA4DC26FA920C004F9EDF /* AddNewProjectItemService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53FA4D226FA8BA3004F9EDF /* AddNewProjectItemService.swift */; };
+		A53FA4DD26FA920C004F9EDF /* AddNewProjectItemModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53FA4D626FA8BA4004F9EDF /* AddNewProjectItemModels.swift */; };
 		A573FC7E26BC572C00FDCE76 /* ProjectItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A573FC7D26BC572C00FDCE76 /* ProjectItem.swift */; };
 		A5A78ABF26C316E3002120DE /* NumberPerBuild.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A78ABE26C316E3002120DE /* NumberPerBuild.swift */; };
 		A5A78AC126C32C8A002120DE /* UINavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A78AC026C32C8A002120DE /* UINavigationController+Extensions.swift */; };
@@ -144,6 +150,12 @@
 		A53F2D4B26BAFBFB00F261EA /* ProjectRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectRepository.swift; sourceTree = "<group>"; };
 		A53F2D4C26BAFBFB00F261EA /* ProjectRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectRepositoryTests.swift; sourceTree = "<group>"; };
 		A53F2D4F26BAFCE800F261EA /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		A53FA4D226FA8BA3004F9EDF /* AddNewProjectItemService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewProjectItemService.swift; sourceTree = "<group>"; };
+		A53FA4D326FA8BA3004F9EDF /* AddNewProjectItemPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewProjectItemPresenter.swift; sourceTree = "<group>"; };
+		A53FA4D426FA8BA3004F9EDF /* AddNewProjectItemInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewProjectItemInteractor.swift; sourceTree = "<group>"; };
+		A53FA4D526FA8BA4004F9EDF /* AddNewProjectItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewProjectItemView.swift; sourceTree = "<group>"; };
+		A53FA4D626FA8BA4004F9EDF /* AddNewProjectItemModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewProjectItemModels.swift; sourceTree = "<group>"; };
+		A53FA4D726FA8BA4004F9EDF /* AddNewProjectItemScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewProjectItemScene.swift; sourceTree = "<group>"; };
 		A573FC7D26BC572C00FDCE76 /* ProjectItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectItem.swift; sourceTree = "<group>"; };
 		A5A78ABE26C316E3002120DE /* NumberPerBuild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPerBuild.swift; sourceTree = "<group>"; };
 		A5A78AC026C32C8A002120DE /* UINavigationController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extensions.swift"; sourceTree = "<group>"; };
@@ -282,6 +294,19 @@
 				A5DC0B8926BB447200D82987 /* Components */,
 			);
 			path = EditProject;
+			sourceTree = "<group>";
+		};
+		A53FA4D126FA8B84004F9EDF /* AddNewProjectItem */ = {
+			isa = PBXGroup;
+			children = (
+				A53FA4D426FA8BA3004F9EDF /* AddNewProjectItemInteractor.swift */,
+				A53FA4D626FA8BA4004F9EDF /* AddNewProjectItemModels.swift */,
+				A53FA4D326FA8BA3004F9EDF /* AddNewProjectItemPresenter.swift */,
+				A53FA4D726FA8BA4004F9EDF /* AddNewProjectItemScene.swift */,
+				A53FA4D226FA8BA3004F9EDF /* AddNewProjectItemService.swift */,
+				A53FA4D526FA8BA4004F9EDF /* AddNewProjectItemView.swift */,
+			);
+			path = AddNewProjectItem;
 			sourceTree = "<group>";
 		};
 		A5D9101626B98E7900AAF35E = {
@@ -545,6 +570,7 @@
 			children = (
 				A5DC0B8A26BB448700D82987 /* AllItemsGrid.swift */,
 				A5A78ABE26C316E3002120DE /* NumberPerBuild.swift */,
+				A53FA4D126FA8B84004F9EDF /* AddNewProjectItem */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -740,6 +766,7 @@
 				A53F2D4126BAF5C200F261EA /* ViewProjectsOverviewInteractor.swift in Sources */,
 				A5D910D726B9CCF900AAF35E /* CoreDataStorage.swift in Sources */,
 				A5DC0B8B26BB448700D82987 /* AllItemsGrid.swift in Sources */,
+				A53FA4DB26FA920C004F9EDF /* AddNewProjectItemScene.swift in Sources */,
 				A5D9108626B9B40000AAF35E /* EditItemService.swift in Sources */,
 				A5D9106C26B9966500AAF35E /* ErrorSheetModels.swift in Sources */,
 				A53F2D4A26BAF64800F261EA /* DeleteButton.swift in Sources */,
@@ -761,11 +788,13 @@
 				A5D910DD26B9CCF900AAF35E /* CoreDataStorage+Read.swift in Sources */,
 				A5E1C80426F9372300514CD7 /* ProjectsGrid.swift in Sources */,
 				A5DC0B9626BB4C6400D82987 /* ViewProjectDetailsInteractor.swift in Sources */,
+				A53FA4DA26FA920C004F9EDF /* AddNewProjectItemPresenter.swift in Sources */,
 				A5D9107226B9974600AAF35E /* StandardButton.swift in Sources */,
 				A53F2D4026BAF5C200F261EA /* ViewProjectsOverviewService.swift in Sources */,
 				A5D9108426B9B40000AAF35E /* EditItemInteractor.swift in Sources */,
 				A5D9108126B9B40000AAF35E /* EditItemPresenter.swift in Sources */,
 				A5DC0B7F26BB1ADD00D82987 /* EditProjectService.swift in Sources */,
+				A53FA4DD26FA920C004F9EDF /* AddNewProjectItemModels.swift in Sources */,
 				A5DC0B8226BB1ADD00D82987 /* EditProjectPresenter.swift in Sources */,
 				A5D910DC26B9CCF900AAF35E /* ItemRepository.swift in Sources */,
 				A5D9105D26B9955C00AAF35E /* ViewItemsOverviewModels.swift in Sources */,
@@ -774,6 +803,7 @@
 				A5E1C80226F931D300514CD7 /* TitleBar.swift in Sources */,
 				A5D9105C26B9955C00AAF35E /* ViewItemsOverviewPresenter.swift in Sources */,
 				A5DC0B8826BB230D00D82987 /* ItemsGrid.swift in Sources */,
+				A53FA4DC26FA920C004F9EDF /* AddNewProjectItemService.swift in Sources */,
 				A5D910DE26B9CCF900AAF35E /* Storage.swift in Sources */,
 				A5D9108326B9B40000AAF35E /* EditItemScene.swift in Sources */,
 				A5DC0B9826BB4C6400D82987 /* ViewProjectDetailsService.swift in Sources */,
@@ -783,9 +813,11 @@
 				A5DC0B9726BB4C6400D82987 /* ViewProjectDetailsView.swift in Sources */,
 				A5DC0B8126BB1ADD00D82987 /* EditProjectModels.swift in Sources */,
 				A5DC0B9526BB4C6400D82987 /* ViewProjectDetailsScene.swift in Sources */,
+				A53FA4D826FA920C004F9EDF /* AddNewProjectItemInteractor.swift in Sources */,
 				A5D9108226B9B40000AAF35E /* EditItemModels.swift in Sources */,
 				A53F2D4326BAF5C200F261EA /* ViewProjectsOverviewModels.swift in Sources */,
 				A5D9106026B9955C00AAF35E /* ViewItemsOverviewView.swift in Sources */,
+				A53FA4D926FA920C004F9EDF /* AddNewProjectItemView.swift in Sources */,
 				A5D9102326B98E7900AAF35E /* InventoryApp.swift in Sources */,
 				A5D910D626B9CCF900AAF35E /* RepositoryAction.swift in Sources */,
 				A5D9105F26B9955C00AAF35E /* ViewItemsOverviewInteractor.swift in Sources */,

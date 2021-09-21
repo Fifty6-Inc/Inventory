@@ -24,6 +24,14 @@ extension EditProject {
         }
     }
     
+    enum AddItemAndProjectItem {
+        struct Request {
+            let name: String
+            let count: Int
+            let numberRequiredPerBuild: Int
+        }
+    }
+    
     class ViewModel: ObservableObject {
         let isPresented: Binding<Bool>
         @Published var canSave = false
@@ -46,6 +54,7 @@ extension EditProject {
         static let errorColor = Color.appErrorColor
         static let itemsTitle = Strings.itemsTitle
         static let cancelButtonTitle = Strings.cancelButtonTitle
+        static let doneButtonTitle = Strings.doneButtonTitle
         static let saveButtonTitle = Strings.saveButtonTitle
         static let deleteButtonTitle = Strings.deleteButtonTitle
         
@@ -72,6 +81,7 @@ extension EditProject {
         static let sceneAddTitle = "Add Project"
         static let sceneEditTitle = "Edit Project"
         static let cancelButtonTitle = "Cancel"
+        static let doneButtonTitle = "Done"
         static let saveButtonTitle = "Save"
         static let deleteButtonTitle = "Delete Project"
         static let projectNameTextFieldPlaceholder = "Project name"
