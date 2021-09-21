@@ -14,7 +14,8 @@ extension EditProject {
         @State private var selectedItemID: UUID? = nil
         @State private var showAddItem = false
         typealias Theme = EditProject.Theme
-        @Environment(\.presentationMode) var presentationMode
+        /// Using this instead of presentation mode because sometimes `presentationMode.wrappedValue.dismiss()` fails
+        @Binding var isShowing: Bool
         let items: [ItemsGrid.Item]
         let addProjectItem: (AddProjectItem.Request) -> Void
         
@@ -75,7 +76,7 @@ extension EditProject {
         // MARK: - Interacting
         
         func dismiss() {
-            presentationMode.wrappedValue.dismiss()
+            isShowing = false
         }
         
         func didTapItem(_ id: UUID) {
@@ -84,15 +85,15 @@ extension EditProject {
         }
         
         func onSave(_ numberRequiredPerBuild: Int) {
-            showNumberPerBuildSheet = false
-            dismiss()
-            
             guard let itemID = selectedItemID else { return }
             let request = AddProjectItem.Request(
                 itemID: itemID,
                 numberRequiredPerBuild: numberRequiredPerBuild)
             
             addProjectItem(request)
+            
+            showNumberPerBuildSheet = false
+            dismiss()
         }
         
         func didTapAddItem() {
@@ -104,6 +105,6 @@ extension EditProject {
 
 struct AllItemsGrid_Previews: PreviewProvider {
     static var previews: some View {
-        EditProject.AllItemsGrid(items: [], addProjectItem: { _ in })
+        EditProject.AllItemsGrid(isShowing: .constant(true), items: [], addProjectItem: { _ in })
     }
 }

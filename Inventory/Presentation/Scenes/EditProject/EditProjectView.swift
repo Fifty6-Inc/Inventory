@@ -66,6 +66,7 @@ extension EditProject {
                 }
                 .sheet(isPresented: $showAddItemSheet) {
                     AllItemsGrid(
+                        isShowing: $showAddItemSheet,
                         items: viewModel.allItems,
                         addProjectItem: addProjectItem(with:))
                 }
