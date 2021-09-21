@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct TitleBar: View {
+    @Environment(\.colorScheme) var colorScheme
     let title: String
     let onAdd: () -> Void
     
@@ -27,11 +28,11 @@ struct TitleBar: View {
             Image(systemName: "plus")
                 .font(.system(size: 16, weight: .heavy, design: .rounded))
                 .contentShape(Rectangle())
-                .accentColor(Color.appTintColor)
+                .accentColor(colorScheme == .light ? .appTintColor : .appWhite)
                 .padding()
                 .background(
                     Circle()
-                        .fill(Color.appWhite)
+                        .fill(colorScheme == .light ? Color.appWhite : Color.appDeepBlue)
                         .shadow(radius: 10)
                         .frame(maxHeight: 45)
                 )

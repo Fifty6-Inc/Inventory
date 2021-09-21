@@ -57,7 +57,7 @@ extension View {
             ZStack {
                 self
                 LinearGradient(
-                    gradient: Gradient(colors: [.appWhite, .appWhite.opacity(0)]),
+                    gradient: Gradient(colors: [.appBackground, .appBackground.opacity(0)]),
                     startPoint: .top,
                     endPoint: .bottom)
                     .frame(height: geo.safeAreaInsets.top + 15)
