@@ -84,14 +84,15 @@ extension EditProject {
         }
         
         func onSave(_ numberRequiredPerBuild: Int) {
+            showNumberPerBuildSheet = false
+            dismiss()
+            
             guard let itemID = selectedItemID else { return }
             let request = AddProjectItem.Request(
                 itemID: itemID,
                 numberRequiredPerBuild: numberRequiredPerBuild)
             
             addProjectItem(request)
-            showNumberPerBuildSheet = false
-            dismiss()
         }
         
         func didTapAddItem() {
