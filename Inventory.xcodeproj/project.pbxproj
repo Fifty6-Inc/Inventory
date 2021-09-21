@@ -37,7 +37,6 @@
 		A5D9106D26B9966500AAF35E /* ErrorSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D9106A26B9960300AAF35E /* ErrorSheetView.swift */; };
 		A5D9107126B9973900AAF35E /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D9107026B996B500AAF35E /* Color+Extensions.swift */; };
 		A5D9107226B9974600AAF35E /* StandardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D9106E26B9968500AAF35E /* StandardButton.swift */; };
-		A5D9107526B99A3500AAF35E /* Logo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D9107426B99A3500AAF35E /* Logo.swift */; };
 		A5D9107726B99AC300AAF35E /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D9107626B99AC300AAF35E /* View+Extensions.swift */; };
 		A5D9107926B99D8D00AAF35E /* Font+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D9107826B99D8D00AAF35E /* Font+Extensions.swift */; };
 		A5D9108126B9B40000AAF35E /* EditItemPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D9107B26B9B40000AAF35E /* EditItemPresenter.swift */; };
@@ -83,7 +82,6 @@
 		A5E1C80226F931D300514CD7 /* TitleBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E1C80126F931D300514CD7 /* TitleBar.swift */; };
 		A5E1C80426F9372300514CD7 /* ProjectsGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E1C80326F9372300514CD7 /* ProjectsGrid.swift */; };
 		A5E1C80626F9461500514CD7 /* ProjectTitleBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E1C80526F9461500514CD7 /* ProjectTitleBar.swift */; };
-		A5F398BB26CF0ECB00CD7734 /* LogoEasterEgg.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F398BA26CF0ECB00CD7734 /* LogoEasterEgg.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -165,7 +163,6 @@
 		A5D9106B26B9960300AAF35E /* ErrorSheetModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorSheetModels.swift; sourceTree = "<group>"; };
 		A5D9106E26B9968500AAF35E /* StandardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardButton.swift; sourceTree = "<group>"; };
 		A5D9107026B996B500AAF35E /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
-		A5D9107426B99A3500AAF35E /* Logo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logo.swift; sourceTree = "<group>"; };
 		A5D9107626B99AC300AAF35E /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		A5D9107826B99D8D00AAF35E /* Font+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extensions.swift"; sourceTree = "<group>"; };
 		A5D9107B26B9B40000AAF35E /* EditItemPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItemPresenter.swift; sourceTree = "<group>"; };
@@ -216,7 +213,6 @@
 		A5E1C80326F9372300514CD7 /* ProjectsGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsGrid.swift; sourceTree = "<group>"; };
 		A5E1C80526F9461500514CD7 /* ProjectTitleBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTitleBar.swift; sourceTree = "<group>"; };
 		A5F398B826CF0CE200CD7734 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
-		A5F398BA26CF0ECB00CD7734 /* LogoEasterEgg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoEasterEgg.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -396,7 +392,6 @@
 			children = (
 				A53F2D4926BAF64800F261EA /* DeleteButton.swift */,
 				A5DC0B8726BB230D00D82987 /* ItemsGrid.swift */,
-				A5D9107426B99A3500AAF35E /* Logo.swift */,
 				A5E1C80326F9372300514CD7 /* ProjectsGrid.swift */,
 				A5D9106E26B9968500AAF35E /* StandardButton.swift */,
 				A5E1C80126F931D300514CD7 /* TitleBar.swift */,
@@ -432,7 +427,6 @@
 				A53F2D3326BAF2B300F261EA /* MainTabView.swift */,
 				A5D9107A26B9B3E500AAF35E /* EditItem */,
 				A53F2D3626BAF51600F261EA /* EditProject */,
-				A5F398B926CF0EB300CD7734 /* LogoEasterEgg */,
 				A5D9105526B9953400AAF35E /* ViewItemsOverview */,
 				A5DC0B8C26BB4C4000D82987 /* ViewProjectDetails */,
 				A53F2D3526BAF50A00F261EA /* ViewProjectsOverview */,
@@ -566,14 +560,6 @@
 				A5DC0B9126BB4C6400D82987 /* ViewProjectDetailsView.swift */,
 			);
 			path = ViewProjectDetails;
-			sourceTree = "<group>";
-		};
-		A5F398B926CF0EB300CD7734 /* LogoEasterEgg */ = {
-			isa = PBXGroup;
-			children = (
-				A5F398BA26CF0ECB00CD7734 /* LogoEasterEgg.swift */,
-			);
-			path = LogoEasterEgg;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -757,7 +743,6 @@
 				A5D9108626B9B40000AAF35E /* EditItemService.swift in Sources */,
 				A5D9106C26B9966500AAF35E /* ErrorSheetModels.swift in Sources */,
 				A53F2D4A26BAF64800F261EA /* DeleteButton.swift in Sources */,
-				A5F398BB26CF0ECB00CD7734 /* LogoEasterEgg.swift in Sources */,
 				A5DC0B8026BB1ADD00D82987 /* EditProjectInteractor.swift in Sources */,
 				A53F2D5026BAFCE800F261EA /* Project.swift in Sources */,
 				A5D9107926B99D8D00AAF35E /* Font+Extensions.swift in Sources */,
@@ -789,7 +774,6 @@
 				A5E1C80226F931D300514CD7 /* TitleBar.swift in Sources */,
 				A5D9105C26B9955C00AAF35E /* ViewItemsOverviewPresenter.swift in Sources */,
 				A5DC0B8826BB230D00D82987 /* ItemsGrid.swift in Sources */,
-				A5D9107526B99A3500AAF35E /* Logo.swift in Sources */,
 				A5D910DE26B9CCF900AAF35E /* Storage.swift in Sources */,
 				A5D9108326B9B40000AAF35E /* EditItemScene.swift in Sources */,
 				A5DC0B9826BB4C6400D82987 /* ViewProjectDetailsService.swift in Sources */,
