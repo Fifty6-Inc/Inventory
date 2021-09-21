@@ -9,7 +9,6 @@
 import Foundation
 
 protocol EditProjectService {
-    var updatePublisher: RepositoryPublisher { get }
     func fetchProject() throws -> EditProject.ProjectInfo?
     func fetchAllItems() throws -> [Item]
     func projectItems() -> [EditProject.ItemInfo]
@@ -31,7 +30,6 @@ protocol EditProjectProjectFetching {
 extension MainProjectRepository: EditProjectProjectFetching { }
 
 protocol EditProjectItemsFetching {
-    var updatePublisher: RepositoryPublisher { get }
     func allItems() throws -> [Item]
     func item(withID: UUID) throws -> Item?
 }
@@ -70,10 +68,6 @@ extension EditProject {
         private let itemsFetcher: EditProjectItemsFetching
         private let projectID: UUID?
         private let onDelete: () -> Void
-        
-        var updatePublisher: RepositoryPublisher {
-            itemsFetcher.updatePublisher.eraseToAnyPublisher()
-        }
         
         init(projectFetcher: EditProjectProjectFetching,
              itemsFetcher: EditProjectItemsFetching,
@@ -211,8 +205,6 @@ extension EditProject {
     }
     
     class PreviewService: EditProjectService {
-        var updatePublisher: RepositoryPublisher = RepositorySubject().eraseToAnyPublisher()
-        
         private var name = ""
         private var count: Int?
         
