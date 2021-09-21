@@ -14,6 +14,7 @@ protocol ViewProjectDetailsInteracting {
     func edit()
     func didTapItem(with id: UUID)
     func buildProject()
+    func recieveParts()
 }
 
 extension ViewProjectDetails {
@@ -64,6 +65,14 @@ extension ViewProjectDetails {
         func buildProject() {
             do {
                 try service.buildProject()
+            } catch {
+                presenter.present(error: error as? ServiceError)
+            }
+        }
+        
+        func recieveParts() {
+            do {
+                try service.recieveParts()
             } catch {
                 presenter.present(error: error as? ServiceError)
             }

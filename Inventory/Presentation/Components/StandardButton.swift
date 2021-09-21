@@ -13,7 +13,8 @@ struct StandardButton: View {
     let action: () -> Void
     var body: some View {
         Button(action: action) {
-            Color.appTintColor.cornerRadius(33)
+            RoundedRectangle(cornerRadius: 33, style: .continuous)
+                .fill(Color.appTintColor)
                 .frame(maxWidth: .infinity)
                 .frame(height: 64)
                 .overlay(

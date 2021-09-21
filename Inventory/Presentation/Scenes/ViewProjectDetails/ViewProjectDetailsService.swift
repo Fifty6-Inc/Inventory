@@ -14,6 +14,7 @@ protocol ViewProjectDetailsService {
     func prepareRouteToEditProject(onDelete: @escaping () -> Void)
     func prepareRouteToEditItemCount(with id: UUID)
     func buildProject() throws
+    func recieveParts() throws
 }
 
 protocol ViewProjectDetailsItemsFetching {
@@ -48,6 +49,7 @@ extension ViewProjectDetails {
     enum ServiceError: Swift.Error {
         case fetchFailed
         case buildFailed
+        case receivePartsFailed
     }
     
     class Service: ViewProjectDetailsService {
@@ -116,6 +118,21 @@ extension ViewProjectDetails {
                 try itemFetcher.updateItem(item)
             }
         }
+        
+        func recieveParts() throws {
+            let project = try projectFetcher.project(withID: projectID)
+            guard let projectItems = project?.projectItems else {
+                throw ServiceError.buildFailed
+            }
+            for projectItem in projectItems {
+                guard let item = try itemFetcher.item(withID: projectItem.itemID) else {
+                    throw ServiceError.buildFailed
+                }
+                let newCount = item.count + projectItem.numberRequiredPerBuild
+                try item.set(count: newCount)
+                try itemFetcher.updateItem(item)
+            }
+        }
     }
     
     class PreviewService: ViewProjectDetailsService {
@@ -143,5 +160,7 @@ extension ViewProjectDetails {
         }
         
         func buildProject() throws { }
+        
+        func recieveParts() throws { }
     }
 }

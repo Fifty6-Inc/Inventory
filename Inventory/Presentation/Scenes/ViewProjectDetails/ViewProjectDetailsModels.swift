@@ -28,18 +28,24 @@ extension ViewProjectDetails {
         static let backButtonTitle = Strings.cancelButtonTitle
         static let editButtonTitle = Strings.editButtonTitle
         static let buildProjectButtonTitle = Strings.buildProjectButtonTitle
+        static let recieveParts = Strings.recieveParts
     }
     
     enum Strings {
         static let cancelButtonTitle = "Cancel"
         static let editButtonTitle = "Edit"
         static let buildProjectButtonTitle = "Build Project"
+        static let recieveParts = "Recieve Parts"
         
         static func displayError(for error: ServiceError) -> ErrorSheet.ViewModel {
             switch error {
             case .fetchFailed: return .fetchFailed
             case .buildFailed: return ErrorSheet.ViewModel(
                 title: "Failed to build",
+                body: "If you're seeing this, something really weird happened. Try again.",
+                dismissButtonTitle: "Okay")
+            case .receivePartsFailed: return ErrorSheet.ViewModel(
+                title: "Failed to add parts",
                 body: "If you're seeing this, something really weird happened. Try again.",
                 dismissButtonTitle: "Okay")
             }

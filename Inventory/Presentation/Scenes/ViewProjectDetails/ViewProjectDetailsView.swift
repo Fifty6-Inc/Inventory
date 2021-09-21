@@ -32,12 +32,26 @@ extension ViewProjectDetails {
                             EditItem.Scene().view(isPresented: $viewModel.showEditItem)
                         }
                 }
-                StandardButton(
-                    title: Theme.buildProjectButtonTitle,
-                    action: buildProject)
-                    .frame(maxHeight: .infinity, alignment: .bottom)
-                    .padding(.horizontal)
-                    .padding(.bottom)
+                HStack {
+                    StandardButton(
+                        title: Theme.buildProjectButtonTitle,
+                        action: buildProject)
+                        .frame(maxWidth: .infinity)
+                    Button(action: recieveParts) {
+                        Image(systemName: "arrow.counterclockwise")
+                            .foregroundColor(.appWhite)
+                            .font(.system(size: 28, weight: .bold, design: .rounded))
+                            .padding(12)
+                            .background(
+                                Circle()
+                                    .fill(Color.appTintColor)
+                            )
+                    }
+                    
+                }
+                .padding(.bottom)
+                .padding(.horizontal)
+                .frame(maxHeight: .infinity, alignment: .bottom)
             }
             .navigationBarHidden(true)
             .errorSheet($viewModel.error)
@@ -57,6 +71,12 @@ extension ViewProjectDetails.ContentView {
         }
     }
     
+    func recieveParts() {
+        withAnimation {
+            interactor.recieveParts()
+        }
+    }
+    
     func didTapBack() {
         interactor.dismiss()
     }
@@ -72,6 +92,7 @@ struct ViewProjectDetails_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             ViewProjectDetails.Scene().view(preview: true, isPresented: .constant(true))
+                .preferredColorScheme(.dark)
         }
     }
 }
