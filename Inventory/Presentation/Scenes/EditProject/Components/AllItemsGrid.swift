@@ -10,7 +10,7 @@ import SwiftUI
 
 extension EditProject {
     struct AllItemsGrid: View {
-        @State private var showEditProjectItemSheet = false
+        @State private var showNumberPerBuildSheet = false
         @State private var selectedItemID: UUID? = nil
         @State private var showAddItem = false
         typealias Theme = EditProject.Theme
@@ -59,7 +59,7 @@ extension EditProject {
                 .navigationBarItems(leading: cancelButton)
                 .navigationBarBackButtonHidden(true)
                 .accentColor(Theme.tintColor)
-                .sheet(isPresented: $showEditProjectItemSheet) {
+                .sheet(isPresented: $showNumberPerBuildSheet) {
                     NumberPerBuild(itemName: itemName, onSave: onSave)
                 }
             }
@@ -80,7 +80,7 @@ extension EditProject {
         
         func didTapItem(_ id: UUID) {
             selectedItemID = id
-            showEditProjectItemSheet = true
+            showNumberPerBuildSheet = true
         }
         
         func onSave(_ numberRequiredPerBuild: Int) {
@@ -90,6 +90,7 @@ extension EditProject {
                 numberRequiredPerBuild: numberRequiredPerBuild)
             
             addProjectItem(request)
+            showNumberPerBuildSheet = false
             dismiss()
         }
         
