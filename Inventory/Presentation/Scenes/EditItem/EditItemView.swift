@@ -23,19 +23,30 @@ extension EditItem {
                         Field(info: viewModel.itemCountTextFieldInfo, update: interactor.updateCount)
                             .keyboardType(.numberPad)
                         
+                        GeometryReader { geo in
+                            HStack(spacing: 16) {
+                                CountButton(
+                                    totalWidth: geo.size.width,
+                                    negative: true,
+                                    imageName: "chevron.left.2",
+                                    onChange: updateCount(value:),
+                                    onDragEnded: dragEnded)
+                                CountButton(
+                                    totalWidth: geo.size.width,
+                                    negative: false,
+                                    imageName: "chevron.right.2",
+                                    onChange: updateCount(value:),
+                                    onDragEnded: dragEnded)
+                            }
+                            .frame(maxWidth: .infinity)
+                        }
+                        .frame(height: 36)
+                        .padding(.horizontal)
+                        
                         Spacer().frame(height: 50)
                         
                         DeleteButton(title: Theme.deleteButtonTitle, onTap: didTapDelete)
                             .opacity(viewModel.showRemoveItemButton ? 1 : 0)
-                        
-                        Spacer()
-                        
-                        HStack(spacing: 36) {
-                            CountButton(imageName: "minus", onTap: interactor.subtractFromCount)
-                            CountButton(imageName: "plus", onTap: interactor.addToCount)
-                        }
-                        
-                        Spacer().frame(maxHeight: 32)
                     }
                 }
                 .navigationTitle(viewModel.sceneTitle)
@@ -49,20 +60,71 @@ extension EditItem {
             }
         }
         
+        // MARK: - Subviews
+        
         private struct CountButton: View {
+            @State private var offset: CGFloat = 0
+            let totalWidth: CGFloat
+            private let frameWidth: CGFloat = 64
+            private let paddingWidth: CGFloat = 12
+            private var usedWidth: CGFloat {
+                (totalWidth / 2) - frameWidth - paddingWidth
+            }
+            private let maxUpdateValue: CGFloat = 10.5
+            let negative: Bool
             let imageName: String
-            let onTap: () -> Void
+            let onChange: (Int) -> Void
+            let onDragEnded: () -> Void
+            
+            private var dragGesture: some Gesture {
+                DragGesture(minimumDistance: 0, coordinateSpace: .global)
+                    .onEnded { value in
+                        withAnimation {
+                            offset = 0
+                        }
+                        onDragEnded()
+                    }
+                    .onChanged { value in
+                        offset = value.translation.width
+                        
+                        let transformedOffset = maxUpdateValue * (offset / usedWidth)
+                        switch (transformedOffset, negative) {
+                        case (...(-maxUpdateValue), true): return
+                        case (0..., true): return
+                        case (...0, false): return
+                        case (maxUpdateValue..., false): return
+                        default: break
+                        }
+                        
+                        onChange(Int(transformedOffset))
+                    }
+            }
+            
+            private var presentedOffset: CGFloat {
+                let temp: CGFloat
+                switch offset {
+                case ..<0: temp = negative ? offset : (offset / 100)
+                case 0...: temp = negative ? (offset / 100) : offset
+                default: temp = offset
+                }
+                switch temp {
+                case ..<(-usedWidth): return -usedWidth + ((temp + usedWidth) / 10)
+                case usedWidth...: return usedWidth + ((temp - usedWidth) / 10)
+                default: return temp
+                }
+            }
             
             var body: some View {
-                Button(action: onTap) {
-                    Circle()
-                        .fill(Color.appTintColor)
-                        .frame(width: 64, height: 64)
-                        .inverseMask {
-                            Image(systemName: imageName)
-                                .font(.system(size: 36, weight: .heavy, design: .rounded))
-                        }
-                }
+                RoundedRectangle(cornerRadius: 10, style: .continuous)
+                    .fill(Color.appTintColor)
+                    .frame(width: frameWidth)
+                    .overlay(
+                        Image(systemName: imageName)
+                            .font(.system(size: 24, weight: .heavy, design: .rounded))
+                            .foregroundColor(.appWhite)
+                    )
+                    .gesture(dragGesture)
+                    .offset(x: presentedOffset)
             }
         }
         
@@ -119,6 +181,14 @@ extension EditItem {
 // MARK: - Interacting
 
 extension EditItem.ContentView {
+    private func updateCount(value: Int) {
+        interactor.addToCount(value)
+    }
+    
+    private func dragEnded() {
+        interactor.dragEnded()
+    }
+    
     func didTapDelete() {
         showConfirmDeleteActionSheet = true
     }

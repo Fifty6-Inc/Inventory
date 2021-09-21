@@ -16,10 +16,11 @@ struct StandardButton: View {
             Color.appTintColor.cornerRadius(33)
                 .frame(maxWidth: .infinity)
                 .frame(height: 64)
-                .inverseMask {
+                .overlay(
                     Text(title.uppercased())
                         .font(.system(size: 20, weight: .bold, design: .rounded))
-                }
+                        .foregroundColor(.appWhite)
+                )
         }
     }
 }

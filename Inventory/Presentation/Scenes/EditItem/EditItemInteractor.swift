@@ -15,8 +15,8 @@ protocol EditItemInteracting {
     func delete()
     func updateName(_ value: String)
     func updateCount(_ value: String)
-    func subtractFromCount()
-    func addToCount()
+    func addToCount(_ value: Int)
+    func dragEnded()
 }
 
 extension EditItem {
@@ -32,6 +32,7 @@ extension EditItem {
             } catch {
                 presenter.present(error: error as? ServiceError)
             }
+            checkCanSave()
         }
         
         func dismiss() {
@@ -76,16 +77,14 @@ extension EditItem {
             checkCanSave()
         }
         
-        func subtractFromCount() {
-            service.subtractFromCount()
+        func addToCount(_ value: Int) {
+            service.addToCount(value)
             updateCount()
             checkCanSave()
         }
         
-        func addToCount() {
-            service.addToCount()
-            updateCount()
-            checkCanSave()
+        func dragEnded() {
+            service.dragEnded()
         }
         
         private func updateCount() {

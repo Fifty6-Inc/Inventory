@@ -59,10 +59,13 @@ extension EditItem {
             case .saveFailed: return .saveFailed
             case .fetchFailed: return .fetchFailed
             case .invalidInput:
-                let message = "Some value is either missing or incorrect. Please make sure all values are entered correctly"
+                let message = "Some value is either missing or incorrect. Please make sure all values are entered correctly."
                 return .default(with: message)
             case .deleteFailed:
                 let message = "Unable to delete. Please try again."
+                return .default(with: message)
+            case .updateCountFailed:
+                let message = "Unable to add to count."
                 return .default(with: message)
             }
         }

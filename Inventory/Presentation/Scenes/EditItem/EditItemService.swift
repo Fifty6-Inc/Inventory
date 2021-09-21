@@ -12,8 +12,8 @@ protocol EditItemService {
     func fetchItem() throws -> EditItem.ItemInfo?
     func validateName(_ value: String) throws
     func validateCount(_ value: String) throws
-    func subtractFromCount()
-    func addToCount()
+    func addToCount(_ value: Int)
+    func dragEnded()
     func fetchCount() -> Int?
     func canSave() -> Bool
     func save() throws
@@ -41,6 +41,7 @@ extension EditItem {
         case invalidInput
         case saveFailed
         case deleteFailed
+        case updateCountFailed
     }
     
     enum ValidationError: Swift.Error {
@@ -70,6 +71,8 @@ extension EditItem {
         private var item: Item?
         private var name: String?
         private var count: Int?
+        private var isDragging = false
+        private var startValue: Int?
         
         func fetchItem() throws -> ItemInfo? {
             if let itemID = itemID {
@@ -97,18 +100,20 @@ extension EditItem {
             if count == nil { throw ValidationError.invalid }
         }
         
-        func subtractFromCount() {
-            count? -= 1
-            if count == nil {
-                count = 1
+        func addToCount(_ value: Int) {
+            let count = count ?? 0
+            if isDragging == false {
+                startValue = count
+            }
+            isDragging = true
+            if let startValue = startValue {
+                self.count = count + (value - (count - startValue))
             }
         }
         
-        func addToCount() {
-            count? += 1
-            if count == nil {
-                count = 1
-            }
+        func dragEnded() {
+            isDragging = false
+            startValue = nil
         }
         
         func fetchCount() -> Int? {
@@ -165,6 +170,8 @@ extension EditItem {
     class PreviewService: EditItemService {
         private var name = ""
         private var count: Int?
+        private var isDragging = false
+        private var startValue: Int?
         
         func fetchItem() throws -> ItemInfo? {
             ItemInfo(name: name, count: count)
@@ -181,18 +188,19 @@ extension EditItem {
             if count == nil { throw ValidationError.invalid }
         }
         
-        func subtractFromCount() {
-            count? -= 1
-            if count == nil {
-                count = 1
+        func addToCount(_ value: Int) {
+            let count = count ?? 0
+            if isDragging == false {
+                startValue = count
+            }
+            isDragging = true
+            if let startValue = startValue {
+                self.count = count + ((count - startValue) - value)
             }
         }
         
-        func addToCount() {
-            count? += 1
-            if count == nil {
-                count = 1
-            }
+        func dragEnded() {
+            isDragging = false
         }
         
         func fetchCount() -> Int? {
