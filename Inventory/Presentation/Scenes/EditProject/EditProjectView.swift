@@ -39,8 +39,16 @@ extension EditProject {
                         
                         Spacer().frame(height: 50)
                         
-                        DeleteButton(title: Theme.deleteButtonTitle, onTap: didTapDelete)
-                            .opacity(viewModel.showRemoveProjectButton ? 1 : 0)
+                        if viewModel.showRemoveProjectButton {
+                            DeleteButton(title: Theme.deleteButtonTitle, onTap: didTapDelete)
+                        }
+                        
+                        if viewModel.showNewProjectExplanationText {
+                            Text(Theme.newProjectExplanationText)
+                                .font(.system(size: 16, weight: .regular, design: .rounded))
+                                .padding(.horizontal)
+                                .transition(.opacity.animation(.easeIn))
+                        }
                     }
                 }
                 .navigationBarTitleDisplayMode(.large)

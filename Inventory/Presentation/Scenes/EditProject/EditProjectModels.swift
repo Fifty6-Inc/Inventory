@@ -30,6 +30,7 @@ extension EditProject {
         @Published var error: ErrorSheet.ViewModel?
         @Published var projectNameTextFieldInfo = TextFieldInfo(placeholder: Strings.projectNameTextFieldPlaceholder)
         @Published var showRemoveProjectButton = false
+        @Published var showNewProjectExplanationText = false
         @Published var sceneTitle = Strings.sceneAddTitle
         @Published var projectItems = [ItemsGrid.Item]()
         @Published var showAllItems = false
@@ -49,6 +50,8 @@ extension EditProject {
         static let deleteButtonTitle = Strings.deleteButtonTitle
         
         static let addItemButtonTitle = Strings.addItemButtonTitle
+        
+        static let newProjectExplanationText = Strings.newProjectExplanationText
         
         static let numberPerBuildTitle = Strings.numberPerBuildTitle
         static let mustBeIntegerValueTextFieldErrorMessage = Strings.mustBeIntegerValueTextFieldErrorMessage
@@ -74,6 +77,8 @@ extension EditProject {
         static let projectNameTextFieldPlaceholder = "Project name"
         
         static let addItemButtonTitle = "Add Item"
+        
+        static let newProjectExplanationText = "Every project needs a name and at least one item. Click the plus button to add an item."
         
         static let numberPerBuildTitle = "Number Required Per Build"
         static let mustBeIntegerValueTextFieldErrorMessage = "Must be integer value"

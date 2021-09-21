@@ -33,6 +33,8 @@ extension EditProject {
                 viewModel.projectItems = mapItemToItemsGridItem(project.items)
                 viewModel.showRemoveProjectButton = true
                 viewModel.sceneTitle = Strings.sceneEditTitle
+            } else {
+                viewModel.showNewProjectExplanationText = true
             }
         }
         
@@ -48,6 +50,11 @@ extension EditProject {
         
         func present(projectItems: [ItemInfo]) {
             viewModel.projectItems = mapItemToItemsGridItem(projectItems)
+            if projectItems.count > 0 {
+                viewModel.showNewProjectExplanationText = false
+            } else {
+                viewModel.showNewProjectExplanationText = true
+            }
         }
         
         func present(error: ServiceError?) {
