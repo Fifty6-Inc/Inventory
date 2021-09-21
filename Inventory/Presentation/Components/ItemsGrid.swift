@@ -54,10 +54,12 @@ struct ItemsGrid: View {
             if let didTapAdd = didTapAdd {
                 RoundedRectangle(cornerRadius: 16, style: .continuous)
                     .fill(Color.appTintColor)
-                    .inverseMask {
-                        Image(systemName: "plus.circle.fill")
+                    .overlay(
+                        Image(systemName: "plus")
                             .font(.system(.largeTitle))
-                    }
+                            .foregroundColor(.appWhite)
+                            .padding()
+                    )
                     .frame(height: 150)
                     .frame(maxWidth: .infinity)
                     .foregroundColor(.appTintColor)
