@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Combine
 
 protocol EditProjectInteracting {
     func fetchProject()
@@ -23,6 +24,22 @@ extension EditProject {
     struct Interactor: EditProjectInteracting {
         let service: EditProjectService
         let presenter: EditProjectPresenting
+        private var updateSubscriber: AnyCancellable?
+        
+        init(service: EditProjectService,
+             presenter: EditProjectPresenting) {
+            self.service = service
+            self.presenter = presenter
+            self.updateSubscriber = service.updatePublisher
+                .receive(on: RunLoop.main)
+                .sink { [self] _ in
+                    handleRefresh()
+                }
+        }
+        
+        private func handleRefresh() {
+            fetchAllItems()
+        }
         
         func fetchProject() {
             attempt {

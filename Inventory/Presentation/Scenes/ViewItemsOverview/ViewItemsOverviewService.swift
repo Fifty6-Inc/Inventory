@@ -15,9 +15,8 @@ protocol ViewItemsOverviewService {
 }
 
 protocol ViewItemsOverviewFetching {
-    func allItems() throws -> [Item]
-    
     var updatePublisher: RepositoryPublisher { get }
+    func allItems() throws -> [Item]
 }
 extension MainItemRepository: ViewItemsOverviewFetching { }
 

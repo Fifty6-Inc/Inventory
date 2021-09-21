@@ -60,6 +60,8 @@ extension EditProject {
         static let confirmDeleteProjectTitle = Strings.confirmDeleteProjectTitle
         static let confirmDeleteProjectMessage = Strings.confirmDeleteProjectMessage
         static let confirmDeleteProjectButtonTitle = Strings.confirmDeleteProjectButtonTitle
+        
+        static let noUnusedItems = Strings.noUnusedItems
     }
     
     enum Strings {
@@ -83,6 +85,8 @@ extension EditProject {
         static let confirmDeleteProjectTitle = "You sure?"
         static let confirmDeleteProjectMessage = "Are you sure you want to delete this project? This action cannot be undone."
         static let confirmDeleteProjectButtonTitle = "Delete Project"
+        
+        static let noUnusedItems = "No unused items here!"
         
         static func displayError(for error: ServiceError) -> ErrorSheet.ViewModel {
             switch error {

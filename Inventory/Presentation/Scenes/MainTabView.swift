@@ -14,20 +14,20 @@ private enum Tabs: Hashable {
 }
 
 struct MainTabView: View {
-    @State private var selectedTab = Tabs.itemsView
+    @State private var selectedTab = Tabs.projectsView
     
     var body: some View {
         TabView(selection: $selectedTab) {
-            ViewItemsOverview.Scene().view()
-                .tabItem {
-                    Image(systemName: "square.3.stack.3d")
-                    Text("Items")
-                }.tag(Tabs.itemsView)
             ViewProjectsOverview.Scene().view()
                 .tabItem {
                     Image(systemName: "square.stack.3d.up")
                     Text("Projects")
                 }.tag(Tabs.projectsView)
+            ViewItemsOverview.Scene().view()
+                .tabItem {
+                    Image(systemName: "square.3.stack.3d")
+                    Text("Items")
+                }.tag(Tabs.itemsView)
         }
     }
 }

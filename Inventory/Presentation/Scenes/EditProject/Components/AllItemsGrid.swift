@@ -12,6 +12,7 @@ extension EditProject {
     struct AllItemsGrid: View {
         @State private var showEditProjectItemSheet = false
         @State private var selectedItemID: UUID? = nil
+        @State private var showAddItem = false
         typealias Theme = EditProject.Theme
         @Environment(\.presentationMode) var presentationMode
         let items: [ItemsGrid.Item]
@@ -35,10 +36,24 @@ extension EditProject {
                                 .padding(.horizontal)
                         }
                     } else {
-                        Text("No unused items here!")
-                            .font(.system(.largeTitle, design: .rounded))
-                            .fontWeight(.heavy)
-                            .padding(.horizontal)
+                        ZStack {
+                            Text(Theme.noUnusedItems)
+                                .font(.system(.largeTitle, design: .rounded))
+                                .fontWeight(.heavy)
+                                .padding(.horizontal)
+                                .frame(maxHeight: .infinity, alignment: .center)
+                                .ignoresSafeArea()
+                            
+                            StandardButton(
+                                title: Theme.addItemButtonTitle,
+                                action: didTapAddItem)
+                                .frame(maxHeight: .infinity, alignment: .bottom)
+                                .padding(.horizontal)
+                                .padding(.bottom)
+                        }
+                        .sheet(isPresented: $showAddItem) {
+                            EditItem.Scene().view(isPresented: $showAddItem)
+                        }
                     }
                 }
                 .navigationBarItems(leading: cancelButton)
@@ -76,6 +91,11 @@ extension EditProject {
             
             addProjectItem(request)
             dismiss()
+        }
+        
+        func didTapAddItem() {
+            EditItem.prepareIncomingRoute(with: nil)
+            showAddItem = true
         }
     }
 }
