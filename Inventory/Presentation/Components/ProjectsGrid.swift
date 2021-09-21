@@ -32,9 +32,8 @@ struct ProjectsGrid: View {
             ForEach(projects) { item in
                 RoundedRectangle(cornerRadius: 16, style: .continuous)
                     .fill(Color.appTintColor)
-                    .inverseMask {
-                        Text(item.name)
-                    }
+                    .overlay(Text(item.name))
+                    .foregroundColor(.appWhite)
                     .frame(height: 150)
                     .onTapGesture {
                         didTapProject(item.id)

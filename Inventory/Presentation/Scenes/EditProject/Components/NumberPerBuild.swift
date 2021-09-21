@@ -34,6 +34,7 @@ extension EditProject {
                                 .stroke(lineWidth: 2)
                                 .fill(Theme.tintColor)
                         )
+                        .keyboardType(.numberPad)
                     Text(Theme.mustBeIntegerValueTextFieldErrorMessage)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.leading)

@@ -17,26 +17,27 @@ extension EditItem {
         
         var body: some View {
             NavigationView {
-                VStack(spacing: 16) {
-                    Field(info: viewModel.itemNameTextFieldInfo, update: interactor.updateName)
-                    Field(info: viewModel.itemCountTextFieldInfo, update: interactor.updateCount)
-                    
-                    Spacer().frame(height: 50)
-                    
-                    DeleteButton(title: Theme.deleteButtonTitle, onTap: didTapDelete)
-                        .opacity(viewModel.showRemoveItemButton ? 1 : 0)
-                    
-                    Spacer()
-                    
-                    HStack(spacing: 36) {
-                        CountButton(imageName: "minus", onTap: interactor.subtractFromCount)
-                        CountButton(imageName: "plus", onTap: interactor.addToCount)
+                ScrollView {
+                    VStack(spacing: 16) {
+                        Field(info: viewModel.itemNameTextFieldInfo, update: interactor.updateName)
+                        Field(info: viewModel.itemCountTextFieldInfo, update: interactor.updateCount)
+                            .keyboardType(.numberPad)
+                        
+                        Spacer().frame(height: 50)
+                        
+                        DeleteButton(title: Theme.deleteButtonTitle, onTap: didTapDelete)
+                            .opacity(viewModel.showRemoveItemButton ? 1 : 0)
+                        
+                        Spacer()
+                        
+                        HStack(spacing: 36) {
+                            CountButton(imageName: "minus", onTap: interactor.subtractFromCount)
+                            CountButton(imageName: "plus", onTap: interactor.addToCount)
+                        }
+                        
+                        Spacer().frame(maxHeight: 32)
                     }
-                    
-                    Spacer().frame(maxHeight: 32)
                 }
-                .padding(.top)
-                .navigationBarTitleDisplayMode(.large)
                 .navigationTitle(viewModel.sceneTitle)
                 .navigationBarItems(leading: cancelButton, trailing: saveButton)
                 .navigationBarBackButtonHidden(true)

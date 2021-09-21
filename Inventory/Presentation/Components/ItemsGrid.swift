@@ -37,15 +37,15 @@ struct ItemsGrid: View {
             ForEach(items) { item in
                 RoundedRectangle(cornerRadius: 16, style: .continuous)
                     .fill(Color.appTintColor)
-                    .inverseMask {
+                    .overlay(
                         VStack {
                             Text(item.name)
                             Text(item.count)
                             if let numberPerBuild = item.numberPerBuild {
                                 Text(numberPerBuild)
                             }
-                        }
-                    }
+                        }.foregroundColor(.appWhite)
+                    )
                     .frame(height: 150)
                     .onTapGesture {
                         didTapItem(item.id)
