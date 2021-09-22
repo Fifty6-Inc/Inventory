@@ -29,6 +29,7 @@ struct MainTabView: View {
                     Text("Items")
                 }.tag(Tabs.itemsView)
         }
+        .navigationViewStyle(.stack)
     }
 }
 

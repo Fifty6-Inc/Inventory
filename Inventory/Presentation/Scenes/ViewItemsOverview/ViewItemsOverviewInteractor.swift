@@ -8,6 +8,7 @@
 
 import Foundation
 import Combine
+import SwiftUI
 
 protocol ViewItemsOverviewInteracting {
     func fetchItems()
@@ -29,7 +30,9 @@ extension ViewItemsOverview {
             self.updateSubscriber = service.updatePublisher
                 .receive(on: RunLoop.main)
                 .sink { [self] _ in
-                    handleRefresh()
+                    withAnimation {
+                        handleRefresh()
+                    }
                 }
         }
         

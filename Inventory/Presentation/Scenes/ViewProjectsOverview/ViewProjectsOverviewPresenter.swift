@@ -22,7 +22,8 @@ extension ViewProjectsOverview {
         let viewModel: ViewModel
         
         func presentFetch(_ projects: [ViewProjectsOverview.ProjectDetails]) {
-            viewModel.projects = projects.map {
+            let sortedProjects = projects.sorted(by: { $0.name < $1.name })
+            viewModel.projects = sortedProjects.map {
                 ProjectsGrid.Project(
                     id: $0.id,
                     name: $0.name)

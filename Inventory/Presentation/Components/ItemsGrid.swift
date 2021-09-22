@@ -38,15 +38,19 @@ struct ItemsGrid: View {
                 RoundedRectangle(cornerRadius: 16, style: .continuous)
                     .fill(Color.appTintColor)
                     .overlay(
-                        VStack {
+                        VStack(alignment: .leading, spacing: 5) {
                             Text(item.name)
+                                .font(.title)
                             Text(item.count)
+                                .font(.headline)
                             if let numberPerBuild = item.numberPerBuild {
                                 Text(numberPerBuild)
                             }
                         }
-                            .font(.title2)
+                            .frame(maxWidth: .infinity, alignment: .leading)
                             .foregroundColor(.appWhite)
+                            .lineLimit(2)
+                            .padding(.horizontal)
                     )
                     .frame(height: 150)
                     .onTapGesture {
@@ -73,19 +77,21 @@ struct ItemsGrid: View {
 
 struct ItemsGrid_Previews: PreviewProvider {
     static var previews: some View {
-        ItemsGrid(
-            items: [
-                .init(id: UUID(), name: "Item 1", count: "1", numberPerBuild: "7"),
-                .init(id: UUID(), name: "Item 2", count: "2", numberPerBuild: "1"),
-                .init(id: UUID(), name: "Item 3", count: "3", numberPerBuild: "6"),
-                .init(id: UUID(), name: "Item 4", count: "4", numberPerBuild: "5"),
-                .init(id: UUID(), name: "Item 5", count: "5", numberPerBuild: "2"),
-                .init(id: UUID(), name: "Item 6", count: "6", numberPerBuild: "3"),
-                .init(id: UUID(), name: "Item 7", count: "7", numberPerBuild: "4"),
-                .init(id: UUID(), name: "Item 8", count: "8", numberPerBuild: "8")
-            ],
-            didTapItem: { _ in },
-            didTapAdd: { }
-        )
+        ScrollView {
+            ItemsGrid(
+                items: [
+                    .init(id: UUID(), name: "Extension Springs", count: "1", numberPerBuild: "7"),
+                    .init(id: UUID(), name: "K25 Springs", count: "2", numberPerBuild: "1"),
+                    .init(id: UUID(), name: "Takedown Pins", count: "3", numberPerBuild: "6"),
+                    .init(id: UUID(), name: "10-32 Threaded Rods", count: "4", numberPerBuild: "5"),
+                    .init(id: UUID(), name: "10-32 Hex Nuts", count: "5", numberPerBuild: "2"),
+                    .init(id: UUID(), name: "10-32 1/8th inch rounded head screws", count: "6", numberPerBuild: "3"),
+                    .init(id: UUID(), name: "Item 7", count: "7", numberPerBuild: "4"),
+                    .init(id: UUID(), name: "Item 8", count: "8", numberPerBuild: "8")
+                ],
+                didTapItem: { _ in },
+                didTapAdd: { }
+            ).padding(.horizontal)
+        }
     }
 }
