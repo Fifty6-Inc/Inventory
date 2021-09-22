@@ -12,5 +12,9 @@ class ApplicationState {
     private init() {}
     static let shared = ApplicationState()
     
-    var usePreviewServices = false
+    var usePreviewServices = UserDefaults.standard.value(forKey: "usePreviewServices") as? Bool ?? false {
+        willSet {
+            UserDefaults.standard.set(newValue, forKey: "usePreviewServices")
+        }
+    }
 }
