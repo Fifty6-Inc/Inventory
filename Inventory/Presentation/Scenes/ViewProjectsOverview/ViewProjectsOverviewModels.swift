@@ -33,5 +33,9 @@ extension ViewProjectsOverview {
         }
         
         static let defaultError = ErrorSheet.ViewModel.default
+        static let previewServiceError = ErrorSheet.ViewModel(
+            title: "Preview Service!",
+            body: "You have activated or deactivated preview services!",
+            dismissButtonTitle: "Epic")
     }
 }

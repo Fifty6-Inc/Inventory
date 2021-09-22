@@ -61,6 +61,7 @@ extension ViewProjectsOverview {
         
         func onHiddenGesture() {
             service.onHiddenGesture()
+            presenter.presentOnHiddenGesture()
         }
     }
 }
