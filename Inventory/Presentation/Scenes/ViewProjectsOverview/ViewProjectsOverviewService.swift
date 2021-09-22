@@ -13,6 +13,7 @@ protocol ViewProjectsOverviewService {
     func fetchProjects() throws -> [ViewProjectsOverview.ProjectDetails]
     func prepareRouteToProject(with id: UUID)
     func prepareRouteToAddProject()
+    func onHiddenGesture()
 }
 
 protocol ViewProjectsOverviewFetching {
@@ -65,6 +66,10 @@ extension ViewProjectsOverview {
         func prepareRouteToAddProject() {
             EditProject.prepareIncomingRoute(with: nil, onDelete: {})
         }
+        
+        func onHiddenGesture() {
+            ApplicationState.shared.usePreviewServices = true
+        }
     }
     
     class PreviewService: ViewProjectsOverviewService {
@@ -97,6 +102,10 @@ extension ViewProjectsOverview {
         
         func prepareRouteToAddProject() {
             EditProject.prepareIncomingRoute(with: nil, onDelete: {})
+        }
+        
+        func onHiddenGesture() {
+            ApplicationState.shared.usePreviewServices = false
         }
     }
 }

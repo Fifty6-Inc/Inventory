@@ -12,11 +12,22 @@ struct TitleBar: View {
     @Environment(\.colorScheme) var colorScheme
     let title: String
     let onAdd: () -> Void
+    let onHiddenGesture: () -> Void
+    
+    init(title: String,
+         onAdd: @escaping () -> Void,
+         onHiddenGesture: @escaping () -> Void = {}) {
+        
+        self.title = title
+        self.onAdd = onAdd
+        self.onHiddenGesture = onHiddenGesture
+    }
     
     var body: some View {
         HStack {
             Text(title)
                 .font(.system(size: 34, weight: .bold, design: .rounded))
+                .onTapGesture(count: 10, perform: onHiddenGesture)
             Spacer()
             addButton
         }

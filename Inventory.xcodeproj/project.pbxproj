@@ -11,6 +11,7 @@
 		A529287F26C330B800EEF23B /* TestSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = A529287E26C330B800EEF23B /* TestSupport.swift */; };
 		A529288026C33B6800EEF23B /* CoreDataStorage+ReadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D910CE26B9CCC500AAF35E /* CoreDataStorage+ReadTests.swift */; };
 		A529288126C340B700EEF23B /* CoreDataStorage+WriteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D910D426B9CCC500AAF35E /* CoreDataStorage+WriteTests.swift */; };
+		A5295DFD26FB786700926C88 /* ApplicationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5295DFC26FB786700926C88 /* ApplicationState.swift */; };
 		A53F2D3426BAF2B300F261EA /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53F2D3326BAF2B300F261EA /* MainTabView.swift */; };
 		A53F2D4026BAF5C200F261EA /* ViewProjectsOverviewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53F2D3A26BAF53900F261EA /* ViewProjectsOverviewService.swift */; };
 		A53F2D4126BAF5C200F261EA /* ViewProjectsOverviewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53F2D3826BAF53900F261EA /* ViewProjectsOverviewInteractor.swift */; };
@@ -139,6 +140,7 @@
 		A52505C826CDCA97006081EA /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A52505E726CDCD58006081EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A529287E26C330B800EEF23B /* TestSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSupport.swift; sourceTree = "<group>"; };
+		A5295DFC26FB786700926C88 /* ApplicationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationState.swift; sourceTree = "<group>"; };
 		A53F2D3326BAF2B300F261EA /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		A53F2D3726BAF53900F261EA /* ViewProjectsOverviewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProjectsOverviewPresenter.swift; sourceTree = "<group>"; };
 		A53F2D3826BAF53900F261EA /* ViewProjectsOverviewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProjectsOverviewInteractor.swift; sourceTree = "<group>"; };
@@ -382,6 +384,7 @@
 		A5D9105226B98F1A00AAF35E /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				A5295DFC26FB786700926C88 /* ApplicationState.swift */,
 				A5D910BE26B9CCC500AAF35E /* DataStore */,
 				A5D9105026B98F0800AAF35E /* Main */,
 			);
@@ -813,6 +816,7 @@
 				A5DC0B9726BB4C6400D82987 /* ViewProjectDetailsView.swift in Sources */,
 				A5DC0B8126BB1ADD00D82987 /* EditProjectModels.swift in Sources */,
 				A5DC0B9526BB4C6400D82987 /* ViewProjectDetailsScene.swift in Sources */,
+				A5295DFD26FB786700926C88 /* ApplicationState.swift in Sources */,
 				A53FA4D826FA920C004F9EDF /* AddNewProjectItemInteractor.swift in Sources */,
 				A5D9108226B9B40000AAF35E /* EditItemModels.swift in Sources */,
 				A53F2D4326BAF5C200F261EA /* ViewProjectsOverviewModels.swift in Sources */,

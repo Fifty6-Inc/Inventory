@@ -14,6 +14,7 @@ protocol ViewProjectsOverviewInteracting {
     func fetchProjects()
     func didTapProject(with id: UUID)
     func add()
+    func onHiddenGesture()
 }
 
 extension ViewProjectsOverview {
@@ -56,6 +57,10 @@ extension ViewProjectsOverview {
         func add() {
             service.prepareRouteToAddProject()
             presenter.presentShowAddProject()
+        }
+        
+        func onHiddenGesture() {
+            service.onHiddenGesture()
         }
     }
 }

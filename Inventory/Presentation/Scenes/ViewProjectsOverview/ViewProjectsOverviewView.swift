@@ -18,7 +18,8 @@ extension ViewProjectsOverview {
             NavigationView {
                 ScrollView {
                     TitleBar(title: Theme.projectsTitle,
-                             onAdd: didTapAdd)
+                             onAdd: didTapAdd,
+                             onHiddenGesture: onHiddenGesture)
                     ProjectsGrid(projects: viewModel.projects,
                                  didTapProject: didTapProject(with:))
                     .padding(.horizontal)
@@ -46,6 +47,10 @@ extension ViewProjectsOverview.ContentView {
     
     func didTapAdd() {
         interactor.add()
+    }
+    
+    func onHiddenGesture() {
+        interactor.onHiddenGesture()
     }
 }
 
