@@ -68,7 +68,7 @@ extension ViewProjectsOverview {
         }
         
         func onHiddenGesture() {
-            ApplicationState.shared.usePreviewServices = true
+            ApplicationState.shared.set(usePreviewServices: true)
         }
     }
     
@@ -99,7 +99,7 @@ extension ViewProjectsOverview {
         }
         
         func onHiddenGesture() {
-            ApplicationState.shared.usePreviewServices = false
+            ApplicationState.shared.set(usePreviewServices: false)
         }
     }
 }
