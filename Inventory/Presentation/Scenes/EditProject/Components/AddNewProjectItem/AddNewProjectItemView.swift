@@ -31,6 +31,7 @@ extension AddNewProjectItem {
                 .accentColor(Theme.tintColor)
                 .errorSheet($viewModel.error)
             }
+            .navigationViewStyle(.stack)
         }
         
         // MARK: - Subviews
