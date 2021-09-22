@@ -80,19 +80,13 @@ extension ViewProjectsOverview {
             [
                 ProjectDetails(
                     id: UUID(),
-                    name: "Part 1"),
+                    name: "Caliburn"),
                 ProjectDetails(
                     id: UUID(),
-                    name: "Part 2"),
+                    name: "Project 2"),
                 ProjectDetails(
                     id: UUID(),
-                    name: "Part 3"),
-                ProjectDetails(
-                    id: UUID(),
-                    name: "Part 4"),
-                ProjectDetails(
-                    id: UUID(),
-                    name: "Part 5")
+                    name: "Project 3")
             ]
         }
         

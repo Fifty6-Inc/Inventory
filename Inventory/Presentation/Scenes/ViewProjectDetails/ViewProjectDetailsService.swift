@@ -145,9 +145,29 @@ extension ViewProjectDetails {
                 items: [
                     ItemInfo(
                         itemID: UUID(),
-                        name: "Bolts",
-                        count: 5,
-                        numberRequiredPerBuild: 4)
+                        name: "Extension Springs",
+                        count: 2,
+                        numberRequiredPerBuild: 1),
+                    ItemInfo(
+                        itemID: UUID(),
+                        name: "K25 Springs",
+                        count: 3,
+                        numberRequiredPerBuild: 1),
+                    ItemInfo(
+                        itemID: UUID(),
+                        name: "Takedown Pins",
+                        count: 10,
+                        numberRequiredPerBuild: 2),
+                    ItemInfo(
+                        itemID: UUID(),
+                        name: "10-32 Hex Nuts",
+                        count: 15,
+                        numberRequiredPerBuild: 5),
+                    ItemInfo(
+                        itemID: UUID(),
+                        name: "10-32 Threaded Rods",
+                        count: 4,
+                        numberRequiredPerBuild: 2)
                 ])
         }
         

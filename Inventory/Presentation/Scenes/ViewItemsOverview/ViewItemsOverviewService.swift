@@ -71,24 +71,24 @@ extension ViewItemsOverview {
             [
                 ItemDetails(
                     id: UUID(),
-                    name: "Part 1",
-                    count: 5),
+                    name: "Takedown Pins",
+                    count: 10),
                 ItemDetails(
                     id: UUID(),
-                    name: "Part 2",
-                    count: 45433),
+                    name: "K25 Springs",
+                    count: 3),
                 ItemDetails(
                     id: UUID(),
-                    name: "Part 3",
-                    count: 0),
+                    name: "Extension Springs",
+                    count: 2),
                 ItemDetails(
                     id: UUID(),
-                    name: "Part 4",
-                    count: 3433),
+                    name: "10-32 Threaded Rods",
+                    count: 4),
                 ItemDetails(
                     id: UUID(),
-                    name: "Part 5",
-                    count: 999999999)
+                    name: "10-32 Hex Nuts",
+                    count: 15)
             ]
         }
         
