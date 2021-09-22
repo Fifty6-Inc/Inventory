@@ -224,7 +224,7 @@ extension EditProject {
     }
     
     class PreviewService: EditProjectService {
-        private var name = "Caliburn"
+        private var name = "Blaster"
         let items = [
             ItemInfo(
                 id: UUID(),

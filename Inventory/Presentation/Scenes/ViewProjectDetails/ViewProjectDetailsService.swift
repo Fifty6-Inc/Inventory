@@ -141,7 +141,7 @@ extension ViewProjectDetails {
         
         func fetchProject() throws -> ViewProjectDetails.ProjectInfo {
             ProjectInfo(
-                name: "Caliburn",
+                name: "Blaster",
                 items: [
                     ItemInfo(
                         itemID: UUID(),
