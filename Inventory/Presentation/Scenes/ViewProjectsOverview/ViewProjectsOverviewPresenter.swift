@@ -13,6 +13,7 @@ protocol ViewProjectsOverviewPresenting {
     func presentShowAddProject()
     func presentShowProjectDetails()
     func present(error: ViewProjectsOverview.ServiceError?)
+    func presentOnHiddenGesture()
 }
 
 extension ViewProjectsOverview {
@@ -44,6 +45,10 @@ extension ViewProjectsOverview {
             } else {
                 viewModel.error = Strings.defaultError
             }
+        }
+        
+        func presentOnHiddenGesture() {
+            viewModel.error = Strings.previewServiceError
         }
     }
 }

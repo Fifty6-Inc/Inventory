@@ -224,51 +224,53 @@ extension EditProject {
     }
     
     class PreviewService: EditProjectService {
-        private var name = ""
-        private var count: Int?
+        private var name = "Caliburn"
+        let items = [
+            ItemInfo(
+                id: UUID(),
+                itemID: UUID(),
+                name: "Extension Springs",
+                count: 2,
+                numberRequiredPerBuild: 1),
+            ItemInfo(
+                id: UUID(),
+                itemID: UUID(),
+                name: "K25 Springs",
+                count: 3,
+                numberRequiredPerBuild: 1),
+            ItemInfo(
+                id: UUID(),
+                itemID: UUID(),
+                name: "Takedown Pins",
+                count: 10,
+                numberRequiredPerBuild: 2),
+            ItemInfo(
+                id: UUID(),
+                itemID: UUID(),
+                name: "10-32 Hex Nuts",
+                count: 15,
+                numberRequiredPerBuild: 5),
+            ItemInfo(
+                id: UUID(),
+                itemID: UUID(),
+                name: "10-32 Threaded Rods",
+                count: 4,
+                numberRequiredPerBuild: 2)
+        ]
         
         func fetchProject() throws -> ProjectInfo? {
-            let items = [
-                ItemInfo(
-                    id: UUID(),
-                    itemID: UUID(),
-                    name: "First",
-                    count: 5,
-                    numberRequiredPerBuild: 6),
-                ItemInfo(
-                    id: UUID(),
-                    itemID: UUID(),
-                    name: "Second",
-                    count: 6,
-                    numberRequiredPerBuild: 6)
-            ]
-            return ProjectInfo(
+            
+            ProjectInfo(
                 name: name,
                 items: items)
         }
         
         func fetchAllItems() throws -> [Item] {
-            [
-                Item(name: "First", count: 5),
-                Item(name: "Second", count: 6)
-            ]
+            []
         }
         
         func projectItems() -> [ItemInfo] {
-            [
-                ItemInfo(
-                    id: UUID(),
-                    itemID: UUID(),
-                    name: "First",
-                    count: 5,
-                    numberRequiredPerBuild: 6),
-                ItemInfo(
-                    id: UUID(),
-                    itemID: UUID(),
-                    name: "Second",
-                    count: 6,
-                    numberRequiredPerBuild: 6)
-            ]
+            items
         }
         
         func filteredItems() -> [Item] { [] }
@@ -279,7 +281,7 @@ extension EditProject {
         }
         
         func canSave() -> Bool {
-            !name.isEmpty && count != nil
+            !name.isEmpty
         }
         
         func save() throws {

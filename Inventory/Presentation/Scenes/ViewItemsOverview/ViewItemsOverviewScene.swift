@@ -11,7 +11,8 @@ import SwiftUI
 enum ViewItemsOverview {
     struct Scene {
         func view(preview: Bool = false) -> some View {
-            let service: ViewItemsOverviewService = preview ? PreviewService() : buildService()
+            let usePreviewService = ApplicationState.shared.usePreviewServices || preview
+            let service: ViewItemsOverviewService = usePreviewService ? PreviewService() : buildService()
             let presenter = Presenter(viewModel: ViewModel())
             let interactor = Interactor(service: service, presenter: presenter)
             let view = ContentView(viewModel: presenter.viewModel, interactor: interactor)

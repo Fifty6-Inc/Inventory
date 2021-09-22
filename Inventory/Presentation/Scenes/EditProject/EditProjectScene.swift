@@ -14,7 +14,8 @@ enum EditProject {
     
     struct Scene {
         func view(preview: Bool = false, isPresented: Binding<Bool>) -> some View {
-            let service: EditProjectService = preview ? PreviewService() : buildService()
+            let usePreviewService = ApplicationState.shared.usePreviewServices || preview
+            let service: EditProjectService = usePreviewService ? PreviewService() : buildService()
             let presenter = Presenter(viewModel: ViewModel(isPresented: isPresented))
             let interactor = Interactor(service: service, presenter: presenter)
             let view = ContentView(viewModel: presenter.viewModel, interactor: interactor)

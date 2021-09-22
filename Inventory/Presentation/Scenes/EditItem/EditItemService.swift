@@ -168,8 +168,8 @@ extension EditItem {
     }
     
     class PreviewService: EditItemService {
-        private var name = ""
-        private var count: Int?
+        private var name = "10-32 Hex Nuts"
+        private var count: Int? = 15
         private var isDragging = false
         private var startValue: Int?
         
@@ -195,7 +195,7 @@ extension EditItem {
             }
             isDragging = true
             if let startValue = startValue {
-                self.count = count + ((count - startValue) - value)
+                self.count = count + (value - (count - startValue))
             }
         }
         
