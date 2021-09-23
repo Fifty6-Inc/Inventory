@@ -60,8 +60,10 @@ extension ViewProjectsOverview {
         }
         
         func onHiddenGesture() {
+            #if DEBUG
             service.onHiddenGesture()
             presenter.presentOnHiddenGesture()
+            #endif
         }
     }
 }
